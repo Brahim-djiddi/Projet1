@@ -27,6 +27,7 @@ function Registration(){
                                                  $errors["age"]="age must be between 13 and 60";
         if(empty($Logger["username"]))             $errors["username"] = "please select a username"; 
         if(empty($Logger["phone"]))          $errors["phone"] = "phone is Empty !.";
+        
 
 		if(empty($Logger["password"]))           $errors["password"]="Please entrer a password !....";
         if(empty($Logger["confirm_password"]))   $errors["confirm_password"]="Please Confirm Your Password !.....";

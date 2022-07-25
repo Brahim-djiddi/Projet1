@@ -2,7 +2,7 @@
 try{
     session_start();
 
-    include("Controllers/Controller.php");
+    require_once("Controllers/Controller.php");
 
    // if(empty($_SESSION["username"])){Login();exit();}
 
