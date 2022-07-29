@@ -1,7 +1,7 @@
 <?php
 function OuvrirConnextion(){
     static $cn;
-    if(!isset($cn)) $cn= new PDO('mysql:host=localhost:3306;dbname=smi2022','root','');
+    if(!isset($cn)) $cn= new PDO('mysql:host=localhost:3306;dbname=guetchar','root','');
     return $cn;
 }
 
@@ -10,8 +10,9 @@ function AddUser($t,$CodeP){
         if(!isset($t["gender"])){
             $t["gender"] = "homme";
         }
-        $User=[$t["first_name"],$t["last_name"],$t["email"],$t["age"],md5($t["password"]),$CodeP,$t["phone"],$t["username"],$t["gender"]];
-        OuvrirConnextion()->prepare("INSERT INTO user (FirstName,LastName,Email,Age,Pass,CodeP,Phone,Username,Gender) VALUES (?,?,?,?,?,?,?,?,?)")->execute($User);
+        $User=[$t["first_name"],$t["last_name"],$t["email"],$t["age"],md5($t["password"]),$CodeP,$t["phone"],$t["username"],$t["gender"],$t["profession"]];
+        OuvrirConnextion()->prepare("INSERT INTO user (FirstName,LastName,Email,Age,Pass,Role,Phone,Username,Gender,Profession)
+         VALUES (?,?,?,?,?,?,?,?,?,?)")->execute($User);
     }
 }
 
@@ -31,4 +32,11 @@ function User_Exists(array $user,$role){
 	if(($passHash)==($pass) && $Code==$role) return true;
     return false;
     
+
+    
+}
+
+function GetUser($email){
+    // $email=$user["email"];
+    return OuvrirConnextion()->query("SELECT * FROM  user WHERE Email='$email' or Username='$email'")->fetch();
 }

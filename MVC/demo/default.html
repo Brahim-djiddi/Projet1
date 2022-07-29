@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width minimum-scale=1.0 maximum-scale=1.0 user-scalable=no" />
+
+    <title>mmenu light demo</title>
+
+    <link type="text/css" rel="stylesheet" href="css/demo.css" />
+    <link type="text/css" rel="stylesheet" href="../dist/mmenu-light.css" />
+    <script src="https://kit.fontawesome.com/3f562a5f53.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="header">
+        <a href="#menu"><span></span></a>
+        <strong style="font-size: 20px;"> <span
+                class="bg-white text-info d-none d-sm-inline-block p-2 ml-2 rounded h2">TCHAD</span> <span
+                style="color: #F89801;">PREPA</span></strong>
+        <nav id="menu">
+            <ul>
+                <li class="Selected"><a href="#/">Accueil</a></li>
+
+                <li>
+                    <span>Categories</span>
+                    <ul>
+                        
+                        <!--  debut -->
+                        <li>
+                                 
+                               <span><i class="marke fas fa-university mr-2"></i>
+                                Universités & Écoles</span>
+                            
+                        
+                            <ul>
+                                <li>
+                                    <a href="#/">Management</a>
+                                </li>
+                                <li>
+                                    <a href="#/">Sales</a>
+                                </li>
+                                <li>
+                                    <a href="#/">Development</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- fin -->
+
+
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="marke fas fa-map-signs mr-2"></i>
+                                Guide des études
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item mt-2" href="Universite/universites-instituts-du-tchad.php">
+                                <i class="marke fas fa-university mr-2"></i>
+                                Universités & Écoles
+                            </a>
+                        </li>
+
+                        <li> <a class="dropdown-item mt-2" href="#">
+                                <i class="marke fas fa-chalkboard-teacher mr-2"></i>
+                                Cours en ligne
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2" href="https://meet.jit.si/">
+                                <i class="icon-featured icons fas fa-video text-color-primary mr-2"></i>
+                                Visioconférence
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2" href="bibliotheque/tous-les-livres.php">
+                                <i class="marke fas fa-book mr-2"></i>
+                                Bibliothèque E-Book
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSdS_5I-h4-US2SRG8X2K22q9kkdgoXHj5kO3t788W1LTcjMgw/viewform?usp=sf_link">
+                                <i class="marke fas fa-user-plus mr-2"></i>
+                                Demander une Bourse d'Etude
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2"
+                                href="https://docs.google.com/forms/d/e/1FAIpQLSdS_5I-h4-US2SRG8X2K22q9kkdgoXHj5kO3t788W1LTcjMgw/viewform?usp=sf_link">
+                                <i class="marke fas fa-user-plus mr-2"></i>
+                                Demander une pré-inscription
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2" href="#">
+                                <i class="marke fas fa-globe-africa mr-2"></i>
+                                Étudier au tchad
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2" href="#">
+                                <i class="marke fas fa-globe-europe mr-2"></i>
+                                Étudier à l'étranger
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2" href="#">
+                                <i class="marke fas fa-trophy fa-sm  mr-2"></i>
+                                Chercher un concours
+                            </a></li>
+
+
+                        <li> <a class="dropdown-item mt-2" href="formations/acceder">
+                                <i class="marke fas fa-book mr-2"></i>
+                                Trouver une formation
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2" href="#">
+                                <i class="marke marke fas fa-id-card-alt mr-2"></i>
+                                Trouver un stage
+                            </a></li>
+
+                        <li><a class="dropdown-item mt-2" href="#">
+                                <i class="marke fas fa-briefcase mr-2"></i>
+                                Trouver un job
+                            </a></li>
+                        <li> <a class="dropdown-item mt-2" href="#">
+                                <i class="marke marke fas fa-lightbulb mr-2"></i>
+                                Devenir entrepreneur
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li></li>
+
+
+
+
+                <li><a href="#/">Contact</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+
+    </div>
+
+    <script src="../dist/mmenu-light.js"></script>
+    <script>
+        var menu = new MmenuLight(document.querySelector("#menu"), "all");
+
+        var navigator = menu.navigation({
+            // selectedClass: 'Selected',
+            // slidingSubmenus: true,
+            // theme: 'dark',
+            // title: 'Menu'
+        });
+
+        var drawer = menu.offcanvas({
+            // position: 'left'
+        });
+
+        //	Open the menu.
+        document
+            .querySelector('a[href="#menu"]')
+            .addEventListener("click", (evnt) => {
+                evnt.preventDefault();
+                drawer.open();
+            });
+    </script>
+</body>
+
+</html>
