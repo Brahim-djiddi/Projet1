@@ -1,8 +1,15 @@
 <?php
 function index2(){
-    $view="Views/Admin/vIndex.php";
-    $varriables=[];
-    render($view,$varriables);
+    if($_SESSION["CodeP"]=="admin"){
+        $view="Views/Admin/vIndex.php";
+        $variables=[];
+        render($view,$variables);
+    }
+    else{
+        $view="Views/vIndex.php";
+        $variables=[];
+        render($view,$variables);
+    }
 }
 
 
@@ -21,6 +28,7 @@ function LoginAdmin(){
             $var=GetUser($_SESSION["email"]);
             $_SESSION["FirstName"]=$var["FirstName"];
             $_SESSION["LastName"]=$var["LastName"];
+            $_SESSION["CodeP"]=$var["Role"];
             header("location:index.php?action=index2");
         }
     }
@@ -33,7 +41,7 @@ function LoginAdmin(){
     render($view,$variables);
 }
 
-function SignupAdmin(){
+/* function SignupAdmin(){
     //$CodeP=$_GET["CodeP"]??"etudiant";
     $CodeP="admin";
     $Logger=["first_name"=>"","last_name"=>"","age"=>"","username"=>"","email"=>"","phone"=>"","password"=>"","confirm_password"=>"","gender"=>"","profession"=>""];
@@ -61,20 +69,20 @@ function SignupAdmin(){
         }
     }
     $view="Views/vSignup.php";
-    $varriables=array("Logger"=>$Logger,"errors"=>$errors ?? []);
-    //renderWithAjax($view,$varriables);
-    render($view,$varriables);
-}
+    $variables=array("Logger"=>$Logger,"errors"=>$errors ?? []);
+    //renderWithAjax($view,$variables);
+    render($view,$variables);
+} */
 
 function AfficherAdminWithAjax(){
     //$CodeP=$_GET["CodeP"]??"AUD";
-    $CodeP=$_GET["CodeP"]??"etudiant";
-    $choix=$_REQUEST["choix"]?? "Admin";
+    $CodeP=$_SESSION["CodeP"]??"etudiant";
+    $choix=$_REQUEST["choix"]?? "Dashboard";
     $view="Views/Admin/Aff_".$choix.".php";
-    //$varriables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
-    $varriables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
+    //$variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
+    $variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
     //if(file_exists($view)) 
-    renderWithAjax($view,$varriables);
+    renderWithAjax($view,$variables);
 }
 
 

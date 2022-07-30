@@ -5,8 +5,8 @@ require_once("Models/Model.php");
 require_once("Controllers/AdminController.php");
 function index(){
     $view="Views/vIndex.php";
-    $varriables=[];
-    render($view,$varriables);
+    $variables=[];
+    render($view,$variables);
 }
 
 // Actions that doesn't require Authentification (Actions auriented to Public)
@@ -50,9 +50,9 @@ function SignUp(){
         }
     }
     $view="Views/vSignUp.php";
-    $varriables=array("Logger"=>$Logger,"errors"=>$errors ?? []);
-    //renderWithAjax($view,$varriables);
-    render($view,$varriables);
+    $variables=array("Logger"=>$Logger,"errors"=>$errors ?? []);
+    //renderWithAjax($view,$variables);
+    render($view,$variables);
 }
 
 function Login(){
@@ -69,6 +69,7 @@ function Login(){
             $var=GetUser($_SESSION["email"]);
             $_SESSION["FirstName"]=$var["FirstName"];
             $_SESSION["LastName"]=$var["LastName"];
+            $_SESSION["CodeP"]=$var["Role"];
             header("location:index.php");
         }
     }
@@ -112,7 +113,7 @@ function Demande_Etude(){
 
 
     $view="Views/vDemande_Etude.php";
-    $varriables=array("Student"=>$Student,"errors"=>$errors ?? []);
+    $variables=array("Student"=>$Student,"errors"=>$errors ?? []);
     render($view,$variables);
 }
 */
@@ -121,12 +122,12 @@ function Demande_Etude(){
     $Student=[];
     $CodeP=$_GET["CodeP"]??"etudiant";
 
-    $varriables=array("Student"=>$Student,"errors"=>$errors ?? []);
+    $variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
     $vue="Views/vDemande_Etude.php";
-    render_other($vue);
+    render_other($vue,$variables);
 }
 
-function render($vue,array $varriables=array()){
+function render($vue,array $variables=array()){
     ob_start();
     require($vue);
     $view=ob_get_clean();
@@ -152,7 +153,7 @@ function renderWithAjax($vue , array $variables=array()) {
 	else throw New Exception("La vue $vue n'existe pas");
 }
 
-function render_other($vue,array $varriables=array()){
+function render_other($vue,array $variables=array()){
     require($vue);
 }
 
@@ -224,8 +225,8 @@ function generate(){
 
 function thanks(){
     $view="Views/thanks.php";
-    $varriables=[];
-    render($view,$varriables);
+    $variables=[];
+    render($view,$variables);
 }
 
 ?>

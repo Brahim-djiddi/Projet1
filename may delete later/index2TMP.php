@@ -35,8 +35,8 @@ catch(Exception $e){
     //echo"ERROR";
     
     $view="Views/BaseViews/vError.php";
-    $varriables=["message"=>$e->getMessage()];
-    render($view,$varriables);
+    $variables=["message"=>$e->getMessage()];
+    render($view,$variables);
     
 }
 

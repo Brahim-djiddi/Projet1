@@ -44,14 +44,14 @@
          
               <h3 class=" text-left text-justify" style="color:#002A8B; font-family:bold;">Se connecter à votre compte</h3>
          
-              <span class="Err" id="ErrCode"> <?=$varriables["errors"]["connect"] ?? ""?> </span>
+              <span class="Err" id="ErrCode"> <?=$variables["errors"]["connect"] ?? ""?> </span>
             <div class="form-group mb-4">
-              <span class="Err" id="ErrCode"> <?=$varriables["email"]["connect"] ?? ""?> </span>
+              <span class="Err" id="ErrCode"> <?=$variables["email"]["connect"] ?? ""?> </span>
               <input class="form-control" type="text" name="email" placeholder="Email ou Non utilisateur" id="username" required>
             </div>
 
             <div class="form-group">
-            <span class="Err" id="ErrCode"> <?=$varriables["password"]["connect"] ?? ""?> </span>
+            <span class="Err" id="ErrCode"> <?=$variables["password"]["connect"] ?? ""?> </span>
               <input class="form-control" type="password" name="password" placeholder="Mot de passe" id="password" required>
               <div class="valid-feedback">Valide</div>
             </div>

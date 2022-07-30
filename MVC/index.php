@@ -29,8 +29,8 @@ else{
 }
 catch(Exception $e){
     $view="Views/vError.php";
-    $varriables=["message"=>$e->getMessage()];
-    render($view,$varriables);
+    $variables=["message"=>$e->getMessage()];
+    render($view,$variables);
 }
 
 ?>

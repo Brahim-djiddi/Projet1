@@ -45,30 +45,30 @@
  <h3 class=" text-left text-justify" style="color:#002A8B; font-family:bold;">Créer votre compte</h3>
 
                     <div class="form-group">
-                        <input type="text" name="first_name" class="form-control" id="username2" placeholder="Nom" value="<?=$varriables["Logger"]["first_name"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["first_name"] ?? ""?> </span>
+                        <input type="text" name="first_name" class="form-control" id="username2" placeholder="Nom" value="<?=$variables["Logger"]["first_name"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["first_name"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="last_name" class="form-control" id="username2" placeholder="Prenom" value="<?=$varriables["Logger"]["last_name"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["last_name"] ?? ""?> </span>
-                        <div class="valid-feedback">Valide</div>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <input type="text" name="age" class="form-control" id="username2" placeholder="Age" value="<?=$varriables["Logger"]["age"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["age"] ?? ""?> </span>
+                        <input type="text" name="last_name" class="form-control" id="username2" placeholder="Prenom" value="<?=$variables["Logger"]["last_name"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["last_name"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
 
 
                     <div class="form-group">
-                        <input type="text" name="phone" class="form-control" id="username2" placeholder="Phone" value="<?=$varriables["Logger"]["phone"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["phone"] ?? ""?> </span>
+                        <input type="text" name="age" class="form-control" id="username2" placeholder="Age" value="<?=$variables["Logger"]["age"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["age"] ?? ""?> </span>
+                        <div class="valid-feedback">Valide</div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <input type="text" name="phone" class="form-control" id="username2" placeholder="Phone" value="<?=$variables["Logger"]["phone"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["phone"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
@@ -76,27 +76,27 @@
 
 
                     <div class="form-group">
-                        <input type="text" name="username" class="form-control" id="username2" placeholder="Nom d utilisateur" value="<?=$varriables["Logger"]["username"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["username"] ?? ""?> </span>
+                        <input type="text" name="username" class="form-control" id="username2" placeholder="Nom d utilisateur" value="<?=$variables["Logger"]["username"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["username"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="email" class="form-control" id="username2" placeholder="Adresse E-Mail" value="<?=$varriables["Logger"]["email"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["email"] ?? ""?> </span>
+                        <input type="text" name="email" class="form-control" id="username2" placeholder="Adresse E-Mail" value="<?=$variables["Logger"]["email"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["email"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
 
                     <div class="form-group">
-                        <input type="text" name="password" class="form-control" id="username2" placeholder="Mot de passe" value="<?=$varriables["Logger"]["password"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["password"] ?? ""?> </span>
+                        <input type="text" name="password" class="form-control" id="username2" placeholder="Mot de passe" value="<?=$variables["Logger"]["password"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["password"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="confirm_password" class="form-control" id="username2" placeholder="Confirmer votre mot de passe" value="<?=$varriables["Logger"]["confirm_password"]?>" required/>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["confirm_password"] ?? ""?> </span>
+                        <input type="text" name="confirm_password" class="form-control" id="username2" placeholder="Confirmer votre mot de passe" value="<?=$variables["Logger"]["confirm_password"]?>" required/>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["confirm_password"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
@@ -106,7 +106,7 @@
                             <option value="Homme">Homme</option>
                             <option value="Femme">Femme</option>
                         </select>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["gender"] ?? ""?> </span>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["gender"] ?? ""?> </span>
                     </div>
 
                     <div class="form-group">
@@ -117,7 +117,7 @@
                             <option value="Touriste">Touriste</option>
                             <option value="Autre">Autre</option>
                         </select>
-                        <span class="Err" id="ErrCode"> <?=$varriables["errors"]["profession"] ?? ""?> </span>
+                        <span class="Err" id="ErrCode"> <?=$variables["errors"]["profession"] ?? ""?> </span>
                     </div>
 
 
