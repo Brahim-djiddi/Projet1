@@ -92,13 +92,43 @@
               
                 <a href="index.php#contact-section" class="text-dark nav-link" style="font-size:19px;" >Contact</a>
                 <a href="index.php#apropos-section" class="text-dark nav-link" style="font-size:19px;">À propos</a>
-                <span class="m-3" style="font-size:19px;"><a href="index.php?action=Login" class="text-dark nav-link">Compte <i class="fa-solid fa-right-to-bracket"></i></a></span>
+                <span class="m-3" style="font-size:19px;">
+
+                <?php if(!isset($_SESSION["email"]))  echo  
+                '<a href="index.php?action=Login" class="text-dark nav-link">Connextion <i class="fa-solid fa-right-to-bracket"></i></a>' ?>
+
+                <?=$_GET["role"]??""?><?php if(isset($_SESSION["email"])){ ?>
+
+
+                  <div class="dropdown text-dark nav-link ">
+                  
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                      style="font-size:19px;">
+                      <?php echo" Mr. ".strtoupper($_SESSION["FirstName"])?>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                      <a href="index.php?action=Logout" class="text-dark nav-link">Deconnextion<i class="fa-solid fa-right-to-bracket"></i></a>'
+                        <!-- <button class="dropdown-item" type="button">Another action</button>
+                        <button class="dropdown-item" type="button">Something else here</button> -->
+                      </div>
+                        
+                    </div>
+                   
+
+
+
+
+                
+                     <?php } ?>
+                     
+                
+                </span>
                  <!--   <ul class="dropdown">
                     <li><a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#Madal_signup">Créer un compte</a></li>
                     <li><a href="login.php" class="nav-link" >Se connecter</a></li>
                   </ul>  -->
             
-
+              
               </ul>
             </nav>
           </div>
@@ -233,7 +263,7 @@
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-5 shadow-sm" data-aos="fade-up">
         <div class="training">
-          <a href="houssam_PDFtk/index.php" class="nav-link d-block"><figure class=""><img src="images/etude.png" alt="guetchar" class="img-fluid" ></figure>
+          <a href="index.php?action=Demande_Etude" class="nav-link d-block"><figure class=""><img src="images/etude.png" alt="guetchar" class="img-fluid" ></figure>
           <h5 class="text-black text-center">Demande d'Etude </h5>
           </a>
         </div>

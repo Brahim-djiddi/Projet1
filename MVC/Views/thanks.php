@@ -16,7 +16,7 @@
             <div class="container text-center">
 
                       <h1>Thanks <?php echo $_GET['name'];?>, your PDF is now generated, 
-                      <a href="./completed/<?php echo $_GET['link'];?>" download>Download it here</a></h1>
+                      <a href="./PDFs/completed/this_year/<?php echo $_GET['link'];?>" download>Download it here</a></h1>
 
                      <div class="clearfix mb-5"></div>
 

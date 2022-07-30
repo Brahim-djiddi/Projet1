@@ -160,13 +160,13 @@
         -->
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
-          <a href="#" class="d-block"><i class="fas fa-fw fa-user mx-1"></i>Table de borde</a>
+        <div class="info" onclick ='HoussamAffiche("GET","index.php","action=AfficherAdminWithAjax&choix=Dashboard","ShowAll")'>
+          <a role="button" href="#" class="d-block"><i class="fas fa-fw fa-user mx-1"></i>Table de borde</a>
         </div>
       </div>
 
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
+        <div class="info" onclick ='HoussamAffiche("GET","index.php","action=AfficherAdminWithAjax&choix=Client","ShowAll")'>
           <a href="#" class="d-block"><i class="fa fa-users" aria-hidden="true"></i> Clients</a>
         </div>
       </div>
@@ -186,7 +186,7 @@
             <i class="fa fa-envelope" aria-hidden="true"></i> Demandes
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="#">Demande d'Etude</a>
+            <a class="dropdown-item" onclick ='HoussamAffiche("GET","index.php","action=AfficherAdminWithAjax&choix=Demande_Etude","ShowAll")'>Demande d'Etude</a>
             <a class="dropdown-item" href="#">Demande de Stage</a>
             <a class="dropdown-item" href="#">Demande de Travail</a>
             <a class="dropdown-item" href="#">Demande de Sejour</a>
@@ -264,56 +264,20 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
+
+
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Table de borde</h1>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-   
-    <!-- Main content -->
-<div class="container">
-    <div class="row">
-    <div class="col-md-3">
-      <div class="card-counter primary">
-        <i class="fa fa-code-fork"></i>
-        <span class="count-numbers">12</span>
-        <span class="count-name">Total Clients</span>
-      </div>
-    </div>
+    
 
-    <div class="col-md-3">
-      <div class="card-counter danger">
-        <i class="fa fa-ticket"></i>
-        <span class="count-numbers">599</span>
-        <span class="count-name">Total Articles</span>
-      </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card-counter success">
-        <i class="fa fa-database"></i>
-        <span class="count-numbers">6875</span>
-        <span class="count-name">Total Demandes</span>
-      </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card-counter info">
-        <i class="fa fa-users"></i>
-        <span class="count-numbers">35</span>
-        <span class="count-name">Total Cartes</span>
-      </div>
-    </div>
-  </div>
-</div>
 
-  </div>
+
+    <div id="ShowAll"></div>
+
+
+
 
 </div>
 
@@ -331,4 +295,7 @@
 </script>
 
 </body>
+
+<script src="Public/JS/AJAX.js"></script>
+<script src="Public/JS/HoussamAjax.js"></script>
 </html>

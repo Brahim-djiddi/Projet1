@@ -6,14 +6,14 @@ function OuvrirConnextion(){
 }
 
 function AddUser($t,$CodeP){
-    if($CodeP!="admin"){
+    //if($CodeP!="admin"){
         if(!isset($t["gender"])){
             $t["gender"] = "homme";
         }
         $User=[$t["first_name"],$t["last_name"],$t["email"],$t["age"],md5($t["password"]),$CodeP,$t["phone"],$t["username"],$t["gender"],$t["profession"]];
         OuvrirConnextion()->prepare("INSERT INTO user (FirstName,LastName,Email,Age,Pass,Role,Phone,Username,Gender,Profession)
          VALUES (?,?,?,?,?,?,?,?,?,?)")->execute($User);
-    }
+   // }
 }
 
 function User_Exists(array $user,$role){
@@ -39,4 +39,33 @@ function User_Exists(array $user,$role){
 function GetUser($email){
     // $email=$user["email"];
     return OuvrirConnextion()->query("SELECT * FROM  user WHERE Email='$email' or Username='$email'")->fetch();
+}
+
+function add_pdf($t){
+        $User=[$t["owner"],$t["type"],$t["link"]];
+        OuvrirConnextion()->prepare("INSERT INTO demandes (Owner,Type,Link)
+         VALUES (?,?,?)")->execute($User);
+
+}
+
+function GetListe($choix){
+    if($choix=="Dashboard"){ return GetListeDashboard();}
+    elseif($choix=="Demande_Etude") {return GetListeDemande_Etude("Demande_Etude");}
+    elseif($choix=="Client") {return GetListeClient();}
+
+}
+
+function GetListeDemande_Etude($type="Demande_Etude"){
+    //return OuvrirConnextion()->query("SELECT * FROM  demandes where type='$type'")->fetchall();
+    $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where type = ? ");	
+    $Rq->execute([$type]);
+    $Rq1=$Rq->fetchall();
+    return $Rq1;
+}
+function GetListeDashboard(){
+    return [];
+}
+
+function GetListeClient(){
+    return OuvrirConnextion()->query("SELECT * FROM  user where role='etudiant'")->fetchall();
 }

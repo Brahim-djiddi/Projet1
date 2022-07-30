@@ -44,7 +44,7 @@
     <label class="control-label col-sm-2 requiredField" for="date">
         Année Universitaire
     </label>
-    <form name="inscription" method="post" action="generate.php">
+    <form name="inscription" method="post" action="index.php?action=generate">
         <div class="col-md-4">
             <input class="form-control" id="date" name="Année Universitaire" placeholder="MM/DD/YYYY" type="text">
         </div>
@@ -428,7 +428,7 @@
             <div class="col-md-4">
                 <label for="name" class="form-label">le</label>
                 <input type="date" class="form-control" id="date" name="email">
-                <button type="submit" class="form-control" id="date" name="email">click ici</button>
+                <button type="submit" class="form-control" >click ici</button>
 
             </div>
             <br><br><br><br><br><br><br>
