@@ -239,11 +239,11 @@ function generate($demande="Demande_Etude"){
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $data=[
             'Année_Universitaire' => $_POST["Année_Universitaire"] ?? '',    //1
-            '1' => $_POST["1"] ?? '',
-            '2' => $_POST["2"] ?? '',
-            '3' => $_POST["3"] ?? '',
-            '4' => $_POST["4"] ?? '',
-            '5' => $_POST["5"] ?? '',
+            // '1' => $_POST["1"] ?? '',
+            // '2' => $_POST["2"] ?? '',
+            // '3' => $_POST["3"] ?? '',
+            // '4' => $_POST["4"] ?? '',
+            // '5' => $_POST["5"] ?? '',
             'Filière' => $_POST["Filière"] ?? '',               
             'Etablissement' => $_POST["Etablissement"] ?? '',  
             'Boursier' => $_POST["Boursier"] ?? '',
@@ -294,6 +294,11 @@ function generate($demande="Demande_Etude"){
             'Dossier_complété_le' => $_POST["Dossier_complété_le"] ?? '',
             'Inscription_effectuée_par' => $_POST["Inscription_effectuée_par"] ?? '',
         ];
+        if(isset($_POST["annee"])){
+            
+        }
+
+
     
     $pdf = new generatePDF;
     $response = $pdf->generate($data);
