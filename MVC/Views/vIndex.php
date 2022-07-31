@@ -263,7 +263,7 @@
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-5 shadow-sm" data-aos="fade-up">
         <div class="training">
-          <a href="index.php?action=Demande_Etude" class="nav-link d-block"><figure class=""><img src="images/etude.png" alt="guetchar" class="img-fluid" ></figure>
+          <a href="index.php?action=Demande_Etude2" class="nav-link d-block"><figure class=""><img src="images/etude.png" alt="guetchar" class="img-fluid" ></figure>
           <h5 class="text-black text-center">Demande d'Etude </h5>
           </a>
         </div>

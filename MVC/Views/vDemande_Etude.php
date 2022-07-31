@@ -102,11 +102,11 @@
                             <label class="obligatoire" for="annee">Niveau d'etude:</label>
                             <select class="form-control form-select" name="annee" id="annee" required>
                                 <option selected value=" ">Choisir l'année</option>
-                                <option value="X">1ère année</option>
-                                <option value="X">2ème année</option>
-                                <option value="X">3ème année</option>
-                                <option value="X">4ème année</option>
-                                <option value="X">5ème année</option>
+                                <option value="1">1ère année</option>
+                                <option value="2">2ème année</option>
+                                <option value="3">3ème année</option>
+                                <option value="4">4ème année</option>
+                                <option value="5">5ème année</option>
                             </select>
                         </div>
                         <div class="col-lg-4 mt-3">
@@ -376,11 +376,11 @@
 
                             <div class="col-lg-4 mt-2 mb-3">
                                 <label class="obligatoire" for="role">Rôle du parent:</label>
-                                <select class="form-control form-select" neme="role" id="role" aria-label="Default select example" required>
+                                <select class="form-control form-select" name="role" id="role" aria-label="Default select example" required>
 
-                                    <option value="Père">Père</option>
-                                    <option value="Mère"> Mère</option>
-                                    <option value="Tuteur(rice)">Tuteur(rice)</option>
+                                    <option value="Pere">Père</option>
+                                    <option value="Mere"> Mère</option>
+                                    <option value="Tuteur">Tuteur(rice)</option>
                                 </select>
                             </div>
                         </div>
@@ -414,7 +414,7 @@
                                     <option value="Maroc">Maroc</option>
                                     <option value="Tunisie" >Tunisie</option>
                                     <option value="Sénégal" >Sénégal</option>
-                                    <option value="Afrique du Sud">Afrique du Sud</option>
+                                    <option value="Afrique_du_Sud">Afrique du Sud</option>
                                     <option value="Rwanda" >Rwanda</option>
                                     <option value="Turquie" >Turquie</option>
                                     <option value="Dubaï" >Dubaï</option>
