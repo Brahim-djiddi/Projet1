@@ -1,443 +1,494 @@
 <!DOCTYPE html>
 <html>
-
+<?php if(!empty($_POST["annee"])){ $_POST["annee"];}else{ "Choisir l'année";}?>
 <head>
     <title>Bootstrap Online Editor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script defer="" referrerpolicy="origin"
-        src="/cdn-cgi/zaraz/s.js?z=JTdCJTIyZXhlY3V0ZWQlMjIlM0ElNUIlNUQlMkMlMjJ0JTIyJTNBJTIyU2lnbiUyMFVwJTIwRm9ybSUyMGJ5JTIwQ29sb3JsaWIlMjIlMkMlMjJ4JTIyJTNBMC4xNTIzNzAwNDIwOTkzNjY1NSUyQyUyMnclMjIlM0ExNDQwJTJDJTIyaCUyMiUzQTkwMCUyQyUyMmolMjIlM0E3MTIlMkMlMjJlJTIyJTNBMTQ0MCUyQyUyMmwlMjIlM0ElMjJodHRwcyUzQSUyRiUyRmNvbG9ybGliLmNvbSUyRmV0YyUyRnJlZ2Zvcm0lMkZjb2xvcmxpYi1yZWdmb3JtLTE0JTJGJTIyJTJDJTIyciUyMiUzQSUyMiUyMiUyQyUyMmslMjIlM0EzMCUyQyUyMm4lMjIlM0ElMjJVVEYtOCUyMiUyQyUyMm8lMjIlM0EtNjAlMkMlMjJxJTIyJTNBJTVCJTVEJTdE"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Playfair+Display:400,900" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+
+
     <style>
         body {
             background-image: url("https://www.linkpicture.com/q/WhatsApp-Image-2022-07-27-at-9.34.17-PM.jpeg");
             color: #00205f;
-            padding-left: 50px;
-
         }
 
-        .admission {
-            border red solid;
+        /* form-control */
+        .form-control {
+            box-shadow: none !important;
+            outline: none !important;
+            border: 1px solid #cecece;
+            height: 38px;
         }
 
-        .pic {
-            align: center;
-            width: 700px;
+        label {
+            font-weight: bold;
         }
 
-        .titre {
-            background: ;
+        p {
+            color: #002A8B;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        .section-info {
+            background-color: #FBE5D7;
+        }
+
+        .border {
+            border-radius: 2px;
+        }
+
+
+
+        label.obligatoire:after {
+            content: "*";
+            color: red;
         }
     </style>
-
 </head>
 
+
+
 <body>
-    <center><img src="https://i.imgur.com/O3XVpoG.png" style="align:center; width:700px;"></center>
+    <!-- image logo -->
+    <div class="container">
+        <form class="needs-validation" action="" method="post" id="form-validation" novalidate>
+            <!-- header, logo -->
+            <section class="header site-section">
+                <?php
 
-    <header>
-    </header><br>
-    <center><strong>
-            <p><span class="admission">FICHE D’ADMISSION</span></p>
-        </strong></center><br>
-    <label class="control-label col-sm-2 requiredField" for="date">
-        Année Universitaire
-    </label>
-    <form name="inscription" method="post" action="index.php?action=generate">
-        <div class="col-md-4">
-            <input class="form-control" id="date" name="Année Universitaire" placeholder="MM/DD/YYYY" type="text">
-        </div>
-        </div>
-        </div>
-        </div>
-        <br>
-        <ul>
+                function Annee_Scolaire()
+                {
+                    $mois = date(format: "m");
+                    $annee_actuelle = date(format: "Y");
+                    if ($mois >= 7 && $mois <= 12) {
+                        $annee1 = $annee_actuelle;
+                        $annee2 = $annee_actuelle + 1;
+                    } else {
+                        $annee1 = $annee_actuelle - 1;
+                        $annee2 = $annee_actuelle;
+                    }
+                    $annee_scolaire_actuelle = $annee1 . "/" . $annee2;
+                    return $annee_scolaire_actuelle;
+                }
 
-            <div class="form-check-inline">
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="1">1 ère année
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="2">2 ème année
-                    </label>
-                </div>
-                <div class="form-check-inline ">
-                    <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="3">3 ème année
-                    </label>
-                    <div class="form-check-inline ">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="4">4 ème année
-                        </label>
-                    </div>
-                    <div class="form-check-inline ">
-                        <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="5">5 ème année
-                        </label>
+                ?>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <figure class="text-center"><img src="images/logo.png" class="img-fluid" height="150" width="600"></figure>
+                        <h5 class="text-center" style="color: #002A8B">Cabinet de conseil, d’orientation et d’accompagnement professionnel<br> pour vos études ou stages à l’étranger</h5>
+                        <h4 class="  text-center mt-4"><span class="border border-danger p-2">FICHE D’ADMISSION</span></h4>
+                        <h6 class="text-center mt-3">Année Universitaire: <?= Annee_Scolaire(); ?></h6>
+                        <input type="hidden" name="Annee_univer" id="Annee_univer" value="<?=Annee_Scolaire();?>">
                     </div>
                 </div>
-            </div>
-        </ul>
-        <div class="col-md-6">
-            <label for="nationalité" class="form-label">Filière</label>
-            <input type="text" name="Filière" class="form-control" id="nationalité">
-        </div>
-        <div class="col-md-6">
-            <label for="nationalité" class="form-label">Etablissement</label>
-            <input type="text" class="form-control" id="nationalité" name="Etablissement">
-        </div>
-        <br><br>
-        <br>
+            </section>
 
-        <br> <br>
-        <legend>
-            <h3>ESPACE RESERVE A L’ETUDIANT(E) OU STAGIAIRE</h3>
-        </legend>
-        <div class="container">
-            <div class="d-flex justify-content-center ">
+            <!-- Annee,etablissement,filiere,bourse -->
 
-                <div class="col-md-6">
-                    <label for="nom" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="nom" name="Noms">
-                </div>
-                <div class="col-md-6">
-                    <label for="nom" class="form-label">Prenom</label>
-                    <input type="text" class="form-control" id="prenom" name="Prénoms">
-                </div>
-                <div class="col-md-12">
-                    <label for="datetlieu" class="form-label">Date et lieu de naissance</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="12 march Main "
-                        name="Date et lieu de naissance">
-                </div>
-                <div class="col-md-6">
-                    <label for="nationalité" class="form-label">Nationalité</label>
-                    <input type="text" class="form-control" id="nationalité" name="Nationalité">
-                </div>
-                <div class="col-md-6">
-                    <label for="numerocni" class="form-label">N CNI ou Passport</label>
-                    <input type="text" class="form-control" id="cnioupassport" name="N CNI ou Passeport">
-                </div>
-                <div class="col-md-12">
-                    <label for="inputAddress2" class="form-label">Address </label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="1234 Main St"
-                        name="address">
-                </div>
-                <div class="col-md-4">
-                    <label for="nationalité" class="form-label">Code postal</label>
-                    <input type="text" class="form-control" id="nationalité" name="CodeP">
-                </div>
-                <div class="col-md-4">
-                    <label for="numerocni" class="form-label">Ville</label>
-                    <input type="text" class="form-control" id="cnioupassport" name="city">
-                </div>
-                <div class="col-md-4">
-                    <label for="numerocni" class="form-label">Pays</label>
-                    <input type="text" class="form-control" id="cnioupassport" name="pays">
-                </div>
-                <div class="col-md-6">
-                    <label for="telephone" class="form-label">Téléphone </label>
-                    <input type="tel" class="form-control" id="tel" placeholder="" name="phone">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputCity" class="form-label">GSM</label>
-                    <input type="tel" class="form-control" id="inputCity" name="gsm">
-                </div>
+        <section class="header site-section">
+            <div class="container">
 
-                <div class="col-md-12">
-                    <label for="Email" class="form-label">Email </label>
-                    <input type="email" class="form-control" id="email" placeholder="exemple@domain" name="email">
-                </div>
-                <div class="col-md-12">
-                    <label for="serie du bac" class="form-label"> Série du baccalauréat</label>
-                    <input type="email" class="form-control" id="serie du bac" placeholder="" name="bac_serie">
-                </div>
-                </span>
+                <div class="border border-dark p-2 mt-4">
+                    <div class="row">
 
-            </div>
-        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mt-3">
+                            <label class="obligatoire" for="annee">Niveau d'etude:</label>
+                            <select class="form-control form-select" name="annee" id="annee" required>
+                                <option selected value=" ">Choisir l'année</option>
+                                <option value="X">1ère année</option>
+                                <option value="X">2ème année</option>
+                                <option value="X">3ème année</option>
+                                <option value="X">4ème année</option>
+                                <option value="X">5ème année</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 mt-3">
+                            <label class="obligatoire" for="filiere">Filiére:</label>
+                            <select class="form-control form-select" name="filiere" id="filiere" required>
 
-        </fieldset>
+                                <option selected value=" ">Choisir la filière</option>
+
+                                <optgroup label="Filières scientifiques">
+                                    <option value="Sciences pour l’ingénieur">Sciences pour l’ingénieur</option>
+                                    <option value="physique chimie">physique chimie</option>
+                                    <option value="Biologie">Biologie</option>
+                                    <option value="Agro-Alimentaire">Agro-Alimentaire</option>
+                                    <option value="Maths">Maths</option>
+                                    <option value="Informatique">Informatique</option>
+                                    <option value="Médecine">Médecine</option>
+                                </optgroup>
+                                <optgroup label="Filières littéraires">
+                                    <option value="Littérature">Littérature</option>
+                                    <option value="Langues">Langues</option>
+                                    <option value="Informations">Informations</option>
+                                    <option value="Communication">Communication</option>
+                                    <option value="Art">Art</option>
+                                    
+                                </optgroup>
+                                <optgroup label="Filières sciences humaines et sociales">
+                                    <option value="Sociologie">Sociologie</option>
+                                    <option value="Psychologie">Psychologie</option>
+                                    <option value="Histoire">Histoire</option>
+                                    <option value="Géographie">Géographie</option>
+                                </optgroup>
+
+                                <optgroup label="Filières économie et gestion ">
+                                    <option value="Économie">Économie</option>
+                                    <option value="Banque Finance Assurance">Banque Finance Assurance</option>
+                                    <option value="Comptabilité">Comptabilité</option>
+                                    <option value="Management">Management</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Commerce International">Commerce International</option>
+                                </optgroup>
+
+                                <optgroup label="Filières droit ">
+                                    <option value="Droit">Droit</option>
+                                    <option value="Science Politiques">Science Politiques</option>
+                                    <option value="Relations Internationales">Relations Internationales</option>
+                                </optgroup>
 
 
+                                <optgroup label="">
+                                    <option value="Autre">Autre</option>
+                                 
+                                </optgroup>
+                               
+                            
+                            </select>
 
-        <legend>
-            <h3>ESPACE RESERVE AU PARENT(S) OU TUTEUR(S)</h3>
-        </legend>
-        <div class="container">
-            <div class="d-flex justify-content-center ">
+                        </div>
 
-                <div class="col-md-6">
-                    <label for="nom" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="nom" name="last_name2">
-                </div>
-                <div class="col-md-6">
-                    <label for="nom" class="form-label">Prenom</label>
-                    <input type="text" class="form-control" id="prenom" name="first_name2">
-                </div>
-                <div class="col-md-12">
-                    <label for="nationalité" class="form-label">Profession</label>
-                    <input type="text" class="form-control" id="Profession" name="profession">
-                </div>
+                        <div class="col-lg-4 mt-3">
+                            <label class="obligatoire" for="etablissement">Etablissement:</label>
+                            <select class="form-control form-select" name="etablissement" id="etablissement" required>
+                                <option selected value=" ">Choisir l'etablissement</option>
+                                <option value="Université public">Université public</option>
+                                <option value="Université privée">Université privée</option>
+                                <option value="École public">École public</option>
+                                <option value="École privée">École privée</option>
+                                <option value="Autre">Autre</option>
+                               
+                              
+                            </select>
 
-                <div class="col-md-12">
-                    <label for="inputAddress2" class="form-label">Address </label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="1234 Main St"
-                        name="address2">
-                </div>
-                <div class="col-md-4">
-                    <label for="nationalité" class="form-label">Code postal</label>
-                    <input type="text" class="form-control" id="nationalité" name="CodeP2">
-                </div>
-                <div class="col-md-4">
-                    <label for="numerocni" class="form-label">Ville</label>
-                    <input type="text" class="form-control" id="cnioupassport" name="city2">
-                </div>
-                <div class="col-md-4">
-                    <label for="pay" class="form-label">Pays</label>
-                    <input type="text" class="form-control" id="cnioupassport" name="pays2">
-                </div>
-                <div class="col-md-6">
-                    <label for="telephone" class="form-label">Téléphone </label>
-                    <input type="tel" class="form-control" id="tel" placeholder="" name="phone2">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputCity" class="form-label">GSM</label>
-                    <input type="tel" class="form-control" id="inputCity" name="gsm2">
-                </div>
+                        </div>
 
-                <div class="col-md-12">
-                    <label for="Email" class="form-label">Email </label>
-                    <input type="email" class="form-control" id="email" placeholder="exemple@domain" name="email2">
-                </div>
-                <div class="col-md-12">
-                    <label for="serie du bac" class="form-label"> Série du baccalauréat</label>
-                    <input type="email" class="form-control" id="serie du bac" placeholder="" name="father">
-                </div>
-                </span>
-
-            </div>
-        </div>
-
-        </fieldset>
-
-        <table class="table">
-            <thead>
-                <th scope="col">Par votre signature, vous acceptez de régler les frais de service de L’Etudiant
-                    Consulting
-                    s’élevant à 250€ (Euros) pour le traitement de votre dossier, votre accueille à l’aéroport de
-                    Casablanca, la réservation de votre chambre ainsi que votre accompagnement tout au long de l’année.
-                </th>
-                </tr>
-            </thead>
-        </table>
-        <br>
-        <hr color="bue"><br>
-        <table border="1" width="100%" cellspacing="0" cellpadding="6">
-            <caption></caption>
-            <thead>
-                <tr>
-                    <th width="100%"><span class="titre">
-                            <h4>DOCUMENT ET PIECES A FOURNIR</h4>
-                        </span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td width="100%">Original + copie conforme de l’attestation de réussite au baccalauréat</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">2 Photocopies certifiées conformes du diplôme obtenu (Année de réussite)</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">2 Photocopies certifiées conformes des bulletins de notes des deux dernières années
-                        d’études</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">1 Extrait d’acte de naissance original + copie conforme</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">1 Photocopie du passeport et de la CNI</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">4 Photos d’identité</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">1 Extrait du casier judicaire</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">Billet d’avion + Autorisation de voyage délivré par l’ambassade du Maroc + carnet
-                        de
-                        vaccination voyage obligatoire</td>
-
-                </tr>
-            </tbody>
-        </table>
-        <br> <br>
-        <table border="1" width="100%" cellspacing="0" cellpadding="6">
-            <caption></caption>
-
-            <fieldset>
-                <legend>
-                    <h3>MONTANT DE LA SCOLARITE</h3>
-                </legend>
-
-                <div class="col-md-6">
-                    <label for="nom" class="form-label">Montant annuel</label>
-                    <input type="text" class="form-control" id="nom" name="montant">
-                </div>
-                <div class="col-md-6">
-                    <label for="nom" class="form-label">Frais d’inscriptions</label>
-                    <input type="text" class="form-control" id="nom" name="frais_I">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea2">Observation</label>
-                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="2"></textarea>
-                </div>
-            </fieldset>
-
-
-
-            </tr>
-            </tbody>
-        </table>
-        <div class="col-md-12">
-            <label for="nom" class="form-label">Je m’engage sur l’honneur à me soumettre au règlement intérieur de
-                l</label>
-            <input type="text" class="form-control" id="nom" name="honeur">
-        </div>
-        <p> à assumer toutes les dispositions pouvant être prises à mon égard en cas de non-respect du règlement.
-        <p>
-            <br>
-        <p><strong>N.B:</strong> Les frais de services de L’Etudiant Consulting ne sont pas remboursables en cas
-            d’abandon
-            de dossier où de changement de procédure. Une fois les 200 Euros versé, ils font intégralement partie de la
-            comptabilité de LEC.</p>
-        <table border="1" width="100%" cellspacing="0" cellpadding="6">
-            <caption></caption>
-            <thead>
-                <th width="100%">MODE DE PAYEMENT AU PRES DE L’ETABLISSEMENT</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td width="100%">Original + copie conforme de l’attestation de réussite au baccalauréat</td>
-
-                </tr>
-                <tr>
-                    <td width="100%">
-                        <center><span class="titre"><strong>MODE DE PAYEMENT DES FRAIS DE L’ETUDIANT
-                                    CONSULTING</strong></span></center>
-                    </td>
-
-                </tr>
-                <tr rowspan="5">
-                    <td width="100%">
-
-                        <p>-Par dépôt ou virement bancaire <strong>UBA</strong> numéro de compte :
-                            <strong>0011665983</strong><br> Nom de compte : <strong>DAGRACA YVAN CHRISTOPHER</strong>
-                            <br><br>
-                            -Vous pouvez choisir de le faire par <strong>MoneyGram</strong>, <strong>Western Union
-                            </strong>ou par<strong> Ria transfert</strong>
-                            <br>
-                            Bénéficiaire : L’Etudiant Consulting Adresse : <strong>88 Rue Al hoceima, Fès 30050,
-                                Maroc</strong> Nom et prénom(s) : <strong>DAGRACA Yvan Christopher</strong> Tél
-                            :<strong>
-                                00212 660-523877 / 00212 627-694932</strong>
-                        <p>
-                    </td>
-
-                </tr>
-
-            </tbody>
-        </table>
-        <p><strong>Important :</strong> Il est nécessaire de venir au Maroc avec environ <strong>832 Euros </strong>pour
-            la
-            Caution de votre chambre <strong>256€</strong> + Caution d’eau et d’électricité <strong>80€</strong> +
-            Matelas-drap-oreiller <strong>160€ </strong>+ Argent de poche <strong>160€</strong>
-        <div class="signature">
-            <div class="tabll">
-
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        <table border="1" width="60%" cellspacing="0" cellpadding="6">
-                            <caption></caption>
-                            <thead>
-                                <tr>
-                                    <th width="100%"><span class="titre">ESPACE RESERVE AU PARENT OU TUTEUR</span></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td width="100%"><br><br>
-                                        <center><span class="signature">Date et signature, précédé de la mention lu et
-                                                approuvé</span></center><br><br>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
 
-                    <div class="col-md-6">
-                        <div align="right">
-                            <p align="center"> Par votre signature, vous déclarez avoir lu et accepté les Conditions
-                                Générales d’admission
-                                présentées dans ce document.<br><br>
-                            <p align="center">
-                                <span class="">Signature à venir de L’Etudiant Consulting</span>
-                                <br><br>
+                    <!--  row filiere/etablissement -->
+
+                    <div class="row mt-2">
+                        <div class="col-lg-4 mt-3 mb-3">
+                            <label class="obligatoire" for="bourse">Bourse:</label>
+                            <select class="form-control form-select" name="bourse" id="bourse" required>
+                                <option selected value=" ">Vous-êtes boursier ?</option>
+                                <option value="Oui">oui-boursier</option>
+                                <option value="Non">non-boursier</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <table border="1" width="100%" cellspacing="0" cellpadding="6">
-                <caption></caption>
-                <thead>
-                    <tr>
-                        <th width="100%">RESERVE A L’ADMINISTRATION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td width="100%">
-                            <div class="col-md-4">
-                                <label for="name" class="form-label"> Dossier complete le</label>
-                                <input type="date" class="form-control" id="date" name="email"><br>
+
+
+    <section class="site-section">
+        <div class="container">
+            <div class="row mt-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!--       ESPACE RESERVE A L’ETUDIANT(E) OU STAGIAIRE -->
+                    <div class="border border-dark mt-3">
+                        <div class="border-bottom border-dark py-1 " style="background-color:#DAE3F4">
+                            <h6 class="text-center"> ESPACE RESERVE A L’ETUDIANT(E) OU STAGIAIRE</h6>
+                        </div>
+                        <!--    row nom,prenom,date de naissance -->
+                        <div class="row p-2">
+                            <div class="col-lg-4 mt-3">
+                                <label class="obligatoire" for="nomE">Nom(s):</label>
+                                <input type="text" class="form-control" name="nomE" id="nomE" placeholder="Saisir votre nom" required>
+                            </div>
+
+                            <div class="col-lg-4 mt-3">
+                                <label class="obligatoire" for="prenomE">Prénom(s):</label>
+                                <input type="text" class="form-control" name="prenomE" id="prenomE" placeholder="Saisir votre prénom" required>
+                            </div>
+
+                            <div class="col-lg-4 mt-3">
+                                <label class="obligatoire" for="dateN">Date de naissance:</label>
+                                <input type="date" class="form-control input-prefix" name="dateN" id="dateN"  required>
+                               
+                            </div>
+                        </div>
+                        <!-- row Nationalité,N° CNI ou Passeport,Adresse postale -->
+                        <div class="row  p-2">
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="nationalite">Nationalité:</label>
+                                <input type="text" class="form-control" name="nationalite" id="nationalite" placeholder="Entrer votre nationalité " required>
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="CNI">N° CNI ou Passeport:</label>
+                                <input type="text" class="form-control" name="CNI" id="CNI" placeholder="N° sur votre carte Nationale(CNI) ou Passeport" required>
+                            </div>
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="paysE">Pays:</label>
+                                <input type="text" class="form-control" name="paysE" id="paysE" placeholder="Entrer votre pays" required>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- row pays,Ville,Numero telephone -->
+                        <div class="row p-2">
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="villeE">Ville:</label>
+                                <input type="text" class="form-control" name="villeE" id="villeE" placeholder="Et la ville que où vous êtes" required>
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label for="cpE">Code postal:</label>
+                                <input type="number" class="form-control" name="cpE" id="cpE" placeholder="Exemple: 37000  " >
                             </div>
 
 
 
-                    </tr>
-            </table>
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="apE">Adresse postale:</label>
+                                <input type="text" class="form-control" name="apE" id="apE" placeholder="Exemple: N° rue xxx code postal ville " >
+                            </div>
 
-            <br>
-            <div class="col-md-4">
-                <label for="name" class="form-label">Inscription effectuée par</label>
-                <input type="text" class="form-control" id="name" name="email">
+                        </div>
+
+                        <div class="row  p-2">
+
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="numeroE">Numéro téléphone:</label>
+                                <input type="text" class="form-control" name="numeroE" id="numeroE" placeholder="Saisir votre numéro de téléphone" >
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label for="gsmE">GSM:</label>
+                                <input type="text" class="form-control" name="gsmE" id="gsmE" placeholder="Entrer un GSM">
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="emailE">Adresse E-mail:</label>
+                                <input type="email" class="form-control" name="emailE" id="emailE" placeholder="Saisir votre adresse E-mail" required>
+                            </div>
+
+
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-lg-4 mt-1">
+                                <label class="obligatoire" for="serie">Série du baccalauréat: </label>
+                                <input type="text" class="form-control" name="serie" id="serie" placeholder="Votre série du baccalauréat " required>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--  ESPACE RESERVE AU PARENT(S) OU TUTEUR(S) -->
+                    <div class="border border-dark mt-3">
+                        <div class="border-bottom border-dark py-1 " style="background-color:#DAE3F4">
+                            <h6 class="text-center"> ESPACE RESERVE AU PARENT(S) OU TUTEUR(ES)</h6>
+                        </div>
+
+                        <!--    row nom,prenom,date de naissance -->
+                        <div class="row p-2">
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="nomP">Nom(s):</label>
+                                <input type="text" class="form-control" name="nomP" id="nomP" placeholder="Nom(s) du parent ou tuteur(e)" required>
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="prenomP">Prénom(s):</label>
+                                <input type="text" class="form-control" name="prenomP" id="prenomP" placeholder="Prénom(s) du parent ou tuteur(e)" required>
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="profession">Profession:</label>
+                                <select class="form-control form-select" name="profession" id="profession" required>
+                                    <option selected value=" ">Entrer la professsion du parent</option>
+                                    <option value="Fonctionnaire">Fonctionnaire</option>
+                                    <option value="Commerçant(e">Commerçant(e)</option>
+                                    <option value="Professeur(e)">Professeur(e)</option>
+                                    <option value="Cultivateur">Cultivateur</option>
+                                    <option value="Ménageur(euse)">Ménageur(euse)</option>
+                                    <option value="Militaire">Militaire</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- row Nationalité,N° CNI ou Passeport,Adresse postale -->
+                        <div class="row p-2">
+
+                            <div class="col-lg-4 mt-1">
+                                <label class="obligatoire" for="adP">Adresse postale:</label>
+                                <input type="text" class="form-control" name="adP" id="adP" placeholder="Exemple: N° rue xxx code postal ville " required>
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label for="cpP">Code postal:</label>
+                                <input type="text" class="form-control" name="cpP" id="cpP" placeholder="Exemple: 37000" value=" " required>
+                            </div>
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="emailP">Adresse E-mail:</label>
+                                <input type="email" class="form-control" name="emailP" id="emailP" placeholder="S'il n'as pas saisir Adresse e-mail étudiant(e)" required>
+                            </div>
+                        </div>
+
+
+
+                        <!-- row pays,Ville,Numero telephone -->
+                        <div class="row p-2">
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="paysP">Pays:</label>
+                                <input type="text" class="form-control" name="paysP" id="paysP" placeholder="Entrer un pays" required>
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="villeP">Ville:</label>
+                                <input type="text" class="form-control" name="villeP" id="villeP" placeholder="Et la ville" required>
+                            </div>
+
+                            <div class="col-lg-4 mt-2">
+                                <label class="obligatoire" for="numeroP">Numéro téléphone:</label>
+                                <input type="text" class="form-control" name="numeroP" id="numeroP" placeholder="Numéro de téléphone du parent ou tuteur(e)" required>
+                            </div>
+                        </div>
+                        <!-- row GSM,E-mail,Série du baccalauréat -->
+                        <div class="row p-2">
+
+                            <div class="col-lg-4 mt-2">
+                                <label for="gsmP">GSM:</label>
+                                <input type="text" class="form-control" name="gsmP" id="gsmP" placeholder="Entrer un GSM du parent" required>
+                            </div>
+
+
+
+                            <div class="col-lg-4 mt-2 mb-3">
+                                <label class="obligatoire" for="role">Rôle du parent:</label>
+                                <select class="form-control form-select" neme="role" id="role" aria-label="Default select example" required>
+
+                                    <option value="Père">Père</option>
+                                    <option value="Mère"> Mère</option>
+                                    <option value="Tuteur(rice)">Tuteur(rice)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!--   information sur formulaire -->
+                    <div class="section-info border border-dark mt-3">
+                        <p class="p-2 text-line">
+                            Par votre signature, vous acceptez de régler les frais de service de <strong>L’Etudiant Consulting </strong> s’élevant à <strong>250€ (Euros)</strong> pour <ins>traitement de votre dossier</ins> , <ins>accueil à l’aéroport</ins> ,<ins>la réservation de votre chambre</ins> ainsi <ins>votre accompagnement</ins> que tout au long de l’année.
+                        </p>
+
+                    </div>
+                    <div>
+                        <p class="mb-3 text-danger text-center"> N°42 6ème etg bureaux Achraf av Abdelkrim Benjelloun Fès, / Fb.me/LEtudiant.Consulting / @Letudiant.consulting_officiel / <br> +212 660 523 877 / +212 627 694 932 / letudiantconsulting@gmail.com</p>
+                    </div>
+
+                    <!--  DESTINATION SOUHAITEE -->
+                    <div class="border border-dark mb-5 ">
+                        <div class="border-bottom border-dark py-1 " style="background-color:#DAE3F4">
+                            <h6 class="text-center"> DESTINATION SOUHAITEE</h6>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 p-4">
+                                <label class="obligatoire" for="destination">Destination:</label>
+                                <select class="form-control form-select"  name="destination" id="destination" required>
+                                    <option selected value=" ">Choisir la destination souhaitée</option>
+                                    <option value="Maroc">Maroc</option>
+                                    <option value="Tunisie" >Tunisie</option>
+                                    <option value="Sénégal" >Sénégal</option>
+                                    <option value="Afrique du Sud">Afrique du Sud</option>
+                                    <option value="Rwanda" >Rwanda</option>
+                                    <option value="Turquie" >Turquie</option>
+                                    <option value="Dubaï" >Dubaï</option>
+                                    <option value="France">France</option>
+                                    <option vaalue="Autre">Autre</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+    </section>
+
+    <section class="site-section">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-lg-12">
+                    <p><ins class="text-danger">NB:</ins> Tous les champs qui contient un (<label class="obligatoire"></label>) sont obligatoires à remplir.</p>
+                    <div class="form-check">
+
+                        <p class="form-check-label text-gray-500" for="gridCheck">
+    
+                            <div>
+                                    <input class="form-check-input " type="checkbox" name="jaccepte" id="jaccepte" required>
+                      
+                                    <div class="invalid-feedback">Accepter les conditions</div>
+                                </div>
+                            <div class="valid-feedback">cocher cette case</div>
+                            Veuillez cocher cette case afin de confirmer que vous avez lu et accepter les
+                            conditions d'utilisation et des règles visées ci-dessus. Assurez vous également
+                            les informations fournies sur cette page sont bien correctes enfin vous pouvez imprimer votre fiche d'admission en format pdf. En cliquant sur le bouton <b>« Je valide »</b>. votre demande sera traitée.</p>
+
+
+                    </div> <input class="btn btn-success btn-md" type="submit" value="Je valide">
+                </div>
+
             </div>
-            <div class="col-md-4">
-                <label for="name" class="form-label">le</label>
-                <input type="date" class="form-control" id="date" name="email">
-                <button type="submit" class="form-control" >click ici</button>
+        </div>
+    </section>
+    </form>
+    </div>
 
-            </div>
-            <br><br><br><br><br><br><br>
+    <footer>
+        <div class="mb-5">
 
+        </div>
+    </footer>
+    <script>
+    (() => {
+  'use strict'
 
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
 
-            </tr>
-            </tbody>
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+      </script>
 
 </body>
 
 </html>
+
+
