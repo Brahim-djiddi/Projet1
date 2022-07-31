@@ -6,12 +6,7 @@ function index(){
     render($view,$varriables);
 }
 
-function render($vue,array $varriables=array()){
-    ob_start();
-    require($vue);
-    $view=ob_get_clean();
-    require("Views/template.php");
-}
+
 
 function Registration(){
     $CodeP=$_GET["CodeP"]??"etudiant";
@@ -72,10 +67,55 @@ function Login(){
 }
 
 function Logout(){
-    $CodeP=$_GET["CodeP"]??"AUD";
+    //$CodeP=$_GET["CodeP"]??"AUD";
 
 	session_destroy();
 	header ("location: index.php");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function render($vue,array $varriables=array()){
+    ob_start();
+    require($vue);
+    $view=ob_get_clean();
+    require("Views/template.php");
+}
+
+function rendersidebar($vue , array $variables=array(),$template="Views/BaseViews/template.php") {
+
+	if(file_exists($vue)) {
+		ob_start();
+		require($vue);
+		$sidebar= ob_get_clean();
+		require($template);
+	}
+	else throw New Exception("La vue $vue n'existe pas");
+}
+
+function renderWithAjax($vue , array $variables=array()) {
+	if(file_exists($vue)) {
+		require($vue);
+	}
+	
+	else throw New Exception("La vue $vue n'existe pas");
+}
+
 
 ?>
