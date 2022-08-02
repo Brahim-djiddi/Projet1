@@ -172,14 +172,14 @@ function Demande_Etude2($demande="Demande_Etude"){
             if($_POST["destination"]=="Maroc") $data['Maroc']="X";
             elseif($_POST["destination"]=="Tunisie") $data['Tunisie']="X";
             elseif($_POST["destination"]=="Sénégal") $data['Sénégal']="X";
-            elseif($_POST["destination"]=="Afrique du Sud") $data['Afrique_du_Sud']="X";
+            elseif($_POST["destination"]=="Afrique_du_Sud") $data['Afrique_du_Sud']="X";
             elseif($_POST["destination"]=="Rwanda") $data['Rwanda']="X"; 
             elseif($_POST["destination"]=="Turquie") $data['Turquie']="X";
             elseif($_POST["destination"]=="Dubaï") $data['Dubaï']="X";
             elseif($_POST["destination"]=="France") $data['France']="X";
             //elseif($_POST["destination"]=="Autre") $data['Autre']="X";
         }
-
+        $data['Group_Bourse']="X";
 
 
 
