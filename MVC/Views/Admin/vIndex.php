@@ -424,7 +424,9 @@
               </li>
             </ul>
           </li>
+
           <li class="nav-header">EXAMPLES</li>
+
           <li class="nav-item">
             <a href="pages/calendar.html" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
@@ -434,6 +436,7 @@
               </p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="pages/gallery.html" class="nav-link">
               <i class="nav-icon far fa-image"></i>
@@ -442,6 +445,7 @@
               </p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
@@ -594,25 +598,31 @@
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
+
+
                 <ul class="nav nav-treeview">
+
                   <li class="nav-item">
                     <a href="pages/examples/login-v2.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Login v2</p>
                     </a>
                   </li>
+
                   <li class="nav-item">
                     <a href="pages/examples/register-v2.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Register v2</p>
                     </a>
                   </li>
+
                   <li class="nav-item">
                     <a href="pages/examples/forgot-password-v2.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Forgot Password v2</p>
                     </a>
                   </li>
+
                   <li class="nav-item">
                     <a href="pages/examples/recover-password-v2.html" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
@@ -621,57 +631,70 @@
                   </li>
                 </ul>
               </li>
+
               <li class="nav-item">
                 <a href="pages/examples/lockscreen.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Lockscreen</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="pages/examples/legacy-user-menu.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Legacy User Menu</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="pages/examples/language-menu.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Language Menu</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="pages/examples/404.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Error 404</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="pages/examples/500.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Error 500</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="pages/examples/pace.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pace</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="pages/examples/blank.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Blank Page</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="starter.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Starter Page</p>
                 </a>
               </li>
+
             </ul>
+
           </li>
+
+
           <li class="nav-item">
+
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-search"></i>
               <p>
@@ -679,21 +702,38 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+
             <ul class="nav nav-treeview">
+
               <li class="nav-item">
                 <a href="pages/search/simple.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Simple Search</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="pages/search/enhanced.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Enhanced</p>
                 </a>
               </li>
+
             </ul>
+
           </li>
+
+          
+          <li class="nav-item">
+            <a href="index.php?action=Logout" class="nav-link">  
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <p>
+                Log Out
+              </p>
+            </a>
+          </li>
+           
+
          
         </ul>
       </nav>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<?php if(!empty($_POST["annee"])){ $_POST["annee"];}else{ "Choisir l'année";}?>
 <head>
     <title>Bootstrap Online Editor</title>
     <meta charset="utf-8">
@@ -61,24 +60,7 @@
         <form class="needs-validation" action="" method="post" id="form-validation" novalidate>
             <!-- header, logo -->
             <section class="header site-section">
-                <?php
-
-                function Annee_Scolaire()
-                {
-                    $mois = date(format: "m");
-                    $annee_actuelle = date(format: "Y");
-                    if ($mois >= 7 && $mois <= 12) {
-                        $annee1 = $annee_actuelle;
-                        $annee2 = $annee_actuelle + 1;
-                    } else {
-                        $annee1 = $annee_actuelle - 1;
-                        $annee2 = $annee_actuelle;
-                    }
-                    $annee_scolaire_actuelle = $annee1 . "/" . $annee2;
-                    return $annee_scolaire_actuelle;
-                }
-
-                ?>
+            
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <figure class="text-center"><img src="images/logo.png" class="img-fluid" height="150" width="600"></figure>
@@ -170,7 +152,7 @@
                             <select class="form-control form-select" name="etablissement" id="etablissement" required>
                                 <option selected value=" ">Choisir l'etablissement</option>
                                 <option value="Université public">Université public</option>
-                                <option value="Université privée">Université privée</option>
+                                <option value="Universit&eacute; priv&eacute;e">Université privée</option>
                                 <option value="École public">École public</option>
                                 <option value="École privée">École privée</option>
                                 <option value="Autre">Autre</option>

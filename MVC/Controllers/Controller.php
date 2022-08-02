@@ -116,12 +116,13 @@ function Demande_Etude2($demande="Demande_Etude"){
     ];
 
 
-    
+    // mysql_real_escape_string()
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $data=[
+            'Annee_Universitaire' => $_POST["Annee_univer"] ?? '',
             '1' => $_POST["1"] ?? '','2' => $_POST["2"] ?? '','3' => $_POST["3"] ?? '', 
             '4' => $_POST["4"] ?? '', '5' => $_POST["5"] ?? '', 'Filière' => $_POST["filiere"] ?? '',               
-            'Etablissement' => $_POST["etablissement"] ?? '','Boursier' => $_POST["Boursier"] ?? '',
+            'Etablissement' => ($_POST["etablissement"]) ?? '','Boursier' => $_POST["Boursier"] ?? '',
             'Nonboursier' => $_POST["Nonboursier"] ?? ''
             
             ,'Noms' => $_POST["nomE"] ?? '',                
@@ -269,11 +270,11 @@ function render_other($vue,array $variables=array()){
     require($vue);
 }
 
-function generate($demande="Demande_Etude"){
+/* function generate($demande="Demande_Etude"){
 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $data=[
-            'Année_Universitaire' => $_POST["Année_Universitaire"] ?? '',    //1
+            'Annee_Universitaire' => $_POST["Annee_univer"] ?? '',    //1
             // '1' => $_POST["1"] ?? '',
             // '2' => $_POST["2"] ?? '',
             // '3' => $_POST["3"] ?? '',
@@ -343,12 +344,27 @@ function generate($demande="Demande_Etude"){
     header('Location:index.php?action=thanks&name=' . $data['Noms'] . '&link=' . $response);
     //header('Location: thanks.php?name=' . $data['name_field'] . '&link=' . $response);
     }
-}
+} */
 
 function thanks(){
     $view="Views/thanks.php";
     $variables=[];
     render($view,$variables);
 }
+
+function Annee_Scolaire()
+                {
+                    $mois = date(format: "m");
+                    $annee_actuelle = date(format: "Y");
+                    if ($mois >= 7 && $mois <= 12) {
+                        $annee1 = $annee_actuelle;
+                        $annee2 = $annee_actuelle + 1;
+                    } else {
+                        $annee1 = $annee_actuelle - 1;
+                        $annee2 = $annee_actuelle;
+                    }
+                    $annee_scolaire_actuelle = $annee1 . "/" . $annee2;
+                    return $annee_scolaire_actuelle;
+                }
 
 ?>
