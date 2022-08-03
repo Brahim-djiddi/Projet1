@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
     <title>Bootstrap Online Editor</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,6 +69,7 @@
 
 
 <body>
+
     <!-- image logo -->
     <div class="container">
         <form class="needs-validation" action="" method="post" id="form-validation" novalidate>
@@ -432,9 +447,21 @@
                             Veuillez cocher cette case afin de confirmer que vous avez lu et accepter les
                             conditions d'utilisation et des règles visées ci-dessus. Assurez vous également
                             les informations fournies sur cette page sont bien correctes enfin vous pouvez imprimer votre fiche d'admission en format pdf. En cliquant sur le bouton <b>« Je valide »</b>. votre demande sera traitée.</p>
+                            <div id="overlayer"></div>
+  
 
 
                     </div> <input class="btn btn-success btn-md" type="submit" value="Je valide">
+
+                    <!-- preload
+                        <div id="overlayer"></div>
+                            <div class="loader">
+                                <div class="spinner-border text-primary" role="status">
+                                <span class="sr-only">Chargement...</span>
+                                </div>
+                            </div> -->
+
+        
                 </div>
 
             </div>

@@ -9,9 +9,15 @@ function index(){
     render($view,$variables);
 }
 
+function template(){
+    $view="Views/vEmpty.php";
+    $variables=[];
+    render($view,$variables);
+}
+
 // Actions that doesn't require Authentification (Actions auriented to Public)
 function can_pass($action){
-    $tab=["SignUp","LoginAdmin","index","SignUpAdmin",
+    $tab=["SignUp","LoginAdmin","index","SignUpAdmin","Login",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
 ];
@@ -52,7 +58,7 @@ function SignUp(){
     $view="Views/vSignUp.php";
     $variables=array("Logger"=>$Logger,"errors"=>$errors ?? []);
     //renderWithAjax($view,$variables);
-    render($view,$variables);
+    render_other($view,$variables);
 }
 
 function Login(){
@@ -65,12 +71,13 @@ function Login(){
         if(!(User_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
 
         if(!isset($errors)){
-            $_SESSION["email"]=$Logger["email"];
-            $var=GetUser($_SESSION["email"]);
+            $var=GetUser($Logger["email"]);
             $_SESSION["FirstName"]=$var["FirstName"];
             $_SESSION["LastName"]=$var["LastName"];
+            $_SESSION["username"]=$var["Username"];
+            $_SESSION["email"]=$var["Email"];
             $_SESSION["CodeP"]=$var["Role"];
-            header("location:index.php");
+            header("location:index.php".$_SESSION["action"]??"");
         }
     }
     /////////////////////////////////////////////////////////////////////////////////////////
@@ -79,7 +86,7 @@ function Login(){
     //require("Views/BaseViews/vLogin.php");
     
     //renderWithAjax($view,$variables);
-    render($view,$variables);
+    render_other($view,$variables);
 }
 
 function Logout(){
@@ -89,13 +96,24 @@ function Logout(){
 	header ("location: index.php");
 }
 
+function not_Login($action){
+    $data=[
+        "Login","LoginAdmin",
+    ];
+    foreach($data as $d){
+        if($d==$action) return false;
+    }
+    return  true;
+}
+
 function Demande_Etude(){
-    $Student=[];
-    $CodeP=$_SESSION["CodeP"]??"etudiant";
-    $_SESSION["Demande"]="Demande_Etude";
-    $variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
-    $vue="Views/vDemande_Etude.php";
-    render_other($vue,$variables);
+    //$Student=[];
+    //$CodeP=$_SESSION["CodeP"]??"etudiant";
+    //$_SESSION["Demande"]="Demande_Etude";
+    //$variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
+    $variables=[];
+    $vue="Views/vPre_Demande_Etude.php";
+    render($vue,$variables);
 }
 
 function Demande_Etude2($demande="Demande_Etude"){
@@ -240,35 +258,7 @@ function Demande_Etude2($demande="Demande_Etude"){
     render_other($vue,$variables);
 }
 
-function render($vue,array $variables=array()){
-    ob_start();
-    require($vue);
-    $view=ob_get_clean();
-    require("Views/template.php");
-}
 
-function rendersidebar($vue , array $variables=array(),$template="Views/BaseViews/template.php") {
-
-	if(file_exists($vue)) {
-		ob_start();
-		require($vue);
-		$sidebar= ob_get_clean();
-		require($template);
-	}
-	else throw New Exception("La vue $vue n'existe pas");
-}
-
-function renderWithAjax($vue , array $variables=array()) {
-	if(file_exists($vue)) {
-		require($vue);
-	}
-	
-	else throw New Exception("La vue $vue n'existe pas");
-}
-
-function render_other($vue,array $variables=array()){
-    require($vue);
-}
 
 /* function generate($demande="Demande_Etude"){
 
@@ -349,7 +339,7 @@ function render_other($vue,array $variables=array()){
 function thanks(){
     $view="Views/thanks.php";
     $variables=[];
-    render($view,$variables);
+    render_other($view,$variables);
 }
 
 function Annee_Scolaire()
@@ -366,5 +356,44 @@ function Annee_Scolaire()
                     $annee_scolaire_actuelle = $annee1 . "/" . $annee2;
                     return $annee_scolaire_actuelle;
                 }
+
+
+
+
+
+
+
+
+
+function render($vue,array $variables=array(),$n=1){
+    ob_start();
+    require($vue);
+    $view=ob_get_clean();
+    //$n=strval($n);
+    require("Views/templates/template".$n.".php");
+}
+
+function rendersidebar($vue , array $variables=array(),$template="Views/BaseViews/template.php") {
+
+	if(file_exists($vue)) {
+		ob_start();
+		require($vue);
+		$sidebar= ob_get_clean();
+		require($template);
+	}
+	else throw New Exception("La vue $vue n'existe pas");
+}
+
+function renderWithAjax($vue , array $variables=array()) {
+	if(file_exists($vue)) {
+		require($vue);
+	}
+	
+	else throw New Exception("La vue $vue n'existe pas");
+}
+
+function render_other($vue,array $variables=array()){
+    require($vue);
+}
 
 ?>

@@ -30,6 +30,7 @@
   </head>
 
 <body style="margin-top:70px ;">
+
   <div class="site-section " id="connexion-section">
     <div class="container ">
       <div class="row">
@@ -41,7 +42,12 @@
 
         <div class="col-lg-6">
           <form class="needs-validation" method="POST" novalidate>
-         
+              <?php if (isset($_SESSION["cannot_pass"])) {
+                echo"<div class='alert alert-danger' role='alert'>".$_SESSION["cannot_pass"]."</div>";
+                unset($_SESSION["cannot_pass"]);}
+                if(not_Login($_GET["action"])){
+                $_SESSION["action"]="?action=".$_GET["action"]??"";}
+                ?>
               <h3 class=" text-left text-justify" style="color:#002A8B; font-family:bold;">Se connecter à votre compte</h3>
          
               <span class="Err" id="ErrCode"> <?=$variables["errors"]["connect"] ?? ""?> </span>

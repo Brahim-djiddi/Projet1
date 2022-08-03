@@ -3,7 +3,7 @@ function index2(){
     if($_SESSION["CodeP"]=="admin"){
         $view="Views/Admin/vIndex.php";
         $variables=[];
-        render($view,$variables);
+        render_other($view,$variables);
     }
     else{
         $view="Views/vIndex.php";
@@ -24,10 +24,11 @@ function LoginAdmin(){
         if(!(User_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
 
         if(!isset($errors)){
-            $_SESSION["email"]=$Logger["email"];
-            $var=GetUser($_SESSION["email"]);
+            $var=GetUser($Logger["email"]);
             $_SESSION["FirstName"]=$var["FirstName"];
             $_SESSION["LastName"]=$var["LastName"];
+            $_SESSION["username"]=$var["Username"];
+            $_SESSION["email"]=$var["Email"];
             $_SESSION["CodeP"]=$var["Role"];
             header("location:index.php?action=index2");
         }
@@ -38,7 +39,7 @@ function LoginAdmin(){
     //require("Views/BaseViews/vLogin.php");
     
     //renderWithAjax($view,$variables);
-    render($view,$variables);
+    render_other($view,$variables);
 }
 
 /* function SignupAdmin(){

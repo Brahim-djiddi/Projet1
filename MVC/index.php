@@ -16,7 +16,10 @@ $action=(isset($_GET["action"]))?$_GET["action"]:"index";
 
 //if(empty($_SESSION["email"]) && $action!="Signup" && $action!="Registration" && $action!="index") {Login(); exit();}
 
-if( (empty($_SESSION["email"]))  &&  !can_pass($action)){Login(); exit();}
+if( (empty($_SESSION["email"]))  &&  !can_pass($action)){
+    $_SESSION["cannot_pass"] = "il faut vous authenifiez pour continuer !";
+    Login(); exit();
+}
 
 if(is_callable($action)){
     $action();
