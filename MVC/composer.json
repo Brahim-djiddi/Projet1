@@ -1,0 +1,18 @@
+{
+    "name": "houssam/houssam_pdftk",
+    "autoload": {
+        "psr-4": {
+            "Houssam\\HoussamPdftk\\": "src/",
+            "Classes\\" : "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "mugiRIOOTO",
+            "email": "houssam_sugar@hotmail.com"
+        }
+    ],
+    "require": {
+        "mikehaertl/php-pdftk": "^0.12.1"
+    }
+}
