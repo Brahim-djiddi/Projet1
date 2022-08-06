@@ -6,7 +6,7 @@
       <div class="row">
 
         <div class="col-lg-6">
-          <img src="images/signup.png" class="img-fluid" height="300" width="500" alt="" srcset="">
+          <img src="public/images/signup.png" class="img-fluid" height="300" width="500" alt="" srcset="">
         </div>
 
 

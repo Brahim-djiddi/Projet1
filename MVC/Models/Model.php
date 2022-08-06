@@ -69,3 +69,16 @@ function GetListeDashboard(){
 function GetListeClient(){
     return OuvrirConnextion()->query("SELECT * FROM  user where role='etudiant'")->fetchall();
 }
+
+function User_Exists($var,$varname="Username"){
+
+    $Rq= OuvrirConnextion()->prepare("select $varname from user where $varname = ?");	
+	$Rq->execute([$var]);
+    //$result=$Rq;
+
+
+	 if($Rq->rowCount() >= 1) return true;
+    else return false;    
+    /* return(!empty($Rq)); */
+
+}

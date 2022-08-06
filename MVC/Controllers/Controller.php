@@ -30,7 +30,8 @@ function can_pass($action){
 }
 
 function SignUp(){
-    $CodeP=$_GET["CodeP"]??"etudiant";
+    //$CodeP=$_GET["CodeP"]??"etudiant";
+    $CodeP="etudiant";
     $Logger=["first_name"=>"","last_name"=>"","age"=>"","username"=>"","email"=>"","phone"=>"","password"=>"","confirm_password"=>"","gender"=>"","profession"=>""];
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $Logger=$_POST;
@@ -42,15 +43,14 @@ function SignUp(){
 		elseif($Logger["age"] < 13 or $Logger["age"] > 60)
                                                  $errors["age"]="age must be between 13 and 60";
         if(empty($Logger["username"]))           $errors["username"] = "please select a username"; 
-        if(empty($Logger["phone"]))          $errors["phone"] = "phone is Empty !.";
+        if(empty($Logger["phone"]))              $errors["phone"] = "phone is Empty !.";
         
 
 		if(empty($Logger["password"]))           $errors["password"]="Please entrer a password !";
         if(empty($Logger["confirm_password"]))   $errors["confirm_password"]="Please Confirm Your Password !";
-        if(($Logger["password"])!=($Logger["confirm_password"]))  
-                                                 $errors["confirm_password"]="Passwords are not Identical !"; 
-        if(User_Exists($Logger["username"]))     $errors["username"] = "Username Already Exists"; 
-        if(User_Exists($Logger["email"]))        $errors["email"] = "email Already Exists"; 
+        if(($Logger["password"])!=($Logger["confirm_password"]))  $errors["confirm_password"]="Passwords are not Identical !"; 
+        if(User_Exists($Logger["username"],"Username"))     $errors["username"] = "Le nom d'utilisateur existe deja !"; 
+        if(User_Exists($Logger["email"],"Email"))           $errors["email"] = "L'adresse email existe deja !"; 
 
         if(!isset($errors)){
             AddUser($Logger,$CodeP);     
@@ -66,7 +66,7 @@ function SignUp(){
 
 function Login(){
     $Logger=["email"=>"","password"=>""];
-    $CodeP=$_GET["CodeP"]??"etudiant";
+    $CodeP="etudiant";
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $Logger=$_POST;
 		if(empty($Logger["email"]))         $errors["email"] ="Insert a valid email or username !" ;
