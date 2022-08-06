@@ -26,7 +26,7 @@ if(is_callable($action)){
 }
 
 else{
-    throw new Exception("ERROR ON action : (".$action.") UNDEFINED");
+    throw new Exception("Erreure ! L'action : <mark>('".$action."')</mark> est indefinie !");
 }
 
 }

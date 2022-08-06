@@ -76,13 +76,12 @@ function LoginAdmin(){
 } */
 
 function AfficherAdminWithAjax(){
-    //$CodeP=$_GET["CodeP"]??"AUD";
     $CodeP=$_SESSION["CodeP"]??"etudiant";
     $choix=$_REQUEST["choix"]?? "Dashboard";
+    
     $view="Views/Admin/Aff_".$choix.".php";
-    //$variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
     $variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
-    //if(file_exists($view)) 
+    
     renderWithAjax($view,$variables);
 }
 

@@ -70,15 +70,36 @@ function GetListeClient(){
     return OuvrirConnextion()->query("SELECT * FROM  user where role='etudiant'")->fetchall();
 }
 
-function User_Exists($var,$varname="Username"){
+function User_Exists($var,$varname="Username",$tablename="user"){
 
-    $Rq= OuvrirConnextion()->prepare("select $varname from user where $varname = ?");	
+    $Rq= OuvrirConnextion()->prepare("select $varname from $tablename where $varname = ?");	
 	$Rq->execute([$var]);
     //$result=$Rq;
 
 
-	 if($Rq->rowCount() >= 1) return true;
+	if($Rq->rowCount() >= 1) return true;
     else return false;    
     /* return(!empty($Rq)); */
 
+}
+
+function pdf_exists($username){
+    $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where Owner = ?");	
+    $Rq->execute([$username]);
+
+    if($Rq->rowCount() >= 1) return true;
+    else return false;    
+}
+
+function GetTable($name){
+    $Rq= OuvrirConnextion()->prepare("select * FROM  $name ");	
+    $Rq1=$Rq->fetchall();
+    return $Rq;
+}
+
+function Get_Pdf_Link($owner){
+    $Rq= OuvrirConnextion()->prepare("select Link FROM  demandes where Owner = ? ");	
+    $Rq->execute([$owner]);
+    $Rq1=$Rq->fetchcolumn();
+    return $Rq1;
 }

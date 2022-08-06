@@ -29,7 +29,8 @@
           <div class="container text-center">
 
 <h1>Merci !! <?php echo $_GET['name'];?> votre fiche d'admission est maintenant prêt 
-<a href="./PDFs/completed/this_year/<?php echo $_GET['link'];?>" download="Fiche_admission">Télécharger ici</a></h1>
+<a href="./PDFs/completed/this_year/<?php echo $_GET['link'];?>" download="Fiche_admission">Télécharger ici</a><br><br><br>
+<a href="index.php">Retourner vers la Page d'aceuille</a></h1>
 
 <div class="clearfix mb-5"></div>
 

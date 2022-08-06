@@ -17,14 +17,13 @@ function template(){
 
 // Actions that doesn't require Authentification (Actions auriented to Public)
 function can_pass($action){
-    $tab=["SignUp","LoginAdmin","index","SignUpAdmin","Login",
+    $tab=["SignUp","LoginAdmin","index","SignUpAdmin","Login","template",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
 ];
     foreach($tab as $t){
         if($action == $t) return true;
     }
-
 
     return false;
 }
@@ -33,22 +32,23 @@ function SignUp(){
     //$CodeP=$_GET["CodeP"]??"etudiant";
     $CodeP="etudiant";
     $Logger=["first_name"=>"","last_name"=>"","age"=>"","username"=>"","email"=>"","phone"=>"","password"=>"","confirm_password"=>"","gender"=>"","profession"=>""];
+    $min=13;$max=60;
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $Logger=$_POST;
-        if(empty($Logger["first_name"]))         $errors["first_name"] = "First Name is Empty !.";
-        if(empty($Logger["last_name"]))          $errors["last_name"]    ="Last Name is Empty  !.."   ;
-		if(empty($Logger["email"]))              $errors["email"] ="email  is Empty !..." ;
-        if(empty($Logger["age"]))                $errors["age"] ="age  is Empty !..." ;
-        elseif(!is_Numeric($Logger["age"]))      $errors["age"]="Age must be a number !";
-		elseif($Logger["age"] < 13 or $Logger["age"] > 60)
-                                                 $errors["age"]="age must be between 13 and 60";
-        if(empty($Logger["username"]))           $errors["username"] = "please select a username"; 
-        if(empty($Logger["phone"]))              $errors["phone"] = "phone is Empty !.";
+        if(empty($Logger["first_name"]))         $errors["first_name"] = "Le nom ne doit pas etre vide !";
+        if(empty($Logger["last_name"]))          $errors["last_name"]    ="Le prenom ne doit pas etre vide !"   ;
+		if(empty($Logger["email"]))              $errors["email"] ="L'email ne doit pas etre vide !" ;
+        if(empty($Logger["age"]))                $errors["age"] ="L'age ne doit pas etre vide !" ;
+        elseif(!is_Numeric($Logger["age"]))      $errors["age"]="L'age doit etre un nombre";
+		elseif($Logger["age"] < $min or $Logger["age"] > $max)
+                                                 $errors["age"]="L'age doit etre compris entre ".$min." et ".$max;
+        if(empty($Logger["username"]))           $errors["username"] = "Le nom d'utilisateur ne doit pas etre vide !"; 
+        if(empty($Logger["phone"]))              $errors["phone"] = "Le numero de telephone ne doit pas etre vide !";
         
 
-		if(empty($Logger["password"]))           $errors["password"]="Please entrer a password !";
-        if(empty($Logger["confirm_password"]))   $errors["confirm_password"]="Please Confirm Your Password !";
-        if(($Logger["password"])!=($Logger["confirm_password"]))  $errors["confirm_password"]="Passwords are not Identical !"; 
+		if(empty($Logger["password"]))           $errors["password"]="Veuillez entrer votre mot de passe !";
+        if(empty($Logger["confirm_password"]))   $errors["confirm_password"]="Veuillez confirmer votre mot de passe !";
+        if(($Logger["password"])!=($Logger["confirm_password"]))  $errors["confirm_password"]="Les mots de passe ne sont pas identique!"; 
         if(User_Exists($Logger["username"],"Username"))     $errors["username"] = "Le nom d'utilisateur existe deja !"; 
         if(User_Exists($Logger["email"],"Email"))           $errors["email"] = "L'adresse email existe deja !"; 
 
@@ -69,9 +69,9 @@ function Login(){
     $CodeP="etudiant";
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $Logger=$_POST;
-		if(empty($Logger["email"]))         $errors["email"] ="Insert a valid email or username !" ;
-		if(empty($Logger["password"]))      $errors["password"]="Empty password !";
-        if(!(Logger_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
+		if(empty($Logger["email"]))         $errors["email"] ="entrer un email ou nom d'utilisateur valide !" ;
+		if(empty($Logger["password"]))      $errors["password"]="Veuillez entrer votre mot de passe !";
+        if(!(Logger_Exists($Logger,$CodeP)))  $errors["connect"]="Les informations sont incorrectes !";
 
         if(!isset($errors)){
             $var=GetUser($Logger["email"]);
@@ -114,16 +114,24 @@ function Pre_Demande_Etude(){
     //$CodeP=$_SESSION["CodeP"]??"etudiant";
     //$_SESSION["Demande"]="Demande_Etude";
     //$variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
+    if(User_Exists($_SESSION["username"],"Owner","demandes")){
+
+        $link=Get_Pdf_Link($_SESSION["username"]);
+        
+        header('Location:index.php?action=mypdf&link=' . $link);
+    }
+    else{
     $variables=[];
     $vue="Views/vPre_Demande_Etude.php";
     render($vue,$variables,"_predemande");
+    }
 }
 
 
 
 function Fiche_admission($demande="Demande_Etude"){
     $_SESSION["Demande"]="Demande_Etude";
-    $CodeP=$_SESSION["CodeP"]??"etudiant";
+    $CodeP="etudiant";
 
     $Student=[
        /*  
@@ -202,7 +210,7 @@ function Fiche_admission($demande="Demande_Etude"){
             elseif($_POST["destination"]=="France") $data['France']="X";
             //elseif($_POST["destination"]=="Autre") $data['Autre']="X";
         }
-        $data['Group_Bourse']="X";
+        /* $data['Group_Bourse']="X"; */
 
 
 
@@ -243,16 +251,24 @@ function Fiche_admission($demande="Demande_Etude"){
          */
 
         if(!isset($errors)){
+            if(User_Exists($_SESSION["username"],"Owner","demandes")){
+
+                $link=Get_Pdf_Link($_SESSION["username"]);
+                
+                header('Location:index.php?action=mypdf&link=' . $link);
+            }
+            else{
             $pdf = new generatePDF;
             $response = $pdf->generate($data);
             $chemin="".$response;
             $infos=[
-                "owner" => $_SESSION["email"]??"inconnue",
+                "owner" => $_SESSION["username"]??"inconnue",
                 "type" => $demande,
                 "link" => $chemin,
             ];
             add_pdf($infos);
             header('Location:index.php?action=thanks&name=' . $data['Noms'] . '&link=' . $response);
+        }
         } 
         
         }
@@ -392,4 +408,10 @@ function renderWithAjax($vue , array $variables=array()) {
 
 function render_other($vue,array $variables=array()){
     require($vue);
+}
+
+function mypdf(){
+    $view="Views/mypdf.php";
+    $variables=[];
+    render_other($view,$variables);
 }
