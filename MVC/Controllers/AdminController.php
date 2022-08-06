@@ -21,7 +21,7 @@ function LoginAdmin(){
         $Logger=$_POST;
 		if(empty($Logger["email"]))         $errors["email"] ="Insert a valid email or username !" ;
 		if(empty($Logger["password"]))      $errors["password"]="Empty password !";
-        if(!(User_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
+        if(!(Logger_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
 
         if(!isset($errors)){
             $var=GetUser($Logger["email"]);

@@ -41,7 +41,7 @@ function SignUp(){
         elseif(!is_Numeric($Logger["age"]))      $errors["age"]="Age must be a number !";
 		elseif($Logger["age"] < 13 or $Logger["age"] > 60)
                                                  $errors["age"]="age must be between 13 and 60";
-        if(empty($Logger["username"]))             $errors["username"] = "please select a username"; 
+        if(empty($Logger["username"]))           $errors["username"] = "please select a username"; 
         if(empty($Logger["phone"]))          $errors["phone"] = "phone is Empty !.";
         
 
@@ -49,10 +49,13 @@ function SignUp(){
         if(empty($Logger["confirm_password"]))   $errors["confirm_password"]="Please Confirm Your Password !";
         if(($Logger["password"])!=($Logger["confirm_password"]))  
                                                  $errors["confirm_password"]="Passwords are not Identical !"; 
+        if(User_Exists($Logger["username"]))     $errors["username"] = "Username Already Exists"; 
+        if(User_Exists($Logger["email"]))        $errors["email"] = "email Already Exists"; 
 
         if(!isset($errors)){
             AddUser($Logger,$CodeP);     
             header("location:index.php");
+            
         }
     }
     $view="Views/vSignUp.php";
@@ -68,7 +71,7 @@ function Login(){
         $Logger=$_POST;
 		if(empty($Logger["email"]))         $errors["email"] ="Insert a valid email or username !" ;
 		if(empty($Logger["password"]))      $errors["password"]="Empty password !";
-        if(!(User_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
+        if(!(Logger_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
 
         if(!isset($errors)){
             $var=GetUser($Logger["email"]);

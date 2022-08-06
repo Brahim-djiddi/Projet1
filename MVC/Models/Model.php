@@ -16,7 +16,7 @@ function AddUser($t,$CodeP){
    // }
 }
 
-function User_Exists(array $user,$role){
+function Logger_Exists(array $user,$role){
     
     $email=$user["email"];
     
