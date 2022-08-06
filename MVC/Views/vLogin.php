@@ -1,33 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Connexion</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Playfair+Display:400,900" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"  />
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-  </head>
+<?php require("vMenu.php")?>
 
 <body style="margin-top:70px ;">
 
@@ -36,7 +7,7 @@
       <div class="row">
 
         <div class="col-lg-6">
-          <img src="images/login.png" class="img-fluid" height="300" width="500" alt="" srcset="">
+          <img src="public/images/login.png" class="img-fluid" height="300" width="500" alt="" srcset="">
         </div>
 
 
@@ -53,7 +24,7 @@
               <span class="Err" id="ErrCode"> <?=$variables["errors"]["connect"] ?? ""?> </span>
             <div class="form-group mb-4">
               <span class="Err" id="ErrCode"> <?=$variables["email"]["connect"] ?? ""?> </span>
-              <input class="form-control" type="text" name="email" placeholder="Email ou Non utilisateur" id="username" required>
+              <input class="form-control" type="text" name="email" placeholder="Email ou nom utilisateur" id="username" required>
             </div>
 
             <div class="form-group">
@@ -66,7 +37,7 @@
             <div class="form-group" style="margin-bottom:70px ;">
               <div class="form-check mb-3">
                 <input class="form-check-input mb-1" type="checkbox" id="gridCheck">
-                <div class="valid-feedback">Valide</div>
+      
                 <p class="form-check-label " for="gridCheck"> Maintenir ma connection | <a href="index.php?action=SignUp" style="color:#002A8B ;"> Créer compte ?</a></p>
               </div>
               <button class="btn btn-warning text-dark mb-5" type="submit" value="Register">Se connecter <i class="fas fa-sign-in-alt"></i></button>
@@ -83,7 +54,6 @@
     </div>
   </div>
   </div>
-
 
 
   <script>

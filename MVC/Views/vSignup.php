@@ -1,33 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>S'inscription</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Playfair+Display:400,900" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"  />
-    <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-  </head>
+<?php require("vMenu.php")?>
 
 <body>
 <div class="site-section " id="connexion-section">
@@ -67,7 +38,7 @@
 
 
                     <div class="form-group">
-                        <input type="text" name="phone" class="form-control" id="username2" placeholder="Phone" value="<?=$variables["Logger"]["phone"]?>" required/>
+                        <input type="text" name="phone" class="form-control" id="username2" placeholder="Numero de téléphone" value="<?=$variables["Logger"]["phone"]?>" required/>
                         <span class="Err" id="ErrCode"> <?=$variables["errors"]["phone"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
@@ -76,13 +47,13 @@
 
 
                     <div class="form-group">
-                        <input type="text" name="username" class="form-control" id="username2" placeholder="Nom d utilisateur" value="<?=$variables["Logger"]["username"]?>" required/>
+                        <input type="text" name="username" class="form-control" id="username2" placeholder="Nom d'utilisateur" value="<?=$variables["Logger"]["username"]?>" required/>
                         <span class="Err" id="ErrCode"> <?=$variables["errors"]["username"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="email" class="form-control" id="username2" placeholder="Adresse E-Mail" value="<?=$variables["Logger"]["email"]?>" required/>
+                        <input type="text" name="email" class="form-control" id="username2" placeholder="Adresse E-mail" value="<?=$variables["Logger"]["email"]?>" required/>
                         <span class="Err" id="ErrCode"> <?=$variables["errors"]["email"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>

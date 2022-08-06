@@ -106,17 +106,19 @@ function not_Login($action){
     return  true;
 }
 
-function Demande_Etude(){
+function Pre_Demande_Etude(){
     //$Student=[];
     //$CodeP=$_SESSION["CodeP"]??"etudiant";
     //$_SESSION["Demande"]="Demande_Etude";
     //$variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
     $variables=[];
     $vue="Views/vPre_Demande_Etude.php";
-    render($vue,$variables);
+    render($vue,$variables,"_predemande");
 }
 
-function Demande_Etude2($demande="Demande_Etude"){
+
+
+function Fiche_admission($demande="Demande_Etude"){
     $_SESSION["Demande"]="Demande_Etude";
     $CodeP=$_SESSION["CodeP"]??"etudiant";
 
@@ -254,7 +256,7 @@ function Demande_Etude2($demande="Demande_Etude"){
         
         
     $variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
-    $vue="Views/vDemande_Etude.php";
+    $vue="Views/vForm_etude.php";
     render_other($vue,$variables);
 }
 
@@ -358,14 +360,7 @@ function Annee_Scolaire()
                 }
 
 
-
-
-
-
-
-
-
-function render($vue,array $variables=array(),$n=1){
+function render($vue,array $variables=array(),$n=""){
     ob_start();
     require($vue);
     $view=ob_get_clean();
@@ -395,5 +390,3 @@ function renderWithAjax($vue , array $variables=array()) {
 function render_other($vue,array $variables=array()){
     require($vue);
 }
-
-?>

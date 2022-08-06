@@ -296,6 +296,6 @@
 
 </body>
 
-<script src="Public/JS/AJAX.js"></script>
-<script src="Public/JS/HoussamAjax.js"></script>
+<script src="Public/js/AJAX.js"></script>
+<script src="Public/js/Aff_Ajax.js"></script>
 </html>
