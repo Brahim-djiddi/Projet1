@@ -66,7 +66,7 @@
             
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <figure class="text-center"><img src="https://i.imgur.com/O3XVpoG.png" class="img-fluid" height="150" width="600"></figure>
+                        <figure class="text-center"><img src="./public/images/logo.png" class="img-fluid" height="150" width="600"></figure>
                         <h5 class="text-center" style="color: #002A8B">Cabinet de conseil, d’orientation et d’accompagnement professionnel<br> pour vos études ou stages à l’étranger</h5>
                         <h4 class="  text-center mt-4"><span class="border border-danger p-2">FICHE D’ADMISSION</span></h4>
                         <h6 class="text-center mt-3">Année Universitaire: <?= Annee_Scolaire(); ?></h6>

@@ -48,7 +48,7 @@
 
 
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <a class="text-dark nav-link" href="index.php?action=index2"><?=$_SESSION["username"]?></a><br>
+                  <a class="text-dark nav-link" href="index.php?action=<?=$variables["profil"]?>"><?=$_SESSION["username"]?></a><br>
                     <a href="index.php?action=Logout" class="text-dark nav-link">Deconnextion<i class="fa-solid fa-right-to-bracket"></i></a>'
                     
                     <!-- <button class="dropdown-item" type="button">Another action</button>

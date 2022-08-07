@@ -5,7 +5,9 @@ require_once("Models/Model.php");
 require_once("Controllers/AdminController.php");
 function index(){
     $view="Views/vIndex.php";
-    $variables=[];
+    $profil="profil";
+    if(isset($_SESSION["CodeP"])) {  if($_SESSION["CodeP"]=="admin") $profil="index2" ; }
+    $variables=["profil"=>$profil];
     render($view,$variables);
 }
 
@@ -54,6 +56,12 @@ function SignUp(){
 
         if(!isset($errors)){
             AddUser($Logger,$CodeP);     
+            $var=GetUser($Logger["email"]);
+            $_SESSION["FirstName"]=$var["FirstName"];
+            $_SESSION["LastName"]=$var["LastName"];
+            $_SESSION["username"]=$var["Username"];
+            $_SESSION["email"]=$var["Email"];
+            $_SESSION["CodeP"]=$var["Role"];
             header("location:index.php");
             
         }
@@ -117,8 +125,8 @@ function Pre_Demande_Etude(){
     if(User_Exists($_SESSION["username"],"Owner","demandes")){
 
         $link=Get_Pdf_Link($_SESSION["username"]);
-        
-        header('Location:index.php?action=mypdf&link=' . $link);
+        $_SESSION["Demande_Etude"]=$link;
+        header('Location:index.php?action=mypdf');
     }
     else{
     $variables=[];
@@ -254,8 +262,9 @@ function Fiche_admission($demande="Demande_Etude"){
             if(User_Exists($_SESSION["username"],"Owner","demandes")){
 
                 $link=Get_Pdf_Link($_SESSION["username"]);
+                $_SESSION["Demande_Etude"]=$link;
                 
-                header('Location:index.php?action=mypdf&link=' . $link);
+                header('Location:index.php?action=mypdf&link=');
             }
             else{
             $pdf = new generatePDF;
@@ -267,7 +276,8 @@ function Fiche_admission($demande="Demande_Etude"){
                 "link" => $chemin,
             ];
             add_pdf($infos);
-            header('Location:index.php?action=thanks&name=' . $data['Noms'] . '&link=' . $response);
+            $_SESSION["Demande_Etude"]=$response;
+            header('Location:index.php?action=thanks');
         }
         } 
         
@@ -412,6 +422,12 @@ function render_other($vue,array $variables=array()){
 
 function mypdf(){
     $view="Views/mypdf.php";
+    $variables=[];
+    render_other($view,$variables);
+}
+
+function Profil(){
+    $view="Views/vProfil.php";
     $variables=[];
     render_other($view,$variables);
 }

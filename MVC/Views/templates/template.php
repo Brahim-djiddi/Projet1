@@ -113,7 +113,7 @@
         <div class="training">
           <a href="index.php?action=pre_demande_etude" class="nav-link d-block">
             <figure class=""><img src="public/images/etude.png" alt="guetchar" class="img-fluid"></figure>
-            <h5 class="text-black text-center">Inscription en ligne</h5>
+            <h5 class="text-black text-center">Demande d'Etude</h5>
           </a>
         </div>
       </div>

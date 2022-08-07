@@ -27,7 +27,7 @@
                     <th scope="col">Etudiants</th>
                     <th scope="col">Type de demande</th>
                     <th scope="col">Date de demande</th>
-                    <th scope="col">télécharger la demande</th>
+                    <th scope="col" colspan=2>Demandes</th>
                 </tr>
             </thead>
 
@@ -37,7 +37,8 @@
                         <td><?= $AD["Owner"] ?></td>
                         <td><?= $AD["Type"] ?></td>
                         <td><?= $AD["Date_Ajout"] ?></td>
-                        <td><a class="btn btn-sm btn-success" href="PDFs/completed/this_year/<?php echo $AD['Link']; ?>" download$="Fiche_Admission">Télécharger ici</a></td>
+                        <td><a class="btn btn-sm btn-success" href="PDFs/completed/this_year/<?php echo $AD['Link']; ?>" download="Fiche_Admission">Télécharger</a></td>
+                        <td><a class="btn btn-sm btn-success" href="PDFs/completed/this_year/<?php echo $AD['Link']; ?> " target="_blank" >Consulter</a></td>
 
 
 
