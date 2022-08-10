@@ -1,7 +1,7 @@
 <!-- <div class="container">
 		<div class="main-body"> -->
-        <form method="post">
-			<div class="row">
+        
+			<!-- <div class="row">
 				<div class="col-lg-4">
 					<div class="card">
 						<div class="card-body">
@@ -40,8 +40,9 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-lg-8">
+				<form method="post">
 					<div class="card">
 						<div class="card-body">
 
@@ -119,7 +120,7 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-sm-12">
 							<div class="card">
 								<div class="card-body">
@@ -149,7 +150,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
         <form>
 		</div>
 	</div>
