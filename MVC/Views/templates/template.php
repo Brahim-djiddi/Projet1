@@ -309,6 +309,21 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center mb-5">
+
+        <?php if(isset($_SESSION["success"])){
+          echo"<div class='alert alert-success' role='alert'>
+          <h3>".$_SESSION["success"]."</h3>
+        </div>";
+          unset($_SESSION["success"]);
+        } ?>
+        
+        <?php if(isset($_SESSION["unsuccess"])){
+          echo"<div class='alert alert-warning' role='alert'>
+          <h3>".$_SESSION["unsuccess"]."</h3>
+        </div>";
+          unset($_SESSION["unsuccess"]);
+        } ?>
+
         <h2 class="text-black">Contactez-nous</h2>
       </div>
     </div>
@@ -318,25 +333,25 @@
         <img src="public/images/contact.jpg" class="img-fluid" alt="" srcset="">
       </div>
       <div class="col-lg-6 mb-5">
-        <form action="#" method="post">
+        <form action="index.php?action=send_mail" method="post">
           <div class="form-group row">
             <div class="col-md-6 mb-3 mb-md-0">
-              <input type="text" class="form-control" placeholder="Prénom">
+              <input type="text" class="form-control" placeholder="Prénom" name="prenom" required>
             </div>
             <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Nom">
+              <input type="text" class="form-control" placeholder="Nom" name="nom" required>
             </div>
           </div>
 
           <div class="form-group row">
             <div class="col-md-12">
-              <input type="text" class="form-control" placeholder="Adresse email">
+              <input type="email" class="form-control" placeholder="Adresse email" name="email" required>
             </div>
           </div>
 
           <div class="form-group row">
             <div class="col-md-12">
-              <textarea name="" id="" class="form-control" placeholder="Ecrire votre message." cols="30" rows="10"></textarea>
+              <textarea name="message" id="" class="form-control" placeholder="Ecrire votre message." cols="30" rows="10" required></textarea>
             </div>
           </div>
           <div class="form-group row">

@@ -1,14 +1,14 @@
-<div class="container">
-    <div class="main-body">
+<!-- <div class="container">
+    <div class="main-body"> -->
     
           <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
+         <!--  <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-            </ol>
-          </nav>
+              <li class="breadcrumb-item"><a href="index.php">Acceuil</a></li> -->
+              <!-- <li class="breadcrumb-item"><a href="javascript: history.go(-1)">Retourner</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li> -->
+           <!--  </ol>
+          </nav> -->
           <!-- /Breadcrumb -->
     
           <div class="row gutters-sm">
@@ -52,57 +52,77 @@
                 </ul>
               </div>
             </div>
+
             <div class="col-md-8">
               <div class="card mb-3">
                 <div class="card-body">
+
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Full Name</h6>
+                      <h6 class="mb-0">Nom</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                    <?php echo"".$variables["user"]["LastName"]?>
                     </div>
                   </div>
                   <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Prenom</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?php echo"".$variables["user"]["FirstName"]?>
+                    </div>
+                  </div>
+                  <hr>
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      fip@jukmuh.al
+                      <?= $variables["user"]["Email"] ?>
                     </div>
                   </div>
                   <hr>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Nom d'utilisateur</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?= $variables["user"]["Username"] ?>
+                    </div>
+                  </div>
+                  <hr> 
+                  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Age</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                    <?= $variables["user"]["Age"] ?>
+                    </div>
+                  </div>
+                  <hr>
+
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Phone</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
+                    <?= $variables["user"]["Phone"] ?>
                     </div>
                   </div>
                   <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      (320) 380-4539
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Address</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      Bay Area, San Francisco, CA
-                    </div>
-                  </div>
-                  <hr>
+
+
+                  
+                  
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                      <a class="btn btn-info " target="__blank" href="index.php?action=editprofil">Edit</a>
                     </div>
                   </div>
                 </div>

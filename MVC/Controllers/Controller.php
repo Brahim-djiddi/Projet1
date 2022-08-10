@@ -3,6 +3,7 @@ use Classes\generatePDF;
 require_once('vendor/autoload.php');
 require_once("Models/Model.php");
 require_once("Controllers/AdminController.php");
+require_once("Controllers/MailController.php");
 function index(){
     $view="Views/vIndex.php";
     $profil="profil";
@@ -19,7 +20,7 @@ function template(){
 
 // Actions that doesn't require Authentification (Actions auriented to Public)
 function can_pass($action){
-    $tab=["SignUp","LoginAdmin","index","SignUpAdmin","Login","template",
+    $tab=["SignUp","LoginAdmin","index","SignUpAdmin","Login","template","send_mail",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
 ];
@@ -428,6 +429,45 @@ function mypdf(){
 
 function Profil(){
     $view="Views/vProfil.php";
-    $variables=[];
-    render_other($view,$variables);
+    $variables=["user" => GetUser($_SESSION["email"])];
+    $template="_profil";
+    render($view,$variables,$template);
+}
+
+function EditProfil(){
+    $min=13;$max=60;
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $Logger=$_POST;
+        if(empty($Logger["first_name"]))         $errors["first_name"] = "Le nom ne doit pas etre vide !";
+        if(empty($Logger["last_name"]))          $errors["last_name"]    ="Le prenom ne doit pas etre vide !"   ;
+		if(empty($Logger["email"]))              $errors["email"] ="L'email ne doit pas etre vide !" ;
+        if(empty($Logger["age"]))                $errors["age"] ="L'age ne doit pas etre vide !" ;
+        elseif(!is_Numeric($Logger["age"]))      $errors["age"]="L'age doit etre un nombre";
+		elseif($Logger["age"] < $min or $Logger["age"] > $max)
+                                                 $errors["age"]="L'age doit etre compris entre ".$min." et ".$max;
+        if(empty($Logger["username"]))           $errors["username"] = "Le nom d'utilisateur ne doit pas etre vide !"; 
+        if(empty($Logger["phone"]))              $errors["phone"] = "Le numero de telephone ne doit pas etre vide !";
+        
+
+		
+        if(User_Exists($Logger["username"],"Username") && $Logger["username"] !=$_SESSION["username"] )     
+                                                $errors["username"] = "Le nom d'utilisateur '".$Logger["username"]."' existe deja !"; 
+        
+        if(User_Exists($Logger["email"],"Email") && $Logger["email"] !=$_SESSION["email"] )     
+                                                $errors["username"] = "L'adresse email '".$Logger["email"]."' existe deja !";
+
+
+        if(!isset($errors)){
+            UpdateUser($Logger,$_SESSION["CodeP"]);     
+            
+            header("location:index.php?action=profil");
+            
+        }
+    }
+
+
+    $view="Views/vEditProfil.php";
+    $variables=["user" => GetUser($_SESSION["email"]),"errors" => $errors ?? []];
+    $template="_profil";
+    render($view,$variables,$template);
 }

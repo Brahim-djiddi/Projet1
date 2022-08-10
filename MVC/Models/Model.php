@@ -16,6 +16,18 @@ function AddUser($t,$CodeP){
    // }
 }
 
+function UpdateUser (array $t,$CodeP){
+    $User=[$t["first_name"],$t["last_name"],$t["email"],$t["age"],$t["phone"],$t["username"],$_SESSION["username"],$CodeP];
+    //var_dump($e);exit;
+     OuvrirConnextion()->prepare("update user set FirstName=?,LastName=?,Email=?,Age=?,Phone=?,Username=? where Username=? and Role=?")->execute($User);
+            $var=GetUser($t["email"]);
+            $_SESSION["FirstName"]=$var["FirstName"];
+            $_SESSION["LastName"]=$var["LastName"];
+            $_SESSION["username"]=$var["Username"];
+            $_SESSION["email"]=$var["Email"];
+            $_SESSION["CodeP"]=$var["Role"];
+}
+
 function Logger_Exists(array $user,$role){
     
     $email=$user["email"];
@@ -103,3 +115,4 @@ function Get_Pdf_Link($owner){
     $Rq1=$Rq->fetchcolumn();
     return $Rq1;
 }
+

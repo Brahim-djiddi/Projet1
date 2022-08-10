@@ -39,13 +39,13 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Accueil</a>
+        <a role="button" title="alvers page d'accueil" class="nav-link" onclick="document.location='index.php'">Accueil</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
         </li>
         <li class="nav-item">
-          <a href="index.php?action=Logout" class="nav-link">
+          <a href="index.php" class="nav-link">
 
             <p>
               Page user
