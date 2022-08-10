@@ -4,11 +4,13 @@ require_once('vendor/autoload.php');
 require_once("Models/Model.php");
 require_once("Controllers/AdminController.php");
 require_once("Controllers/MailController.php");
+require_once("Controllers/UserController.php");
 function index(){
     $view="Views/vIndex.php";
     $profil="profil";
     if(isset($_SESSION["CodeP"])) {  if($_SESSION["CodeP"]=="admin") $profil="index2" ; }
-    $variables=["profil"=>$profil];
+    $_SESSION["profil"]=$profil;
+    $variables=[];
     render($view,$variables);
 }
 
@@ -440,21 +442,21 @@ function EditProfil(){
         $Logger=$_POST;
         if(empty($Logger["first_name"]))         $errors["first_name"] = "Le nom ne doit pas etre vide !";
         if(empty($Logger["last_name"]))          $errors["last_name"]    ="Le prenom ne doit pas etre vide !"   ;
-		if(empty($Logger["email"]))              $errors["email"] ="L'email ne doit pas etre vide !" ;
+		
         if(empty($Logger["age"]))                $errors["age"] ="L'age ne doit pas etre vide !" ;
         elseif(!is_Numeric($Logger["age"]))      $errors["age"]="L'age doit etre un nombre";
 		elseif($Logger["age"] < $min or $Logger["age"] > $max)
                                                  $errors["age"]="L'age doit etre compris entre ".$min." et ".$max;
-        if(empty($Logger["username"]))           $errors["username"] = "Le nom d'utilisateur ne doit pas etre vide !"; 
         if(empty($Logger["phone"]))              $errors["phone"] = "Le numero de telephone ne doit pas etre vide !";
-        
 
-		
+
+
+        /* if(empty($Logger["email"]))              $errors["email"] ="L'email ne doit pas etre vide !" ;
+        if(empty($Logger["username"]))           $errors["username"] = "Le nom d'utilisateur ne doit pas etre vide !"; 
         if(User_Exists($Logger["username"],"Username") && $Logger["username"] !=$_SESSION["username"] )     
                                                 $errors["username"] = "Le nom d'utilisateur '".$Logger["username"]."' existe deja !"; 
-        
         if(User_Exists($Logger["email"],"Email") && $Logger["email"] !=$_SESSION["email"] )     
-                                                $errors["username"] = "L'adresse email '".$Logger["email"]."' existe deja !";
+                                                $errors["username"] = "L'adresse email '".$Logger["email"]."' existe deja !"; */
 
 
         if(!isset($errors)){

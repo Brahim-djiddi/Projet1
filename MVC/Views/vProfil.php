@@ -122,7 +122,7 @@
                   
                   <div class="row">
                     <div class="col-sm-12">
-                      <a class="btn btn-info " target="__blank" href="index.php?action=editprofil">Edit</a>
+                      <a class="btn btn-info " target="_self" href="index.php?action=editprofil">Edit</a>
                     </div>
                   </div>
                 </div>

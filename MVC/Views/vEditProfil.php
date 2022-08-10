@@ -71,7 +71,7 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
                                     <span class="Err" id="ErrCode"> <?=$variables["errors"]["email"] ?? ""?> </span>
-									<input type="text" name="email" class="form-control" value="<?= $variables["user"]["Email"] ?>">
+									<div name="email" class="col-sm-9 text-secondary form-control"><?= $variables["user"]["Email"] ?></div>
 								</div>
 							</div>
 
@@ -81,7 +81,7 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
                                     <span class="Err" id="ErrCode"> <?=$variables["errors"]["username"] ?? ""?> </span>
-									<input type="text" name="username" class="form-control" value="<?= $variables["user"]["Username"] ?>">
+									<div name="username" class="col-sm-9 text-secondary form-control"><?= $variables["user"]["Username"] ?></div>
 								</div>
 							</div>
 
