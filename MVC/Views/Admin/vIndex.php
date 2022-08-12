@@ -115,7 +115,7 @@
             <img src="public/images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block text-muted">
+            <a href="index.php?action=profil" class="d-block text-muted">
               <?php if (isset($_SESSION["email"])) {
                 echo "" . strtoupper($_SESSION["CodeP"]) . " " . strtoupper($_SESSION["LastName"]);
               }

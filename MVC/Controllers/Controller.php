@@ -22,7 +22,7 @@ function template(){
 
 // Actions that doesn't require Authentification (Actions auriented to Public)
 function can_pass($action){
-    $tab=["SignUp","LoginAdmin","index","SignUpAdmin","Login","template","send_mail",
+    $tab=["SIGNUP","LOGINADMIN","INDEX","SIGNUPADMIN","LOGIN","TEMPLATE","SEND_MAIL",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
     // "SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp","SignUp",
 ];

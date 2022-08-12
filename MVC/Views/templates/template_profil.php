@@ -28,6 +28,7 @@
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a style="color:yellow;" href="index.php">Acceuil</a></li>
+              <?php if(is_admin($_SESSION["CodeP"])) echo'<li class="breadcrumb-item"><a style="color:yellow;" href="index.php?action=index2">Administration</a></li>' ?>
               <!-- <li class="breadcrumb-item"><a href="javascript: history.go(-1)">Retourner</a></li>
               <li class="breadcrumb-item active" aria-current="page">User Profile</li> -->
             </ol>

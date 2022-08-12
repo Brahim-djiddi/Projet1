@@ -85,7 +85,15 @@ function AfficherAdminWithAjax(){
     renderWithAjax($view,$variables);
 }
 
-
+function is_admin($CodeP){
+    $data=[
+        "Admin","admin",
+    ];
+    foreach($data as $d){
+        if($d==$CodeP) return true;
+    }
+    return  false;
+}
 
 
 
