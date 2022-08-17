@@ -144,13 +144,14 @@
             
            
             <li class="nav-item">
-              <a  href="index.php?action=AfficherAdminWithAjax&choix=Demande_Etude" class="nav-link">
+              <a  href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=All" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Demande consulting
                 </p>
               </a>
             </li>
+
             <hr class="text-muted">
             <li class="nav-item">
               <a href="#" class="nav-link">
@@ -161,6 +162,7 @@
               </a>
             </li>
             <hr class="text-muted">
+            
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
@@ -278,5 +280,7 @@
 </body>
 <script src="public/plugins/dist/js/demo.js"></script>
 <script src="public/js/test_DT.js"></script>
+<script src="public/js/Aff_Ajax.js"></script>
+
 
 </html>

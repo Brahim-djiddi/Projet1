@@ -1,0 +1,4 @@
+<div class="tab-pane fade active show" 
+id="panel-index-php-action-AfficherAdminWithAjax-choix-Dashboard" 
+role="tabpanel" aria-labelledby="tab-index-php-action-AfficherAdminWithAjax-choix-Dashboard">
+<iframe src="index.php?action=AfficherAdminWithAjax&amp;choix=Dashboard" style="height: 720.667px;"></iframe></div>

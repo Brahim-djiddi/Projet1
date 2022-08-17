@@ -63,9 +63,12 @@ function add_pdf($t){
 
 function GetListe($choix){
     if($choix=="Dashboard"){ return GetListeDashboard();}
-    elseif($choix=="Demande_Etude") {return GetListeDemande_Etude("Demande_Etude");}
+    //elseif($choix=="Demande_Etude") {return GetListeDemande_Etude("Demande_Etude");}
     elseif($choix=="Client") {return GetListeClient();}
-
+    else{
+        if("")
+        return GetListeDemande_Etude($choix);
+    }
 }
 
 function GetListeDemande_Etude($type="Demande_Etude"){
@@ -75,6 +78,11 @@ function GetListeDemande_Etude($type="Demande_Etude"){
     $Rq1=$Rq->fetchall();
     return $Rq1;
 }
+
+function GetListeDemandes(){
+    return OuvrirConnextion()->query("select * FROM  demandes")->fetchall();	
+}
+
 function GetListeDashboard(){
     return [];
 }
@@ -102,6 +110,13 @@ function pdf_exists($username){
 
     if($Rq->rowCount() >= 1) return true;
     else return false;    
+}
+
+function GetRowCountOf($col_value="Demande_Etude",$col="type",$table="demandes"){
+    /* if(isset($condition)) $w="where ".$condition; */
+    $rq = OuvrirConnextion()->query("select * from $table where $col = '$col_value' ");
+    $nbr=$rq->rowCount();
+    return $nbr;
 }
 
 function GetTable($name){

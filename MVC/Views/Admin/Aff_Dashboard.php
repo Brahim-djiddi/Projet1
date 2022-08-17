@@ -18,9 +18,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                               TOTAL DEMANDE ETUDE</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Stage" class="nav-link">
+                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                TOTAL DEMANDE ETUDE </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= GetRowCountOf("Demande_Etude") ?></div>
+                                            </a>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa-solid fa-users fa-2x text-success"></i>
@@ -35,11 +37,14 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                            TOTAL DEMANDE STAGE </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Stage" class="nav-link">
+                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                TOTAL DEMANDE STAGE </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= GetRowCountOf("Demande_Stage") ?></div>
+                                            </a>
                                         </div>
                                         <div class="col-auto">
+                                            
                                             <i class="fa-solid fa-clipboard-list fa-2x text-danger"></i>
                                         </div>
                                     </div>
@@ -52,10 +57,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                            TOTAL DEMANDE SEJOUR</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0
-                                            </div>
+                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Stage" class="nav-link">
+                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                TOTAL DEMANDE SEJOUR </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= GetRowCountOf("Demande_Sejour") ?></div>
+                                            </a>
                                         </div>
                                         <div class="col-auto">
                                         <i class="text-info fa-solid fa-2x fa-calendar"></i>
@@ -70,9 +76,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                            TOTAL DEMANDE JOB</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Stage" class="nav-link">
+                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                TOTAL DEMANDE JOB </div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?= GetRowCountOf("Demande_Job") ?></div>
+                                            </a>
                                         </div>
                                         <div class="col-auto">
 
