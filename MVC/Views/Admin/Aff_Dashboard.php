@@ -18,7 +18,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Stage" class="nav-link">
+                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Etude" class="nav-link">
                                                 <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                                 TOTAL DEMANDE ETUDE </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= GetRowCountOf("Demande_Etude") ?></div>
@@ -57,7 +57,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Stage" class="nav-link">
+                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Sejour" class="nav-link">
                                                 <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                                 TOTAL DEMANDE SEJOUR </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= GetRowCountOf("Demande_Sejour") ?></div>
@@ -76,7 +76,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Stage" class="nav-link">
+                                            <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=_Job" class="nav-link">
                                                 <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
                                                 TOTAL DEMANDE JOB </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?= GetRowCountOf("Demande_Job") ?></div>

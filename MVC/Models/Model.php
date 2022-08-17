@@ -66,7 +66,6 @@ function GetListe($choix){
     //elseif($choix=="Demande_Etude") {return GetListeDemande_Etude("Demande_Etude");}
     elseif($choix=="Client") {return GetListeClient();}
     else{
-        if("")
         return GetListeDemande_Etude($choix);
     }
 }
