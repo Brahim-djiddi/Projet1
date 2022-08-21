@@ -15,14 +15,12 @@ RSS Feed: https://feeds.feedburner.com/Free-templateco
 ////////////////////////////////////////////////////////////////
 */
 /* Base */
-html {
-  overflow-x: hidden; }
-
-body {
+html, body {
   line-height: 1.7;
   color: gray;
   font-weight: 400;
-  font-size: 1rem; }
+  font-size: 1rem;
+  overflow-x: hidden; }
 
 ::-moz-selection {
   background: #000;

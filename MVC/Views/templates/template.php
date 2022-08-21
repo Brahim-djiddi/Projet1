@@ -27,8 +27,6 @@
     <div class="row mb-1 justify-content-center">
       <div class="col-md-7 text-center">
         <figure><img src="public/images/quisom.png" height="100" width="300" alt="Qui sommes-nous" srcset=""></figure>
-
-
         <p class="">Nous sommes un cabinet spécialisé dans le conseil d'orientation, l'assistance et l'accompagnement des élèves et étudiants dans le cadre de la formation professionnelle, désireux de poursuivre leurs études supérieures à l'étranger. Nous sommes en effet, partenaires avec plusieurs écoles et universités privées proposant des diplômes reconnus et/ou accrédités par l'état et valables sur le plan national et international. Notre ambition est de proposer un avenir plein d'opportunités pour tous et de faire en sorte que le rêve de chacun soit une raison suffisante pour avancer.
           L'Etudiant Consulting
           Votre réussite, notre priorité</p>
@@ -43,34 +41,33 @@
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-
-        <h2 class="text-black">Nos services</h2>
-
+        <h3 class="text-dark font-weight-bold">Nos service</h3> 
+        <hr align="center" width="30%"  style="background-color:#FFDD41; padding:0.2%;">
       </div>
     </div>
 
     <div class="  nonloop-block-13 owl-style owl-style-md owl-carousel">
       <div class="training service">
         <div class="img-fluid">
-          <figure class="mb-4"><img src="public/images/orientation.jpeg" height="200" width="200" alt="orientation"></figure>
+          <figure class="mb-4"><img src="public/images/orientation.jpeg" height="200" width="300" alt="orientation"></figure>
         </div>
-        <h3 class="text-black mb-3 mt-3">Orientations</h3>
+        <h5 class="text-dark font-weight-bold mb-3 mt-3">Orientations</h5>
         <p >Une orientation professionnelle, universitaire et de carrière, en fonction de vos intérêts, de votre parcours scolaire antérieur, et de votre personnalité</p>
       </div>
 
       <div class="training service">
         <div class="icon">
-          <figure><img src="public/images/signupOnline.jpeg" height="200" width="200" alt="orientation"></figure>
+          <figure><img src="public/images/signupOnline.jpeg" height="200" width="300" alt="orientation"></figure>
         </div>
-        <h3 class="text-black mb-3 mt-3">Inscription en ligne</h3>
+        <h5 class="text-dark font-weight-bold  mb-3 mt-3">Inscription en ligne</h5>
         <p> L'Etudiant Consulting vous offre la possibilité de vous préinscrire et de vous inscrire en ligne. la procédure en ligne est entièrement gratuite pour tous.</p>
       </div>
 
       <div class="training service">
         <div class="icon">
-          <figure><img src="public/images/bourse.jpeg" height="200" width="1000" alt="orientation"></figure>
+          <figure><img src="public/images/bourse.jpeg" height="200" width="300" alt="orientation"></figure>
         </div>
-        <h3 class="text-black mb-3 mt-3">Bourse d'étude</h3>
+        <h5 class="text-dark font-weight-bold  mb-3 mt-3">Bourse d'étude</h5>
         <p>Profiter d'une bourse d'étude allant de 20% à 100% de réduction. Selon votre demande ou de votre situation sociale.</p>
       </div>
 
@@ -79,15 +76,15 @@
         <div class="icon">
           <figure><img src="public/images/accueil.jpeg" height="200" width="300" alt="orientation"></figure>
         </div>
-        <h3 class="text-black mb-3 mt-3">Accueil aéroport</h3>
+        <h5 class="text-dark font-weight-bold  mb-3 mt-3">Accueil aéroport</h5>
         <p> Un accueil chaleureux vous attend à l' aéroport. Vous êtes pris en charge par une équipe en fonction de votre réservation (transport personnel ou en commun)</p>
       </div>
 
       <div class="training service">
         <div class="icon">
-          <figure><img src="public/images/accompagnement.jpeg" height="200" width="200" alt="orientation"></figure>
+          <figure><img src="public/images/accompagnement.jpeg" height="200" width="300" alt="orientation"></figure>
         </div>
-        <h3 class="text-black mb-3 mt-3">Accompagnement</h3>
+        <h5 class="text-dark font-weight-bold mb-3 mt-3">Accompagnement</h5>
         <p> Nous vous proposons également un accompagnement administratif complet dans vos démarches. Pour l'obtention de votre titre de séjour ou documents administratifs divers..</p>
       </div>
 
@@ -103,9 +100,8 @@
   <div class="container">
     <div class="row mb-5 justify-content-center" data-aos="fade-up">
       <div class="col-md-7 text-center">
-
-        <h2 class="text-black">Vos demandes</h2>
-
+        <h3 class="text-dark font-weight-bold">Vos demandes</h3> 
+        <hr align="center" width="35%"  style="background-color:#FFDD41; padding:0.2%;">
       </div>
     </div>
     <div class="row">
@@ -113,7 +109,7 @@
         <div class="training">
           <a href="index.php?action=pre_demande_etude" class="nav-link d-block">
             <figure class=""><img src="public/images/etude.png" alt="guetchar" class="img-fluid"></figure>
-            <h5 class="text-black text-center">Demande d'Etude</h5>
+            <h6 class="text-dark font-weight-bold text-center">Inscription en ligne</h6>
           </a>
         </div>
       </div>
@@ -121,7 +117,7 @@
         <div class="training">
           <a href="" class="nav-link  d-block">
             <figure class="mb-3"><img src="public/images/stage.JPG" alt="guetchar" class="img-fluid w-100"></figure>
-            <h5 class="text-black text-center">Demande de Stage</h5>
+            <h6 class="text-dark font-weight-bold text-center">Demande un stage</h6>
           </a>
         </div>
       </div>
@@ -129,7 +125,7 @@
         <div class="training">
           <a href="" class="nav-link d-block">
             <figure class="mb-4"><img src="public/images/sejour.JPG" alt="guetchar" class="img-fluid w-100"></figure>
-            <h5 class="text-black text-center mb-3">Demande de Séjour </h5>
+            <h6 class="text-dark font-weight-bold text-center mb-3">Demande un séjour </h6>
           </a>
         </div>
       </div>
@@ -137,7 +133,7 @@
         <div class="training">
           <a href="" class="nav-link  d-block">
             <figure class="mb-4"><img src="public/images/job.JPG" alt="guetchar" class="img-fluid w-100"></figure>
-            <h5 class="text-black text-center mb-3">Demande de Job </h5>
+            <h6 class="text-dark font-weight-bold text-center mb-4">Demande un job </h6>
           </a>
         </div>
       </div>
@@ -152,9 +148,8 @@
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-
-        <h2 class="text-black">Notre équipe</h2>
-
+        <h3 class="text-dark font-weight-bold">Notre équipe</h3> 
+        <hr align="center" width="35%"  style="background-color:#FFDD41; padding:0.2%;">
       </div>
     </div>
     <div class="row">
@@ -217,8 +212,8 @@
   <div class="container-fluid">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-        <h2 class="text-black">Gallerie</h2>
-
+        <h3 class="text-dark font-weight-bold">Gallerie des photos</h3> 
+        <hr align="center" width="40%"  style="background-color:#FFDD41; padding:0.2%;">
       </div>
     </div>
     <div class="row">
@@ -285,7 +280,8 @@
 <section class="site-section" data-aos="fade-up">
   <div class="row">
     <div class="col-12 text-center mb-5">
-      <h2 class="text-black">Nos partenaires</h2>
+      <h3 class="text-dark font-weight-bold">Nos partenaires</h3> 
+      <hr align="center" width="20%"  style="background-color:#FFDD41; padding:0.2%;">
     </div>
   </div>
   <div class="container ">
@@ -310,7 +306,7 @@
     <div class="row">
       <div class="col-12 text-center mb-5">
 
-        <?php if(isset($_SESSION["success"])){
+      <?php if(isset($_SESSION["success"])){
           echo"<div class='alert alert-success' role='alert'>
           <h3>".$_SESSION["success"]."</h3>
         </div>";
@@ -322,9 +318,11 @@
           <h3>".$_SESSION["unsuccess"]."</h3>
         </div>";
           unset($_SESSION["unsuccess"]);
-        } ?>
-
-        <h2 class="text-black">Contactez-nous</h2>
+        } ?>      
+      
+        <h3 class="text-dark font-weight-bold">Contactez-nous</h3> 
+      <hr align="center" width="20%"  style="background-color:#FFDD41; padding:0.2%;">
+        
       </div>
     </div>
 
@@ -333,7 +331,7 @@
         <img src="public/images/contact.jpg" class="img-fluid" alt="" srcset="">
       </div>
       <div class="col-lg-6 mb-5">
-        <form action="index.php?action=send_mail" method="post">
+      <form action="index.php?action=send_mail" method="post">
           <div class="form-group row">
             <div class="col-md-6 mb-3 mb-md-0">
               <input type="text" class="form-control" placeholder="Prénom" name="prenom" required>
@@ -368,12 +366,12 @@
         <p class="mb-4 text-justify">Avenue Abdelkarim Benjelloun N&#186;42 6ème &#233;tage Bureaux Achraf, F&#233;s
       </div>
       <div class="mb-4 mb-lg-0 col-md-6 col-lg-4">
-        <p class="mb-0 font-weight-bold">Numero de telephone</p>
+        <p class="mb-0 font-weight-bold">Numéro de téléphone</p>
         <p class=""><a href="#">+212660523877 <span class="text-muted">/</span> +212644761513</a></p>
 
       </div>
       <div class="mb-4 mb-lg-0 col-md-6 col-lg-4">
-        <p class="mb-0 font-weight-bold">Adresse email</p>
+        <p class="mb-0 font-weight-bold">Adresse e-mail</p>
         <p class="mb-0"><a href="#">support@guetchar.com</a></p>
       </div>
     </div>
