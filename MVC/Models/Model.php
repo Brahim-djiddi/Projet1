@@ -110,9 +110,9 @@ function GetRowCountOf($col_value="Demande_Etude",$col="type",$table="demandes")
 }
 
 function GetTable($name){
-    $Rq= OuvrirConnextion()->prepare("select * FROM  $name ");	
+    $Rq= OuvrirConnextion()->query("select * FROM  $name ");	
     $Rq1=$Rq->fetchall();
-    return $Rq;
+    return $Rq1;
 }
 
 

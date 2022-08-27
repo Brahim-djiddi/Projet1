@@ -275,8 +275,8 @@ function Fiche_admission($demande="Demande_Etude"){
                 "type" => $demande,
                 "link" => $chemin,
             ];
-            add_pdf($infos);
             add_table_pdf($_POST,$chemin);
+            add_pdf($infos);
             $_SESSION["Demande_Etude"]=$response;
             header('Location:index.php?action=thanks');
         }
@@ -284,8 +284,8 @@ function Fiche_admission($demande="Demande_Etude"){
         
         }
         
-        
-    $variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
+    $demande= $_GET["demande"]   ??  "Demande_Etude";    
+    $variables=array("Student"=>$Student ?? "","Demande" => $demande,"errors"=>$errors ?? []);
     $vue="Views/vForm_etude.php";
     render_other($vue,$variables);
 }
@@ -520,4 +520,108 @@ function supprimer_equipe(){
       header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
     }
    
+}
+
+function modifier_pdf(){
+    if (isset($_GET["id"])){
+
+    $id=$_GET["id"];
+
+    if(pdf_owner($_SESSION["username"],$id)){
+        /* delete("demandes","Link",$id);
+        delete("pdf","Link",$id);
+        unlink('./PDFS/completed/this_year/'.$id);
+        $_SESSION["success"] = "Suppression avec succée !";
+        AfficherAdminWithAjax($choix="Demande",$choix2="All"); */
+
+
+        $demande= $_GET["demande"]   ??  "Demande_Etude";
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            $data=[
+                'Annee_Universitaire' => $_POST["Annee_univer"] ?? '',
+                '1' => $_POST["1"] ?? '','2' => $_POST["2"] ?? '','3' => $_POST["3"] ?? '', 
+                '4' => $_POST["4"] ?? '', '5' => $_POST["5"] ?? '', 'Filière' => $_POST["filiere"] ?? '',               
+                'Etablissement' => ($_POST["etablissement"]) ?? '','Boursier' => $_POST["Boursier"] ?? '',
+                'Nonboursier' => $_POST["Nonboursier"] ?? '','Demande_de_stage' => $_POST["stage"] ?? ''
+                
+                ,'Noms' => $_POST["nomE"] ?? '',                
+                'Prénoms' => $_POST["prenomE"] ?? '','Date_et_lieu_de_naissance' => $_POST["dateN"] ?? '',
+                'Nationalité' => $_POST["nationalite"] ?? '', 'N_CNI_ou_Passeport' => $_POST["CNI"] ?? '',
+                'Adresse' => $_POST["apE"] ?? '', 'Code_postal' => $_POST["cpE"] ?? '', 'Ville' => $_POST["villeE"] ?? '',
+                'Pays' => $_POST["paysE"] ?? '', 'Téléphone' => $_POST["numeroE"] ?? '', 'GSM' => $_POST["gsmE"] ?? '',
+                'Email' => $_POST["emailE"] ?? '', 'Série_du_baccalauréat' => $_POST["serie"] ?? ''
+                
+                , 'Noms_2' => $_POST["nomP"] ?? '',
+                'Prénoms_2' => $_POST["prenomP"] ?? '', 'Profession' => $_POST["profession"] ?? '', 'Adresse_2' => $_POST["adP"] ?? '',
+                'Code_postal_2' => $_POST["cpP"] ?? '', 'Ville_2' => $_POST["villeP"] ?? '', 'Pays_2' => $_POST["paysP"] ?? '',
+                'Téléphone_2' => $_POST["numeroP"] ?? '', 'GSM_2' => $_POST["gsmP"] ?? '', 'Email_2' => $_POST["emailP"] ?? '',
+    
+                'Père' => $_POST["father"] ?? '', 'Mère' => $_POST["mother"] ?? '', 'Tuteur' => $_POST["tutor"] ?? '','Indépendante' => $_POST["Indépendante"] ?? '',
+                'Maroc' => $_POST["Maroc"] ?? '', 'Tunisie' => $_POST["Tunisie"] ?? '', 'Sénégal' => $_POST["Sénégal"] ?? '',
+                'Afrique_du_Sud' => $_POST["Afrique_du_Sud"] ?? '', 'Rwanda' => $_POST["Rwanda"] ?? '', 'Turquie' => $_POST["Turquie"] ?? '',
+                'Dubaï' => $_POST["Dubaï"] ?? '', 'France' => $_POST["France"] ?? '',
+            ];
+    
+            if(isset($_POST["annee"])){
+                if($_POST["annee"]=="1") $data['1']="X";
+                elseif($_POST["annee"]=="2") $data['2']="X";
+                elseif($_POST["annee"]=="3") $data['3']="X";
+                elseif($_POST["annee"]=="4") $data['4']="X";
+                elseif($_POST["annee"]=="5") $data['5']="X"; 
+            }
+    
+            if(isset($_POST["bourse"])){
+                if($_POST["bourse"]=="Oui") $data['Boursier']="X";
+                elseif($_POST["bourse"]=="Non") $data['Nonboursier']="X";
+                elseif($_POST["bourse"]=="stage") $data['Demande_de_stage']="X";
+            }
+    
+            if(isset($_POST["role"])){
+                if($_POST["role"]=="Pere") $data['Père']="X";
+                elseif($_POST["role"]=="Mere") $data['Mère']="X";
+                elseif($_POST["role"]=="Tuteur") $data['Tuteur']="X"; 
+                elseif($_POST["role"]=="Indépendante") $data['Indépendante']="X"; 
+                
+            }
+            
+            if(isset($_POST["destination"])){
+                if($_POST["destination"]=="Maroc") $data['Maroc']="X";
+                elseif($_POST["destination"]=="Tunisie") $data['Tunisie']="X";
+                elseif($_POST["destination"]=="Sénégal") $data['Sénégal']="X";
+                elseif($_POST["destination"]=="Afrique_du_Sud") $data['Afrique_du_Sud']="X";
+                elseif($_POST["destination"]=="Rwanda") $data['Rwanda']="X"; 
+                elseif($_POST["destination"]=="Turquie") $data['Turquie']="X";
+                elseif($_POST["destination"]=="Dubaï") $data['Dubaï']="X";
+                elseif($_POST["destination"]=="France") $data['France']="X";
+                //elseif($_POST["destination"]=="Autre") $data['Autre']="X";
+            }
+         
+            if(!isset($errors)){
+                $pdf = new generatePDF;
+                $response = $pdf->generate($data);
+                $chemin="".$response;
+                $infos=[
+                    "owner" => $_SESSION["username"]??"inconnue",
+                    "type" => $demande,
+                    "link" => $chemin,
+                ];
+                
+                add_table_pdf($_POST,$chemin);
+                add_pdf($infos);
+                $_SESSION["Demande_Etude"]=$response;
+                //header('Location:index.php?action=thanks');
+                supprimer_pdf($id,"modification avec succée !",true);
+                exit();
+            
+            } 
+            }
+        
+        $Student = GetTable("pdf");
+        $variables=array("Student" => $Student ??"","Demande" => $demande,"errors"=>$errors ?? []);
+        $vue="Views/vForm_etude.php";
+        render_other($vue,$variables);
+        
+    }
+    }
+
 }

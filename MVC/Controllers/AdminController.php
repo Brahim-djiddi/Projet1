@@ -105,42 +105,23 @@ function is_admin($CodeP){
     return  false;
 }
 
-function supprimer_pdf(){
-    if (isset($_GET["id"])){
+function supprimer_pdf($id="null",$success="Suppression avec succée !",$do=true){
+    if (isset($_GET["id"]) || $id!="null"){
 
-    $id=$_GET["id"];
+    if($id=='null')$id=$_GET["id"]  ;
 
     if(pdf_owner($_SESSION["username"],$id)){
         delete("demandes","Link",$id);
         delete("pdf","Link",$id);
         unlink('./PDFS/completed/this_year/'.$id);
-        $_SESSION["success"] = "Suppression avec succée !";
-        AfficherAdminWithAjax($choix="Demande",$choix2="All");
+        $_SESSION["success"] = $success;
+        if($do) AfficherAdminWithAjax($choix="Demande",$choix2="All");
     }
     }
 
 }
 
-function modifier_pdf(){
-    if (isset($_GET["id"])){
 
-    $id=$_GET["id"];
-
-    if(pdf_owner($_SESSION["username"],$id)){
-        /* delete("demandes","Link",$id);
-        delete("pdf","Link",$id);
-        unlink('./PDFS/completed/this_year/'.$id);
-        $_SESSION["success"] = "Suppression avec succée !";
-        AfficherAdminWithAjax($choix="Demande",$choix2="All"); */
-        $Student = GetTable("pdf");
-        $variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
-        $vue="Views/vForm_etude.php";
-        render_other($vue,$variables);
-        
-    }
-    }
-
-}
 
 function pdf_owner($username="",$id=""){
     if( strtoupper($_SESSION["CodeP"]) =="ADMIN" ) return true;
