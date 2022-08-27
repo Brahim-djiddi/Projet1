@@ -176,6 +176,7 @@
                                 <option selected value=" ">Vous-êtes boursier ?</option>
                                 <option value="Oui">oui-boursier</option>
                                 <option value="Non">non-boursier</option>
+                                <option value="stage">Demande de stage</option>
                             </select>
                         </div>
                     </div>
@@ -366,6 +367,7 @@
                                     <option value="Pere">Père</option>
                                     <option value="Mere"> Mère</option>
                                     <option value="Tuteur">Tuteur(rice)</option>
+                                    <option value="Indépendante">Indépendant(e)</option>
                                 </select>
                             </div>
                         </div>

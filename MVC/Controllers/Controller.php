@@ -5,12 +5,14 @@ require_once("Models/Model.php");
 require_once("Controllers/AdminController.php");
 require_once("Controllers/MailController.php");
 require_once("Controllers/UserController.php");
+
 function index(){
     $view="Views/vIndex.php";
     $profil="profil";
     if(isset($_SESSION["CodeP"])) {  if($_SESSION["CodeP"]=="admin") $profil="index2" ; }
     $_SESSION["profil"]=$profil;
     $variables=[];
+    //$variables=['equipe' => GetTable('equipes')];
     render($view,$variables);
 }
 
@@ -165,7 +167,7 @@ function Fiche_admission($demande="Demande_Etude"){
             '1' => $_POST["1"] ?? '','2' => $_POST["2"] ?? '','3' => $_POST["3"] ?? '', 
             '4' => $_POST["4"] ?? '', '5' => $_POST["5"] ?? '', 'Filière' => $_POST["filiere"] ?? '',               
             'Etablissement' => ($_POST["etablissement"]) ?? '','Boursier' => $_POST["Boursier"] ?? '',
-            'Nonboursier' => $_POST["Nonboursier"] ?? ''
+            'Nonboursier' => $_POST["Nonboursier"] ?? '','Demande_de_stage' => $_POST["stage"] ?? ''
             
             ,'Noms' => $_POST["nomE"] ?? '',                
             'Prénoms' => $_POST["prenomE"] ?? '','Date_et_lieu_de_naissance' => $_POST["dateN"] ?? '',
@@ -179,7 +181,7 @@ function Fiche_admission($demande="Demande_Etude"){
             'Code_postal_2' => $_POST["cpP"] ?? '', 'Ville_2' => $_POST["villeP"] ?? '', 'Pays_2' => $_POST["paysP"] ?? '',
             'Téléphone_2' => $_POST["numeroP"] ?? '', 'GSM_2' => $_POST["gsmP"] ?? '', 'Email_2' => $_POST["emailP"] ?? '',
 
-            'Père' => $_POST["father"] ?? '', 'Mère' => $_POST["mother"] ?? '', 'Tuteur' => $_POST["tutor"] ?? '',
+            'Père' => $_POST["father"] ?? '', 'Mère' => $_POST["mother"] ?? '', 'Tuteur' => $_POST["tutor"] ?? '','Indépendante' => $_POST["Indépendante"] ?? '',
             'Maroc' => $_POST["Maroc"] ?? '', 'Tunisie' => $_POST["Tunisie"] ?? '', 'Sénégal' => $_POST["Sénégal"] ?? '',
             'Afrique_du_Sud' => $_POST["Afrique_du_Sud"] ?? '', 'Rwanda' => $_POST["Rwanda"] ?? '', 'Turquie' => $_POST["Turquie"] ?? '',
             'Dubaï' => $_POST["Dubaï"] ?? '', 'France' => $_POST["France"] ?? '',
@@ -202,12 +204,15 @@ function Fiche_admission($demande="Demande_Etude"){
         if(isset($_POST["bourse"])){
             if($_POST["bourse"]=="Oui") $data['Boursier']="X";
             elseif($_POST["bourse"]=="Non") $data['Nonboursier']="X";
+            elseif($_POST["bourse"]=="stage") $data['Demande_de_stage']="X";
         }
 
         if(isset($_POST["role"])){
             if($_POST["role"]=="Pere") $data['Père']="X";
             elseif($_POST["role"]=="Mere") $data['Mère']="X";
             elseif($_POST["role"]=="Tuteur") $data['Tuteur']="X"; 
+            elseif($_POST["role"]=="Indépendante") $data['Indépendante']="X"; 
+            
         }
         
         if(isset($_POST["destination"])){
@@ -472,4 +477,32 @@ function EditProfil(){
     $variables=["user" => GetUser($_SESSION["email"]),"errors" => $errors ?? []];
     $template="_profil";
     render($view,$variables,$template);
+}
+
+
+
+function ajouter_equipe(){
+    //$Liste= ["nom" => "", "prenom" => "","titre" => "", "facebook" => "","twitter" => "","instagram" => "","linkedin" => "", "photo_name" => ""];
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $data=$_POST;
+        if(empty($data["nom"]))         $errors["nom"] = "Le nom ne doit pas etre vide !";
+        if(empty($data["prenom"]))          $errors["prenom"]    ="Le prenom ne doit pas etre vide !"   ;
+		if(empty($data["titre"]))              $errors["titre"] ="Le titre ne doit pas etre vide !" ;
+        if(empty($data["facebook"]))                $errors["facebook"] ="Le facebook ne doit pas etre vide !" ;                               
+        if(empty($data["twitter"]))           $errors["twitter"] = "Le twitterne doit pas etre vide !"; 
+        if(empty($data["instagram"]))              $errors["instagram"] = "Le numero de instagram ne doit pas etre vide !";
+        if(empty($data["linkedin"]))              $errors["linkedin"] = "Le numero de linkedin ne doit pas etre vide !";
+        //if(empty($data["instagram"]))              $errors["instagram"] = "Le numero de telephone ne doit pas etre vide !";
+        
+        if(!isset($errors)){
+            CreateEquipe($data);     
+            //header("location:index.php?action=index2");
+            echo"bien ajoute";
+        }
+    }
+    //$view="Views/vSignUp.php";
+    //$variables=array("data"=>$data,"errors"=>$errors ?? []);
+    //renderWithAjax($view,$variables);
+    //render($view,$variables);
+
 }
