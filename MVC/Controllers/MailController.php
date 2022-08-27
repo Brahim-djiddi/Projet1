@@ -11,8 +11,6 @@ function Send_Mail(){
 		if(empty($Logger["email"]))             $errors["email"] ="L'email ne doit pas etre vide !" ;
         if(empty($Logger["message"]))           $errors["message"] ="Le message ne doit pas etre vide !" ; 
 
-    
-
         if(!isset($errors)){
             $_SESSION["success"]="votre email a bien ete envoyer !";
             $to="houssam_sugar@hotmail.com";

@@ -41,12 +41,8 @@ function Logger_Exists(array $user,$role){
     $Rq1= OuvrirConnextion()->prepare("select Role from user where Email = ? or Username = ? ");	
 	$Rq1->execute([$email,$email]);
     $Code=$Rq1->fetchcolumn();
-
 	if(($passHash)==($pass) && $Code==$role) return true;
-    return false;
-    
-
-    
+    return false;   
 }
 
 function GetUser($email){
@@ -58,7 +54,6 @@ function add_pdf($t){
         $User=[$t["owner"],$t["type"],$t["link"]];
         OuvrirConnextion()->prepare("INSERT INTO demandes (Owner,Type,Link)
          VALUES (?,?,?)")->execute($User);
-
 }
 
 function GetListe($choix){
@@ -95,18 +90,14 @@ function User_Exists($var,$varname="Username",$tablename="user"){
     $Rq= OuvrirConnextion()->prepare("select $varname from $tablename where $varname = ?");	
 	$Rq->execute([$var]);
     //$result=$Rq;
-
-
 	if($Rq->rowCount() >= 1) return true;
     else return false;    
     /* return(!empty($Rq)); */
-
 }
 
 function pdf_exists($username){
     $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where Owner = ?");	
     $Rq->execute([$username]);
-
     if($Rq->rowCount() >= 1) return true;
     else return false;    
 }
@@ -124,6 +115,7 @@ function GetTable($name){
     return $Rq;
 }
 
+
 function Get_Pdf_Link($owner){
     $Rq= OuvrirConnextion()->prepare("select Link FROM  demandes where Owner = ? ");	
     $Rq->execute([$owner]);
@@ -131,3 +123,58 @@ function Get_Pdf_Link($owner){
     return $Rq1;
 }
 
+
+//Get equipes
+function DeleteEquipes($id){
+    return OuvrirConnextion()->query("Delete from equipes where idEq='$id'");	
+}
+
+function getEquipes($choix){
+    return OuvrirConnextion()->query("select * FROM  $choix ")->fetchall();	
+}
+
+//Set equipes
+function SetEquipes (array $eq, $id){
+    $photo_name=$_FILES['photo']['name'];
+    $Liste=[$eq["nom"], $eq["prenom"],$eq["titre"], $eq["facebook"],$eq["twitter"],$eq["instagram"],$eq["linkedin"], $photo_name]; ;
+    OuvrirConnextion()->prepare("update equipes set Nom=?,Prenom=?,Titre=?, Facebook=?, Twitter=?, Instagram=?, Linkedin=?, Profile=? where idEq=$id")->execute($Liste);
+    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/".$photo_name);    
+}
+
+//Create equipes
+function CreateEquipes(array $eq){
+    $photo_name=$_FILES['photo']['name'];
+    $Liste=[ $eq["nom"], $eq["prenom"],$eq["titre"], $eq["facebook"],$eq["twitter"],$eq["instagram"],$eq["linkedin"], $photo_name ];
+    OuvrirConnextion()->prepare("INSERT INTO equipes (Nom,Prenom,Titre,Facebook,Twitter,Instagram,Linkedin,Profile) VALUES (?,?,?,?,?,?,?,?)")->execute($Liste);
+    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/".$photo_name);
+}
+
+function delete($table,$column,$value){
+    
+    $tab = [$value];
+    //OuvrirConnextion()->exec("DELETE from demandes WHERE link='$link'");
+    $Rq=OuvrirConnextion()->prepare("DELETE  from $table  WHERE $column = ? ");
+    $Rq->execute($tab);
+    
+}
+
+function add_table_pdf($tab="",$link=""){
+    if(!empty($tab) && !empty($link)){
+        $t=[
+            $link,$tab['annee'],$tab['filiere'],$tab['etablissement'],$tab['bourse'],$tab['nomE'],$tab['prenomE'],$tab['dateN'],
+            $tab['nationalite'],$tab['CNI'],$tab['paysE'],$tab['villeE'],$tab['cpE'],$tab['apE'],$tab['numeroE'],$tab['gsmE'],
+            $tab['emailE'],$tab['serie'],$tab['nomP'],$tab['prenomP'],$tab['profession'],$tab['adP'],$tab['cpP'],$tab['emailP'],
+            $tab['paysP'],$tab['villeP'],$tab['numeroP'],$tab['gsmP'],$tab['role'],$tab['destination'],
+        ];
+        OuvrirConnextion()->prepare("INSERT INTO pdf 
+        (Link,annee,filiere,etablissement,bourse,nomE,prenomE,dateN,nationalite,CNI,paysE,villeE,cpE,apE,numeroE,gsmE,
+        emailE,serie,nomP,prenomP,profession,adP,cpP,emailP,paysP,villeP,numeroP,gsmP,role,destination)
+         VALUES (?,?,?,?,?,?,?,?,?,?,   ?,?,?,?,?,?,?,?,?,?,    ?,?,?,?,?,?,?,?,?,?)")->execute($t);
+    }
+    
+
+       
+
+        
+    
+}

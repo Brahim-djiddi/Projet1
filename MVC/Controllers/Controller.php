@@ -5,14 +5,12 @@ require_once("Models/Model.php");
 require_once("Controllers/AdminController.php");
 require_once("Controllers/MailController.php");
 require_once("Controllers/UserController.php");
-
 function index(){
     $view="Views/vIndex.php";
     $profil="profil";
     if(isset($_SESSION["CodeP"])) {  if($_SESSION["CodeP"]=="admin") $profil="index2" ; }
     $_SESSION["profil"]=$profil;
-    $variables=[];
-    //$variables=['equipe' => GetTable('equipes')];
+    $variables=['equipes' => getEquipes('equipes')];
     render($view,$variables);
 }
 
@@ -228,12 +226,8 @@ function Fiche_admission($demande="Demande_Etude"){
         }
         /* $data['Group_Bourse']="X"; */
 
-
-
-
         /* if(empty($data["Filière"]))         $errors["Filière"] = "La filière ne peut pas être vide !";
         if(empty($data["Etablissement"]))          $errors["Etablissement"]    ="L'établissement ne peut pas être vide !"   ;
-
 		if(empty($data["Noms"]))              $errors["Noms"] ="Le nom ne peut pas être vide !" ;
         if(empty($data["Prénoms"]))              $errors["Prénoms"] ="Le Prénoms ne peut pas être vide !" ;
         if(empty($data["Date_et_lieu_de_naissance"]))              $errors["Date_et_lieu_de_naissance"] ="Date et lieu de naissance ne peut pas être vide !" ;
@@ -246,9 +240,7 @@ function Fiche_admission($demande="Demande_Etude"){
         if(empty($data["Téléphone"]))          $errors["Téléphone"] = "Le Telephone ne peut pas être vide !";
         //if(empty($data["GSM"]))          $errors["GSM"] = "Le Telephone ne peut pas être vide !";
         if(empty($data["Email"]))          $errors["Email"] = "Le Telephone ne peut pas être vide !";
-
         if(empty($data["Série_du_baccalauréat"]))          $errors["Série_du_baccalauréat"] = "Le Telephone ne peut pas être vide !";
-
         if(empty($data["Noms_2"]))              $errors["Noms_2"] ="Le nom ne peut pas être vide !" ;
         if(empty($data["Prénoms_2"]))              $errors["Prénoms_2"] ="Le Prénoms ne peut pas être vide !" ;
         if(empty($data["Profession"]))              $errors["Profession"] ="Date et lieu de naissance ne peut pas être vide !" ;
@@ -260,21 +252,21 @@ function Fiche_admission($demande="Demande_Etude"){
         //if(empty($data["GSM_2"]))          $errors["GSM_2"] = "Le Telephone ne peut pas être vide !";
         if(empty($data["Email_2"]))          $errors["Email_2"] = "Le Telephone ne peut pas être vide !"; */
     
-        /* foreach($data as $d){
+        /* foreach($data as $dd => $d){
             if(empty($d)){
-                $errors[$d]="Ce champs est obligatoire!";
+                $errors[$dd]="Ce champs est obligatoire!";
             }
          */
 
         if(!isset($errors)){
-            if(User_Exists($_SESSION["username"],"Owner","demandes")){
+            /* if(User_Exists($_SESSION["username"],"Owner","demandes")){
 
                 $link=Get_Pdf_Link($_SESSION["username"]);
                 $_SESSION["Demande_Etude"]=$link;
                 
                 header('Location:index.php?action=mypdf&link=');
             }
-            else{
+            else */{
             $pdf = new generatePDF;
             $response = $pdf->generate($data);
             $chemin="".$response;
@@ -284,6 +276,7 @@ function Fiche_admission($demande="Demande_Etude"){
                 "link" => $chemin,
             ];
             add_pdf($infos);
+            add_table_pdf($_POST,$chemin);
             $_SESSION["Demande_Etude"]=$response;
             header('Location:index.php?action=thanks');
         }
@@ -477,12 +470,13 @@ function EditProfil(){
     $variables=["user" => GetUser($_SESSION["email"]),"errors" => $errors ?? []];
     $template="_profil";
     render($view,$variables,$template);
+    
 }
 
 
 
 function ajouter_equipe(){
-    //$Liste= ["nom" => "", "prenom" => "","titre" => "", "facebook" => "","twitter" => "","instagram" => "","linkedin" => "", "photo_name" => ""];
+
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $data=$_POST;
         if(empty($data["nom"]))         $errors["nom"] = "Le nom ne doit pas etre vide !";
@@ -492,17 +486,38 @@ function ajouter_equipe(){
         if(empty($data["twitter"]))           $errors["twitter"] = "Le twitterne doit pas etre vide !"; 
         if(empty($data["instagram"]))              $errors["instagram"] = "Le numero de instagram ne doit pas etre vide !";
         if(empty($data["linkedin"]))              $errors["linkedin"] = "Le numero de linkedin ne doit pas etre vide !";
-        //if(empty($data["instagram"]))              $errors["instagram"] = "Le numero de telephone ne doit pas etre vide !";
         
         if(!isset($errors)){
-            CreateEquipe($data);     
-            //header("location:index.php?action=index2");
-            echo"bien ajoute";
+            CreateEquipes($data);     
+            header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
         }
     }
-    //$view="Views/vSignUp.php";
-    //$variables=array("data"=>$data,"errors"=>$errors ?? []);
-    //renderWithAjax($view,$variables);
-    //render($view,$variables);
+}
 
+function modifier_equipe(){
+
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $Updatedata=$_POST;
+        if(empty($Updatedata["nom"]))         $errors["nom"] = "Le nom ne doit pas etre vide !";
+        if(empty($Updatedata["prenom"]))          $errors["prenom"]    ="Le prenom ne doit pas etre vide !"   ;
+		if(empty($Updatedata["titre"]))              $errors["titre"] ="Le titre ne doit pas etre vide !" ;
+        if(empty($Updatedata["facebook"]))                $errors["facebook"] ="Le facebook ne doit pas etre vide !" ;                               
+        if(empty($Updatedata["twitter"]))           $errors["twitter"] = "Le twitterne doit pas etre vide !"; 
+        if(empty($Updatedata["instagram"]))              $errors["instagram"] = "Le numero de instagram ne doit pas etre vide !";
+        if(empty($Updatedata["linkedin"]))              $errors["linkedin"] = "Le numero de linkedin ne doit pas etre vide !";
+   
+        if(!isset($errors)){
+             SetEquipes($Updatedata, $Updatedata["idEq"]);   
+             header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+        }
+    }
+}
+
+function supprimer_equipe(){
+    if(isset($_GET["supEq"])){
+      $idE=$_GET["supEq"];
+      DeleteEquipes($idE);
+      header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+    }
+   
 }

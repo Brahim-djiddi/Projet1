@@ -75,19 +75,24 @@ function LoginAdmin(){
     render($view,$variables);
 } */
 
-function AfficherAdminWithAjax(){
+function AfficherAdminWithAjax($choix="null",$choix2="null"){
     $CodeP=$_SESSION["CodeP"]??"etudiant";
+    if($choix=="null" && $choix2=="null"){
     $choix=$_REQUEST["choix"]?? "Dashboard";
     $choix2=$_REQUEST["choix2"]?? "_Etude";
-    
+    }
+  
     $view="Views/Admin/Aff_".$choix.".php";
+    
     if($choix=="Demande") {
         if($choix2=="All")$variables=["AFF"=>GetListeDemandes(),"CodeP"=>$CodeP];
-        else $variables=["AFF"=>GetListe($choix.$choix2),"CodeP"=>$CodeP];
-    }
-    else $variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
+        else 
+        $variables=["AFF"=>GetListe($choix.$choix2),"CodeP"=>$CodeP];
+    }elseif($choix=="equipes"){$variables=["Eq"=>getEquipes($choix),"CodeP"=>$CodeP];} 
     
-    renderWithAjax($view,$variables);
+    else $variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
+
+       renderWithAjax($view,$variables);
 }
 
 function is_admin($CodeP){
@@ -100,8 +105,47 @@ function is_admin($CodeP){
     return  false;
 }
 
+function supprimer_pdf(){
+    if (isset($_GET["id"])){
 
+    $id=$_GET["id"];
 
+    if(pdf_owner($_SESSION["username"],$id)){
+        delete("demandes","Link",$id);
+        delete("pdf","Link",$id);
+        unlink('./PDFS/completed/this_year/'.$id);
+        $_SESSION["success"] = "Suppression avec succée !";
+        AfficherAdminWithAjax($choix="Demande",$choix2="All");
+    }
+    }
 
+}
 
+function modifier_pdf(){
+    if (isset($_GET["id"])){
+
+    $id=$_GET["id"];
+
+    if(pdf_owner($_SESSION["username"],$id)){
+        /* delete("demandes","Link",$id);
+        delete("pdf","Link",$id);
+        unlink('./PDFS/completed/this_year/'.$id);
+        $_SESSION["success"] = "Suppression avec succée !";
+        AfficherAdminWithAjax($choix="Demande",$choix2="All"); */
+        $Student = GetTable("pdf");
+        $variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
+        $vue="Views/vForm_etude.php";
+        render_other($vue,$variables);
+        
+    }
+    }
+
+}
+
+function pdf_owner($username="",$id=""){
+    if( strtoupper($_SESSION["CodeP"]) =="ADMIN" ) return true;
+    else{
+    return true;
+    }
+}
 ?>

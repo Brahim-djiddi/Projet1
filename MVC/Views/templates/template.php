@@ -41,7 +41,7 @@
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-        <h3 class="text-dark font-weight-bold">Nos service</h3> 
+        <h3 class="text-dark">Nos service</h3> 
         <hr align="center" width="30%"  style="background-color:#FFDD41; padding:0.2%;">
       </div>
     </div>
@@ -100,8 +100,8 @@
   <div class="container">
     <div class="row mb-5 justify-content-center" data-aos="fade-up">
       <div class="col-md-7 text-center">
-        <h3 class="text-dark font-weight-bold">Vos demandes</h3> 
-        <hr align="center" width="35%"  style="background-color:#FFDD41; padding:0.2%;">
+        <h3 class="text-dark ">Vos demandes</h3> 
+        <hr align="center" width="35%"  style="background-color:#0D63BC; padding:0.2%;">
       </div>
     </div>
     <div class="row">
@@ -148,60 +148,25 @@
   <div class="container">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-        <h3 class="text-dark font-weight-bold">Notre équipe</h3> 
-        <hr align="center" width="35%"  style="background-color:#FFDD41; padding:0.2%;">
+        <h3 class="text-dark ">Notre équipe</h3> 
+        <hr align="center" width="35%"  style="background-color:#0D63BC; padding:0.2%;">
       </div>
     </div>
     <div class="row">
 
+  <?php foreach($variables['equipes'] as $eq){ ?>
       <div class="col-lg-3 text-center">
-        <img src="public/images/person_2.jpg" alt="" class="rounded-circle img-fluid w-50 mb-4">
-        <h3 class="h4 text-black">Nom et prénom</h3>
-        <p>Directeur chargé des études</p>
+        <img src="public/images/<?= $eq['Profile'] ?>" alt="" class="rounded-circle mb-4" height="150" width="150">
+        <h3 class="h4 text-center text-black"><?= $eq['Nom'] . ' ' . $eq['Prenom'] ?></h3>
+        <p><?= $eq['Titre'] ?></p>
         <p>
-          <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+          <a href="<?= $eq['Facebook']?>" class="pl-0" target="_blank"><i class="fa-brands fa-square-facebook " style="color:#0B82EE;"></i></span></a>
+          <a href="<?= $eq['Twitter']?>" class="pl-3" target="_blank"><i class="fa-brands fa-square-twitter" style="color:#1EA1F2;"></i> </span></a>
+          <a href=" <?= $eq['Instagram']?>" class="pl-3" target="_blank"><i class="fa-brands fa-square-instagram " style="color:rgb(246,8,142);"></i> </span></a>
+          <a href="<?= $eq['Linkedin']?>" class=" pl-3" target="_blank"><i class="fa-brands fa-linkedin" style="color:#0D63BC;"></i></span></a>
         </p>
       </div>
-
-      <div class="col-lg-3 text-center">
-        <img src="public/images/person_2.jpg" alt="" class="rounded-circle img-fluid w-50 mb-4">
-        <h3 class="h4 text-black">Nom et prénom</h3>
-        <p>Directeur chargé des stages</p>
-        <p>
-          <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-        </p>
-      </div>
-
-      <div class="col-lg-3 text-center">
-        <img src="public/images/person_2.jpg" alt="" class="rounded-circle img-fluid w-50 mb-4">
-        <h3 class="h4 text-black">Nom et prénom</h3>
-        <p>Directeur chargé des séjours</p>
-        <p>
-          <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-        </p>
-      </div>
-
-      <div class="col-lg-3 text-center">
-        <img src="public/images/person_2.jpg" alt="" class="rounded-circle img-fluid w-50 mb-4">
-        <h3 class="h4 text-black">Nom et prénom</h3>
-        <p>Directeur chargé des jobs</p>
-        <p>
-          <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-          <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-        </p>
-      </div>
-
+      <?php } ?>
     </div>
   </div>
 </section>
@@ -212,7 +177,7 @@
   <div class="container-fluid">
     <div class="row mb-5 justify-content-center">
       <div class="col-md-7 text-center">
-        <h3 class="text-dark font-weight-bold">Gallerie des photos</h3> 
+        <h3 class="text-dark ">Gallerie des photos</h3> 
         <hr align="center" width="40%"  style="background-color:#FFDD41; padding:0.2%;">
       </div>
     </div>
@@ -280,7 +245,7 @@
 <section class="site-section" data-aos="fade-up">
   <div class="row">
     <div class="col-12 text-center mb-5">
-      <h3 class="text-dark font-weight-bold">Nos partenaires</h3> 
+      <h3 class="text-dark">Nos partenaires</h3> 
       <hr align="center" width="20%"  style="background-color:#FFDD41; padding:0.2%;">
     </div>
   </div>
@@ -320,7 +285,7 @@
           unset($_SESSION["unsuccess"]);
         } ?>      
       
-        <h3 class="text-dark font-weight-bold">Contactez-nous</h3> 
+        <h3 class="text-dark ">Contactez-nous</h3> 
       <hr align="center" width="20%"  style="background-color:#FFDD41; padding:0.2%;">
         
       </div>

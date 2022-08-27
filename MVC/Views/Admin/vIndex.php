@@ -17,15 +17,9 @@
   <link href="public/plugins/sb-admin-2.min.css" rel="stylesheet">
 
   <!-- DataTables :  -->
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
-
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-
-
+   
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -56,32 +50,7 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-        <!-- <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li> -->
-
-        <!-- Messages Dropdown Menu -->
-
-        <!-- Notifications Dropdown Menu -->
-
+      
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
@@ -98,10 +67,9 @@
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar  elevation-4">
-      <!-- Brand Logo -->
-      <!-- Sidebar -->
+  
       <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
+    
         <div class=" mt-3 pb-3 mb-3 d-flex">
           <div class="image">
 
@@ -130,8 +98,7 @@
 
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-            <!-- Add icons to the links using the .nav-icon class
-     with font-awesome or any other icon font library -->
+     
             <li class="nav-item">
               <a href="index.php?action=AfficherAdminWithAjax&choix=Dashboard" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
@@ -154,7 +121,7 @@
 
             <hr class="text-muted">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="index.php?action=AfficherAdminWithAjax&choix=equipes" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Équipe consulting
@@ -252,15 +219,16 @@
     
       </div>
     </footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
   </div>
-  <!-- ./wrapper -->
 
+ 
+
+
+  <!--   <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  
   <!-- jQuery -->
   <script src="public/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -275,12 +243,10 @@
   <script src="public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="public/plugins/dist/js/adminlte.js"></script>
-  <!-- AdminLTE for demo purposes -->
+
+  <script src="public/plugins/dist/js/demo.js"></script>
+  <script src="public/js/test_DT.js"></script>
+  <script src="public/js/Aff_Ajax.js"></script>
 
 </body>
-<script src="public/plugins/dist/js/demo.js"></script>
-<script src="public/js/test_DT.js"></script>
-<script src="public/js/Aff_Ajax.js"></script>
-
-
 </html>
