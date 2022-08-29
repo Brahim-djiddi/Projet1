@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2022 at 06:30 PM
+-- Generation Time: Aug 29, 2022 at 06:37 PM
 -- Server version: 5.7.17
 -- PHP Version: 8.0.9
 
@@ -33,6 +33,14 @@ CREATE TABLE `demandes` (
   `Date_Ajout` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Link` varchar(1000) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `demandes`
+--
+
+INSERT INTO `demandes` (`Owner`, `Type`, `Date_Ajout`, `Link`) VALUES
+('smi2022', 'Demande_Etude', '2022-08-29 16:32:57', '1661790776_smi2022'),
+('smi2022', 'Demande_Etude', '2022-08-29 16:32:04', '1661790722_smi2022');
 
 -- --------------------------------------------------------
 
@@ -99,6 +107,14 @@ CREATE TABLE `pdf` (
   `destination` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `pdf`
+--
+
+INSERT INTO `pdf` (`id`, `Link`, `annee`, `filiere`, `etablissement`, `bourse`, `nomE`, `prenomE`, `dateN`, `nationalite`, `CNI`, `paysE`, `villeE`, `cpE`, `apE`, `numeroE`, `gsmE`, `emailE`, `serie`, `nomP`, `prenomP`, `profession`, `adP`, `cpP`, `emailP`, `paysP`, `villeP`, `numeroP`, `gsmP`, `role`, `destination`) VALUES
+(46, '1661790722_smi2022', '2', 'Ã‰conomie', 'UniversitÃ© public', 'Oui', 'simop idrissi', 'ydpsioQ2ay', '2022-08-13', 'wy7ZcgvTSJ', 'KOj3QMfEHb', 'p64mgPTmzS', '7eU4zVXoQO', 250501, 'upWqwfQ2xf', 'ysOncdr5BO', 'HkBaODlfAO', 'kqqzs@slv4.com', '5vDCOxjcN1', '8tggIYGlef', '9wIeraURRe', 'Cultivateur', '4LgSAx9qj2', 354, '5usmx@kfv0.com', 'JVQyaz2BTM', '4q6eCj3p6H', 'NrkdobiZrJ', 'WXUMvvSt3S', 'Tuteur', 'SÃ©nÃ©gal'),
+(48, '1661790776_smi2022', '2', 'Ã‰conomie', 'UniversitÃ© public', 'Oui', 'houssam', 'ydpsioQ2ay', '2022-08-13', 'wy7ZcgvTSJ', 'KOj3QMfEHb', 'p64mgPTmzS', '7eU4zVXoQO', 250501, 'upWqwfQ2xf', 'ysOncdr5BO', 'HkBaODlfAO', 'kqqzs@slv4.com', '5vDCOxjcN1', '8tggIYGlef', '9wIeraURRe', 'Cultivateur', '4LgSAx9qj2', 354, '5usmx@kfv0.com', 'JVQyaz2BTM', '4q6eCj3p6H', 'NrkdobiZrJ', 'WXUMvvSt3S', 'Tuteur', 'SÃ©nÃ©gal');
+
 -- --------------------------------------------------------
 
 --
@@ -128,7 +144,9 @@ INSERT INTO `user` (`FirstName`, `LastName`, `Age`, `Username`, `Pass`, `Role`, 
 ('Ivan2', 'Yvan1', 30, 'GuetcharAdmin', 'e4adc3243830dea5ffcd67b9f41ef013', 'admin', 'Guetchar@gmail.com', '0000000000', 'Homme', 'Autre'),
 ('Houssam Eddine', 'Rahimi', 44, 'user1', '81dc9bdb52d04dc20036dbd8313ed055', 'etudiant', 'user1@gmail.com', '0624046210', 'Homme', 'Stagiaire'),
 ('Houssam Eddine', 'Rahimi', 34, 'user2', '81dc9bdb52d04dc20036dbd8313ed055', 'etudiant', 'user2@gmail.com', '0624046210', 'Homme', 'Autre'),
-('Houssam Eddine', 'Rahimi', 34, 'user3', '81dc9bdb52d04dc20036dbd8313ed055', 'etudiant', 'user3@gmail.com', '0624046210', 'Homme', 'Stagiaire');
+('Houssam Eddine', 'Rahimi', 34, 'user3', '81dc9bdb52d04dc20036dbd8313ed055', 'etudiant', 'user3@gmail.com', '0624046210', 'Homme', 'Stagiaire'),
+('Houssam Eddine', 'Rahimi', 44, 'user4', '81dc9bdb52d04dc20036dbd8313ed055', 'Stagiaire', 'user4@gmail.com', '0624046210', 'Homme', 'Stagiaire'),
+('Houssam Eddine', 'Rahimi', 33, 'user5', '81dc9bdb52d04dc20036dbd8313ed055', 'Etudiant', 'user5@gmail.com', '0624046210', 'Homme', 'Etudiant');
 
 --
 -- Indexes for dumped tables
@@ -154,13 +172,13 @@ ALTER TABLE `pdf`
 -- AUTO_INCREMENT for table `equipes`
 --
 ALTER TABLE `equipes`
-  MODIFY `idEq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idEq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `pdf`
 --
 ALTER TABLE `pdf`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
