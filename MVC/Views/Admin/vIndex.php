@@ -131,7 +131,7 @@
             <hr class="text-muted">
             
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="index.php?action=AfficherAdminWithAjax&choix=galleries" class="nav-link">
                 <i class="nav-icon far fa-image"></i>
                 <p>
                   Gallerie consulting

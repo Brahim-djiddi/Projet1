@@ -88,7 +88,9 @@ function AfficherAdminWithAjax($choix="null",$choix2="null"){
         if($choix2=="All")$variables=["AFF"=>GetListeDemandes(),"CodeP"=>$CodeP];
         else 
         $variables=["AFF"=>GetListe($choix.$choix2),"CodeP"=>$CodeP];
-    }elseif($choix=="equipes"){$variables=["Eq"=>getEquipes($choix),"CodeP"=>$CodeP];} 
+    }
+    elseif($choix=="equipes"){$variables=["Eq"=>getEquipes($choix),"CodeP"=>$CodeP];} 
+    elseif($choix=="galleries"){$variables=["Eq"=>getEquipes($choix),"CodeP"=>$CodeP];} 
     
     else $variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
 
