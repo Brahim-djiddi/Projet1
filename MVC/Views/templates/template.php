@@ -182,13 +182,18 @@
       </div>
     </div>
     <div class="row">
-          <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="public/images/images5.png" data-fancybox="gal"><img src="public/images/images5.png" alt="1" class="img-fluid"></a>
+    <?php foreach($variables['gallery'] as $gal){ ?>
+      <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" 
+      href='./public/images/gallery/<?= $gal["image"] ?>' data-fancybox="gal"><img src='./public/images/gallery/<?= $gal["image"] ?>' alt="1" class="img-fluid"></a>
+      <?php } ?>
+          <!-- <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="public/images/images5.png" data-fancybox="gal"><img src="public/images/images5.png" alt="1" class="img-fluid"></a>
           <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="public/images/images2.png" data-fancybox="gal"><img src="public/images/images2.png" alt="2" class="img-fluid"></a>
           <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="public/images/images3.png" data-fancybox="gal"><img src="public/images/images3.png" alt="3" class="img-fluid"></a>
           <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="public/images/images4.png" data-fancybox="gal"><img src="public/images/images4.png" alt="4" class="img-fluid"></a>
           <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="public/images/images1.png" data-fancybox="gal"><img src="public/images/images1.png" alt="4" class="img-fluid"></a>
           <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="public/images/images6.png" data-fancybox="gal"><img src="public/images/images6.png" alt="4" class="img-fluid"></a>
-    </div>
+     -->
+        </div>
   </div>
 </section>
 

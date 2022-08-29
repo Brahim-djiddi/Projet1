@@ -43,10 +43,10 @@
                         <td><?= $AD["Owner"] ?></td>
                         <td><?= $AD["Type"] ?></td>
                         <td><?= $AD["Date_Ajout"] ?></td>
-                        <td><a class="btn btn-sm btn-success" href="PDFs/completed/this_year/<?= $AD['Link']; ?>" download="Fiche_Admission">Télécharger</a></td>
                         <td><a class="btn btn-sm btn-success" href="PDFs/completed/this_year/<?= $AD['Link']; ?> " target="_blank" >Consulter</a></td>
-                        <td><a class="btn btn-sm btn-success" href="index.php?action=supprimer_pdf&id=<?php echo $AD['Link']; ?>" >supprimer</a></td>
-                        <td><a class="btn btn-sm btn-success" href="index.php?action=modifier_pdf&id=<?php echo $AD['Link']; ?>" >modifier</a></td>
+                        <td><a class="btn btn-sm btn-success" href="PDFs/completed/this_year/<?= $AD['Link']; ?>" download="Fiche_Admission">Télécharger</a></td>
+                        <td><a class="btn btn-sm btn-warning" href="index.php?action=modifier_pdf&id=<?php echo $AD['Link']; ?>" >Modifier</a></td>
+                        <td><a class="btn btn-sm btn-danger" href="index.php?action=supprimer_pdf&id=<?php echo $AD['Link']; ?>" >Supprimer</a></td>
                     </tr>
                 <?php } ?>
 

@@ -10,7 +10,7 @@ function index(){
     $profil="profil";
     if(isset($_SESSION["CodeP"])) {  if($_SESSION["CodeP"]=="admin") $profil="index2" ; }
     $_SESSION["profil"]=$profil;
-    $variables=['equipes' => getEquipes('equipes')];
+    $variables=['equipes' => getEquipes('equipes'),'gallery' => getEquipes('galleries')];
     render($view,$variables);
 }
 
@@ -146,7 +146,8 @@ function Pre_Demande(){
 
 
 function Fiche_admission(){
-    if(isset($_SESSION["allow_demande"])) {
+    if($_SESSION["CodeP"] == "admin") $_SESSION["allow_demande"] ="yes";
+    if(isset($_SESSION["allow_demande"])  ) {
     $CodeP="etudiant";
     $demande=$_GET["demande"] ?? "Demande_Etude";
     //$_SESSION[$demande] = $demande ;
@@ -473,7 +474,7 @@ function EditProfil(){
 
         if(!isset($errors)){
             UpdateUser($Logger,$_SESSION["CodeP"]);     
-            
+            $_SESSION["success"] = "profil bien modifier" ;
             header("location:index.php?action=profil");
             
         }
@@ -503,7 +504,27 @@ function ajouter_equipe(){
         
         if(!isset($errors)){
             CreateEquipes($data);     
+            $_SESSION["success"] = "equipe bien ajouter" ;
             header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+        }
+    }
+}
+
+function ajouter_gallery(){
+
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $Updatedata=$_POST;
+        //if(empty($Updatedata["titre"]))                 $errors["titre"] = "Le titre ne doit pas etre vide !" ;
+       // if(empty($Updatedata["description"]))           $Updatedata["description"] = "aucun description";
+        //if(empty($Updatedata["photo"]))                 $errors["photo"] = "L'image ne doit pas etre vide !" ;   ;
+		
+ 
+   
+        if(!isset($errors)){
+             CreateGallery($Updatedata);   
+             $_SESSION["success"] = "image bien ajouter" ;
+             header("Location: index.php?action=AfficherAdminWithAjax&choix=galleries");
+             
         }
     }
 }
@@ -522,7 +543,32 @@ function modifier_equipe(){
    
         if(!isset($errors)){
              SetEquipes($Updatedata, $Updatedata["idEq"]);   
+             echo"image ajoute";
+             $_SESSION["success"] = "equipe bien modifier" ;
              header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+        }
+    }
+}
+
+function modifier_gallery(){
+
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $Updatedata=$_POST;
+        if(empty($Updatedata["titre"]))                 $errors["titre"] = "Le titre ne doit pas etre vide !" ;
+        if(empty($Updatedata["description"]))           $Updatedata["description"] = "aucun description";
+        if(!isset($Updatedata["photo"]))                 $Updatedata["photo"] = get_image_id($_POST["id"],"galleries")   ;
+		
+ 
+   
+        if(!isset($errors)){
+            if(isset($Updatedata["id"])){
+            $idE=$Updatedata["id"];
+            $nom_image = get_nom($idE);
+            unlink('./public/images/gallery/'.$nom_image);
+            SetGallery($Updatedata, $Updatedata["id"]);   
+            $_SESSION["success"] = "image bien modifier" ;
+            header("Location: index.php?action=AfficherAdminWithAjax&choix=galleries");
+            }
         }
     }
 }
@@ -531,7 +577,20 @@ function supprimer_equipe(){
     if(isset($_GET["supEq"])){
       $idE=$_GET["supEq"];
       DeleteEquipes($idE);
+      $_SESSION["success"] = "equipe bien supprimer" ;
       header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+    }
+   
+}
+
+function supprimer_gallery(){
+    if(isset($_GET["supEq"])){
+      $idE=$_GET["supEq"];
+      $nom_image = get_nom($idE);
+      unlink('./public/images/gallery/'.$nom_image);
+      DeleteGallery($idE);
+      $_SESSION["success"] = "image bien supprimer" ;
+      header("Location: index.php?action=AfficherAdminWithAjax&choix=galleries");
     }
    
 }

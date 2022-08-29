@@ -91,6 +91,8 @@ function AfficherAdminWithAjax($choix="null",$choix2="null"){
     }
     elseif($choix=="equipes"){$variables=["Eq"=>getEquipes($choix),"CodeP"=>$CodeP];} 
     elseif($choix=="galleries"){$variables=["Eq"=>getEquipes($choix),"CodeP"=>$CodeP];} 
+    elseif($choix=="Clients"){$variables=["AFF"=>getTable("user"),"CodeP"=>$CodeP];} 
+    //elseif($choix=="gallery_plus"){$variables=["Eq"=>getEquipes("galleries"),"CodeP"=>$CodeP];} 
     
     else $variables=["AFF"=>GetListe($choix),"CodeP"=>$CodeP];
 
@@ -142,4 +144,16 @@ function pdf_owner($username,$id){
         return false;
     }
 }
+
+function supprimer_user(){
+    if(isset($_GET["Username"])){
+        $username=$_GET["Username"];
+        delete("user","Username",$username);
+        $_SESSION["success"] = "Client bien supprimer" ;
+        header("Location: index.php?action=AfficherAdminWithAjax&choix=Clients");
+      }
+}
+
 ?>
+
+

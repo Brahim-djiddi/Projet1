@@ -1,20 +1,17 @@
 
-      
 
-
-      
-
-      <!-- css datatables -->
- 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- css fontawesome -->
      
       <h3 class="h5 mb-3 text-gray-700 text-center mt-5"><i class="fas fa-fw fa-tachometer-alt "></i> TABLEAU DE BORD</h3>
-      <div class="container">
+      <div class="container p-5" style="background-image: url('public/images/bg-7.webp');background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 100% 100%;">
                     <div class="row">
                         <!-- card loctaire -->
                         <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-bottom-success border-left-success h-100 px-2">
+                            <div class="card border-bottom border-dark h-100 px-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -33,7 +30,7 @@
                         </div>
                         <!-- cards proprietaire-->
                         <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-danger border-bottom-danger  h-100 px-2">
+                            <div class="card border-bottom border-dark h-100 px-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -53,7 +50,7 @@
                         </div>
                         <!-- cards proprietaire-->
                         <div class=" col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info border-bottom-info  h-100 px-2">
+                            <div class="card border-bottom border-dark h-100 px-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -72,7 +69,7 @@
                         </div>
                         <!-- cards proprietaire-->
                         <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-warning border-bottom-warning  h-100 px-2">
+                            <div class="card border-bottom border-dark  h-100 px-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
@@ -103,3 +100,8 @@
                             </div>
                         </div>
                     </div> -->
+                    
+
+
+
+                    

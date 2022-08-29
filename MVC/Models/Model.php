@@ -134,6 +134,9 @@ function get_demande($owner,$demande="Demande_Etude"){
 function DeleteEquipes($id){
     return OuvrirConnextion()->query("Delete from equipes where idEq='$id'");	
 }
+function DeleteGallery($id){
+    return OuvrirConnextion()->query("Delete from galleries where id='$id'");	
+}
 
 function getEquipes($choix){
     return OuvrirConnextion()->query("select * FROM  $choix ")->fetchall();	
@@ -155,12 +158,21 @@ function CreateEquipes(array $eq){
     move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/".$photo_name);
 }
 
+function CreateGallery(array $eq){
+
+    $photo_name=$_FILES['photo']['name'];
+    $Liste=[$eq["titre"], $eq["description"], $photo_name]; ;
+    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/gallery/".$photo_name); 
+    OuvrirConnextion()->prepare("insert into Galleries (titre,description,image) values(?,?,?) ")->execute($Liste);
+
+}
+
 function delete($table,$column,$value){
     
     $tab = [$value];
     //OuvrirConnextion()->exec("DELETE from demandes WHERE link='$link'");
     $Rq=OuvrirConnextion()->prepare("DELETE  from $table  WHERE $column = ? ");
-    $Rq->execute($tab);
+    return $Rq->execute($tab);
     
 }
 
@@ -210,4 +222,31 @@ function Demande_Exists($owner,$demande){
     //$result=$Rq;
 	if($Rq->rowCount() >= 1) return true;
     else return false; 
+}
+
+function get_image_id($id,$table ="galleries",$column="image"){
+    $Rq= OuvrirConnextion()->prepare("select $column from $table where id = ? ");	
+	$Rq->execute([$id]);
+    $Rq1=$Rq->fetchcolumn();
+    return $Rq1;
+}
+
+function SetGallery (array $eq, $id){
+    $photo_name=$_FILES['photo']['name'];
+    $Liste=[$eq["titre"], $eq["description"], $photo_name];
+    if(isset($eq["modifier"])){
+       return OuvrirConnextion()->prepare("update galleries set titre=?,description=? where id=$id")->execute([$eq["titre"], $eq["description"]]);
+    }
+    else{
+    
+    OuvrirConnextion()->prepare("update galleries set titre=?,description=?,image=? where id=$id")->execute($Liste);
+    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/gallery/".$photo_name);    
+    }
+}
+
+function get_nom($id,$table="galleries",$where="id",$col="image"){
+    $Rq = OuvrirConnextion()->prepare("select $col from $table  where $where = ? ");
+    $Rq->execute([$id]);
+    $Rq1=$Rq->fetchcolumn();
+    return $Rq1;
 }

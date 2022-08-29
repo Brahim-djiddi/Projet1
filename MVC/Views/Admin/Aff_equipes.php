@@ -19,8 +19,12 @@
 
 <!--script jquery datatables-->
 <div class="card border-left-secondary h-90 mx-3 ">
+    <?php if (isset($_SESSION["success"])) {
+                echo"<div class='h4 text-center alert alert-success' role='alert'>".$_SESSION["success"]."</div>";
+                unset($_SESSION["success"]);}
+                ?>
     <div class="card-body">
-        <h2 class="text-center">Liste des équpes</h2>
+        <h2 class="text-center">Liste des équipes</h2>
         <!-- button madal -->
         <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#AjouterEquipe" data-bs-whatever="@mdo">
             Rengister une equipe

@@ -15,11 +15,11 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <link href="public/plugins/sb-admin-2.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
   <!-- DataTables :  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
-   
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -33,7 +33,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a role="button" title="alvers page d'accueil" class="nav-link" onclick="document.location='index.php'">Accueil</a>
+          <a role="button" title="alvers page d'accueil" class="nav-link" onclick="document.location='index.php'">Accueil</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -50,15 +50,10 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-      
+
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
           </a>
         </li>
       </ul>
@@ -67,26 +62,23 @@
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar  elevation-4">
-  
       <div class="sidebar">
-    
-        <div class=" mt-3 pb-3 mb-3 d-flex">
+        <div class=" mt-3 d-flex">
           <div class="image">
-
-            <img src="public/images/logo.png" alt="AdminLTE Logo" width="230" height="80">
+            <img src="public/images/logo.png" alt="AdminLTE Logo" class="ml-2" width="200" height="80">
           </div>
 
         </div>
         <hr class="text-muted">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 pb-2 d-flex">
           <div class="image">
-            <img src="public/images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="public/logo/profile.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="index.php?action=profil" class="d-block text-muted">
-              <?php if (isset($_SESSION["email"])) {
-                echo "" . strtoupper($_SESSION["CodeP"]) . " " . strtoupper($_SESSION["LastName"]);
-              }
+            <a href="index.php?action=profil" class="text-muted text-inline">
+              <?php if (isset($_SESSION["email"])) :
+                echo "Profile, " . strtoupper($_SESSION["LastName"]);
+              endif;
               ?>
             </a>
           </div>
@@ -98,69 +90,84 @@
 
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-     
+
             <li class="nav-item">
               <a href="index.php?action=AfficherAdminWithAjax&choix=Dashboard" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
+                <i class="fa-solid fa-gauge" style="color:#003089;"></i>
                 <p>
                   Tableau de bord
                 </p>
               </a>
             </li>
             <hr class="text-muted">
-            
-           
+
+
             <li class="nav-item">
-              <a  href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=All" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
+              <a href="index.php?action=AfficherAdminWithAjax&choix=Demande&choix2=All" class="nav-link">
+                <i class="fa-solid fa-file-lines" style="color:#003089;"></i>
                 <p>
-                  Demande consulting
+                  Demandes consulting
                 </p>
               </a>
             </li>
+            <hr class="text-muted">
+
+            <li class="nav-item">
+              <a  href="index.php?action=AfficherAdminWithAjax&choix=Clients" class="nav-link">
+                <i class="fa-solid fa-file-lines" style="color:#003089;"></i>
+                <p>
+                  Clients consulting
+                </p>
+              </a>
+            </li>
+
+
 
             <hr class="text-muted">
             <li class="nav-item">
               <a href="index.php?action=AfficherAdminWithAjax&choix=equipes" class="nav-link">
-                <i class="nav-icon fas fa-users"></i>
+                <i class="fa-solid fa-users " style="color:#003089;"></i>
                 <p>
-                  Équipe consulting
+                  Équipes consulting
                 </p>
               </a>
             </li>
+           
+
             <hr class="text-muted">
-            
             <li class="nav-item">
               <a href="index.php?action=AfficherAdminWithAjax&choix=galleries" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
+                <i class="fa-solid fa-image" style="color:#003089;"></i>
                 <p>
-                  Gallerie consulting
+                  Galleries consulting
                 </p>
               </a>
             </li>
-
             <hr class="text-muted">
             <li class="nav-item">
               <a href="index.php?action=fiche_admission" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
+                <i class="fa-solid fa-file-pdf " style="color:#003089;"></i>
                 <p>
-                  Form-admission
+                  Form-admissions
                 </p>
               </a>
             </li>
+
+            
+
 
             <hr class="text-muted">
 
 
             <li class="nav-item">
-            <button title="Deconnectz-vous ici" class="nav-link" onclick="document.location='index.php?action=logout'"><i class="fa fa-lock" aria-hidden="true"></i>Deconnection</button>
-            <!-- <a href="index.php?action=Logout" class="nav-link">   -->
+              <button title="Deconnectz-vous ici" class="nav-link" onclick="document.location='index.php?action=logout'"><i class="fa fa-lock" aria-hidden="true" style="color:#003089;"></i> Se deconnecter</button>
+              <!-- <a href="index.php?action=Logout" class="nav-link">   -->
               <!-- <i class="fa fa-lock mr-2" aria-hidden="true"></i>
               <p>
                 Log Out
               </p> -->
-            </a>
-          </li>
+              </a>
+            </li>
 
 
             <!-- <li class="nav-item">
@@ -197,12 +204,18 @@
 
       </div>
 
-     
-      <div class="tab-content">
-      <div class="tab-empty" id=example>
-        <h1  style="color: #002A8B;">Bienvenue <?= $_SESSION["LastName"] ?> dans l'Admin</h1>
 
-      </div>
+      <div class="tab-content img-fluid" style="background-image: url('public/images/bg-admin.jpg');background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 100% 100%;">
+
+        <h5 class="pt-2 text-white text-center"> Espace Administrateur</h5>
+        
+        <div class="tab-empty" id=example>
+        <img src="public/logo/profile.png" width="55%" height="500px" alt="" srcset="">
+          <h2 class="text-white text-center ml-2 font-weight-bold text-uppercase">Bienvenue <?= $_SESSION["LastName"] ?></h2>
+        </div>
         <div class="tab-loading">
           <div>
             <h2 class="display-7"> <i class="fa fa-sync fa-spin"></i></h2>
@@ -213,22 +226,22 @@
     <!-- /.content-wrapper -->
     <footer class="main-footer">
       <p class="text-center">Copyright &copy; 2022-2023 <a href="#">L'Etudiant consulting</a>.
-      Tous les droits sont réservés <b>Version 3.2.0 </b> </p>
+        Tous les droits sont réservés <b>Version 3.2.0 </b> </p>
       <div class="float-right d-none d-sm-inline-block">
-        
-    
+
+
       </div>
     </footer>
   </div>
 
- 
+
 
 
   <!--   <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
   <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-  
+
   <!-- jQuery -->
   <script src="public/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
@@ -249,4 +262,5 @@
   <script src="public/js/Aff_Ajax.js"></script>
 
 </body>
+
 </html>
