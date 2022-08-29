@@ -266,14 +266,14 @@ function Fiche_admission(){
          */
 
         if(!isset($errors)){
-            /* if(User_Exists($_SESSION["username"],"Owner","demandes")){
+            if(Demande_Exists($_SESSION['username'],$demande)){
 
-                $link=Get_Pdf_Link($_SESSION["username"]);
-                $_SESSION["Demande"]=$link;
-                
-                header('Location:index.php?action=mypdf&link=');
+                $demande_info=get_demande($_SESSION["username"],$demande);
+                $_SESSION["Link"]=$demande_info["Link"];
+                header('Location:index.php?action=mypdf');
             }
-            else */{
+            else{
+            $_SESSION['pdf_owner'] = $_SESSION['username'];
             $pdf = new generatePDF;
             $response = $pdf->generate($data);
             $chemin="".$response;
@@ -606,6 +606,7 @@ function modifier_pdf($do=true){
             }
          
             if(!isset($errors)){
+                $_SESSION['pdf_owner'] = $owner;
                 $pdf = new generatePDF;
                 $response = $pdf->generate($data);
                 $chemin="".$response;
