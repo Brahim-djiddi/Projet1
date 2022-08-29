@@ -61,6 +61,23 @@
         </div>
       </div>
       <hr>
+      
+      <?php if(isset($variables["pdf"])):
+      foreach($variables["pdf"] as $pdf){
+      echo'
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0"> ' . $pdf["Type"] .' </h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+        <a class="btn btn-sm btn-success" href="PDFs/completed/this_year/' . $pdf['Link'] . '" download="Fiche_Admission">Télécharger</a>
+        <a class="btn btn-sm btn-success" href="index.php?action=modifier_pdf&id=' . $pdf['Link'] . '" >modifier</a>
+        </div>
+      </div>
+      <hr>';
+      }
+    endif;
+      ?>
 
 
       <div class="d-flex flex-nowrap bd-highlight">

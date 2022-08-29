@@ -60,13 +60,13 @@
 
 
                     <div class="form-group">
-                        <input type="text" name="password" class="form-control" id="username2" placeholder="Mot de passe" value="<?=$variables["Logger"]["password"]?>" required/>
+                        <input type="password" name="password" class="form-control" id="username2" placeholder="Mot de passe" value="<?=$variables["Logger"]["password"]?>" required/>
                         <span class="Err" id="ErrCode"> <?=$variables["errors"]["password"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="confirm_password" class="form-control" id="username2" placeholder="Confirmer votre mot de passe" value="<?=$variables["Logger"]["confirm_password"]?>" required/>
+                        <input type="password" name="confirm_password" class="form-control" id="username2" placeholder="Confirmer votre mot de passe" value="<?=$variables["Logger"]["confirm_password"]?>" required/>
                         <span class="Err" id="ErrCode"> <?=$variables["errors"]["confirm_password"] ?? ""?> </span>
                         <div class="valid-feedback">Valide</div>
                     </div>

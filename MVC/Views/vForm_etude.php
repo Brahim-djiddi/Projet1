@@ -210,7 +210,7 @@
                                 <option value="Non"
                                 <?php if($s["bourse"]=="Non") echo"selected" ?>>non-boursier</option>
                                 <option value="stage"
-                                <?php if($s["bourse"]=="stage") echo"selected" ?>>Demande de stage</option>
+                                <?php if($s["bourse"]=="stage" || $_GET["demande"]=="Demande_Stage") echo"selected" ?>>Demande de stage</option>
                             </select>
                         </div>
                     </div>

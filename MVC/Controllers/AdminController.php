@@ -115,18 +115,29 @@ function supprimer_pdf($id="null",$success="Suppression avec succée !",$do=true
         delete("pdf","Link",$id);
         unlink('./PDFS/completed/this_year/'.$id);
         $_SESSION["success"] = $success;
-        if($do) AfficherAdminWithAjax($choix="Demande",$choix2="All");
-    }
-    }
+        if($_SESSION["CodeP"] != "admin") $do = false;
+        if($do) AfficherAdminWithAjax($choix="Demande",$choix2="All"); 
+        else 
+        {
+            Profil();exit();
+            //header('location : index.php?action=profil');
+        }
 
+    }
+    }
 }
 
 
 
-function pdf_owner($username="",$id=""){
+function pdf_owner($username,$id){
     if( strtoupper($_SESSION["CodeP"]) =="ADMIN" ) return true;
     else{
-    return true;
+        $pdf=Get_pdf($id);
+        //$pdf_owner=get_single_demande_value_2_where($id,$pdf["Type"]);
+        if(!empty($pdf)){
+        if($pdf["Owner"] == $username)return true;
+        }
+        return false;
     }
 }
 ?>

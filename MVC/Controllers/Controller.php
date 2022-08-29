@@ -58,6 +58,7 @@ function SignUp(){
         if(User_Exists($Logger["email"],"Email"))           $errors["email"] = "L'adresse email existe deja !"; 
 
         if(!isset($errors)){
+            $CodeP=$Logger["profession"] ?? "etudiant";
             AddUser($Logger,$CodeP);     
             $var=GetUser($Logger["email"]);
             $_SESSION["FirstName"]=$var["FirstName"];
@@ -120,30 +121,36 @@ function not_Login($action){
     return  true;
 }
 
-function Pre_Demande_Etude(){
+function Pre_Demande(){
+    $demande = $_GET["demande"] ?? "Demande_Etude";
+    if($demande == 'Demande_Etude') $formulaire = 'Formulaire de demande inscription en ligne' ;
+    if($demande == 'Demande_Stage') $formulaire = 'Formulaire de demande de stage' ;
     //$Student=[];
     //$CodeP=$_SESSION["CodeP"]??"etudiant";
     //$_SESSION["Demande"]="Demande_Etude";
     //$variables=array("Student"=>$Student,"Demande" => "Demande_Etude","errors"=>$errors ?? []);
-    if(User_Exists($_SESSION["username"],"Owner","demandes")){
+    if(Demande_Exists($_SESSION['username'],$demande)){
 
-        $link=Get_Pdf_Link($_SESSION["username"]);
-        $_SESSION["Demande_Etude"]=$link;
+        $demande_info=get_demande($_SESSION["username"],$demande);
+        $_SESSION["Link"]=$demande_info["Link"];
         header('Location:index.php?action=mypdf');
     }
     else{
-    $variables=[];
-    $vue="Views/vPre_Demande_Etude.php";
+        $_SESSION["allow_demande"] = "yes";
+    $variables=["demande" => $demande ,"formulaire" => $formulaire ];
+    $vue="Views/vPre_Demande.php";
     render($vue,$variables,"_predemande");
     }
 }
 
 
 
-function Fiche_admission($demande="Demande_Etude"){
-    $_SESSION["Demande"]="Demande_Etude";
+function Fiche_admission(){
+    if(isset($_SESSION["allow_demande"])) {
     $CodeP="etudiant";
-
+    $demande=$_GET["demande"] ?? "Demande_Etude";
+    //$_SESSION[$demande] = $demande ;
+    $_SESSION["Demande"]=$demande;
     $Student=[
        /*  
         '1' =>''  ,'2' =>''  ,'3' =>''  ,'4' =>''  ,'5' =>''  ,'Filière' =>''  ,'Etablissement' =>''  ,  'Boursier' =>''  ,
@@ -262,7 +269,7 @@ function Fiche_admission($demande="Demande_Etude"){
             /* if(User_Exists($_SESSION["username"],"Owner","demandes")){
 
                 $link=Get_Pdf_Link($_SESSION["username"]);
-                $_SESSION["Demande_Etude"]=$link;
+                $_SESSION["Demande"]=$link;
                 
                 header('Location:index.php?action=mypdf&link=');
             }
@@ -277,7 +284,10 @@ function Fiche_admission($demande="Demande_Etude"){
             ];
             add_table_pdf($_POST,$chemin);
             add_pdf($infos);
-            $_SESSION["Demande_Etude"]=$response;
+            $_SESSION["Link"]=$response;
+            $_SESSION["Link"]=$response;
+            //$_SESSION["Demande"]=$response;
+            unset($_SESSION["allow_demande"]);
             header('Location:index.php?action=thanks');
         }
         } 
@@ -287,7 +297,9 @@ function Fiche_admission($demande="Demande_Etude"){
     $demande= $_GET["demande"]   ??  "Demande_Etude";    
     $variables=array("Student"=>$Student ?? "","Demande" => $demande,"errors"=>$errors ?? []);
     $vue="Views/vForm_etude.php";
+    //unset($_SESSION["allow_demande"]);
     render_other($vue,$variables);
+}
 }
 
 
@@ -429,7 +441,9 @@ function mypdf(){
 
 function Profil(){
     $view="Views/vProfil.php";
-    $variables=["user" => GetUser($_SESSION["email"])];
+    $user = GetUser($_SESSION["email"]);
+    $pdf = get_un_pdf("Owner",$user["Username"]);
+    $variables=["user" => $user,'pdf' => $pdf];
     $template="_profil";
     render($view,$variables,$template);
 }
@@ -522,19 +536,14 @@ function supprimer_equipe(){
    
 }
 
-function modifier_pdf(){
+function modifier_pdf($do=true){
     if (isset($_GET["id"])){
 
     $id=$_GET["id"];
+    $pdf = get_pdf($id);
+    $owner = $pdf["Owner"];
 
     if(pdf_owner($_SESSION["username"],$id)){
-        /* delete("demandes","Link",$id);
-        delete("pdf","Link",$id);
-        unlink('./PDFS/completed/this_year/'.$id);
-        $_SESSION["success"] = "Suppression avec succée !";
-        AfficherAdminWithAjax($choix="Demande",$choix2="All"); */
-
-
         $demande= $_GET["demande"]   ??  "Demande_Etude";
         if($_SERVER["REQUEST_METHOD"]=="POST"){
             $data=[
@@ -601,14 +610,14 @@ function modifier_pdf(){
                 $response = $pdf->generate($data);
                 $chemin="".$response;
                 $infos=[
-                    "owner" => $_SESSION["username"]??"inconnue",
+                    "owner" => $owner ?? "inconnue",
                     "type" => $demande,
                     "link" => $chemin,
                 ];
                 
                 add_table_pdf($_POST,$chemin);
                 add_pdf($infos);
-                $_SESSION["Demande_Etude"]=$response;
+                $_SESSION["Link"]=$response;
                 //header('Location:index.php?action=thanks');
                 supprimer_pdf($id,"modification avec succée !",true);
                 exit();

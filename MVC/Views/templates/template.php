@@ -107,7 +107,7 @@
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 mb-5 shadow-sm" data-aos="fade-up">
         <div class="training">
-          <a href="index.php?action=pre_demande_etude" class="nav-link d-block">
+          <a href="index.php?action=pre_demande&demande=Demande_Etude" class="nav-link d-block">
             <figure class=""><img src="public/images/etude.png" alt="guetchar" class="img-fluid"></figure>
             <h6 class="text-dark font-weight-bold text-center">Inscription en ligne</h6>
           </a>
@@ -115,7 +115,7 @@
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6  mb-5 shadow-sm" data-aos="fade-up">
         <div class="training">
-          <a href="" class="nav-link  d-block">
+          <a href="index.php?action=pre_demande&demande=Demande_Stage" class="nav-link  d-block">
             <figure class="mb-3"><img src="public/images/stage.JPG" alt="guetchar" class="img-fluid w-100"></figure>
             <h6 class="text-dark font-weight-bold text-center">Demande un stage</h6>
           </a>

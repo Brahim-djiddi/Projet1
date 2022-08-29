@@ -29,7 +29,7 @@
           <div class="container text-center">
 
 <h1>Merci !! <?php echo $_SESSION["username"];?> votre fiche d'admission est maintenant prêt 
-<a href="./PDFs/completed/this_year/<?php echo $_SESSION["Demande_Etude"];?>" download="Fiche_admission">Télécharger ici</a><br><br><br>
+<a href="./PDFs/completed/this_year/<?php echo $_SESSION["Link"];?>" download="Fiche_admission">Télécharger ici</a><br><br><br>
 <a href="index.php">Retourner vers la Page d'aceuille</a></h1>
 
 <div class="clearfix mb-5"></div>

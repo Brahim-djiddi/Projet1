@@ -123,6 +123,12 @@ function Get_Pdf_Link($owner){
     return $Rq1;
 }
 
+function get_demande($owner,$demande="Demande_Etude"){
+    $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where Owner = ? and Type = ? ");	
+    $Rq->execute([$owner,$demande]);
+    $Rq1=$Rq->fetch();
+    return $Rq1;
+}
 
 //Get equipes
 function DeleteEquipes($id){
@@ -172,9 +178,36 @@ function add_table_pdf($tab="",$link=""){
          VALUES (?,?,?,?,?,?,?,?,?,?,   ?,?,?,?,?,?,?,?,?,?,    ?,?,?,?,?,?,?,?,?,?)")->execute($t);
     }
     
+/* function get_single_demande_value_2_where($value1="",$value2="Demande_Etude",$table="demandes",$column="Owner",$where1="Link",$where2="Type"){
+    $Rq=OuvrirConnextion()->prepare("select $column  from $table  WHERE $where1 = ?  and $where2 = ?");
+    $Rq->execute([$value1,$value2]);
+    $Rq1=$Rq->fetchcolumn();
+    return $Rq1;
+}  */
 
-       
+   
 
         
     
+}
+function get_pdf($link) 
+{
+    $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where Link = ? ");	
+    $Rq->execute([$link]);
+    return $Rq->fetch();
+    
+}
+
+function get_un_pdf($col,$value){
+    $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where $col = ? ");	
+    $Rq->execute([$value]);
+    return $Rq->fetchall();
+}
+
+function Demande_Exists($owner,$demande){
+    $Rq= OuvrirConnextion()->prepare("select * from demandes where Owner = ? and Type = ?");	
+	$Rq->execute([$owner,$demande]);
+    //$result=$Rq;
+	if($Rq->rowCount() >= 1) return true;
+    else return false; 
 }
