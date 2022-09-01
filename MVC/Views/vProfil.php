@@ -71,7 +71,7 @@
         </div>
         <div class="col-sm-9 text-secondary">
         <a class="btn btn-sm btn-success" href="PDFs/completed/this_year/' . $pdf['Link'] . '" download="Fiche_Admission">Télécharger</a>
-        <a class="btn btn-sm btn-success" href="index.php?action=modifier_pdf&id=' . $pdf['Link'] . '" >modifier</a>
+        <a class="btn btn-sm btn-warning" href="index.php?action=modifier_pdf&id=' . $pdf['Link'] . '" >modifier</a>
         </div>
       </div>
       <hr>';

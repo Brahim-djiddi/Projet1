@@ -156,7 +156,7 @@
 
   <?php foreach($variables['equipes'] as $eq){ ?>
       <div class="col-lg-3 text-center">
-        <img src="public/images/<?= $eq['Profile'] ?>" alt="" class="rounded-circle mb-4" height="150" width="150">
+        <img src="public/images/equipe/<?= $eq['Profile'] ?>" alt="" class="rounded-circle mb-4" height="150" width="150">
         <h3 class="h4 text-center text-black"><?= $eq['Nom'] . ' ' . $eq['Prenom'] ?></h3>
         <p><?= $eq['Titre'] ?></p>
         <p>

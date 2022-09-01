@@ -41,7 +41,8 @@ function Logger_Exists(array $user,$role){
     $Rq1= OuvrirConnextion()->prepare("select Role from user where Email = ? or Username = ? ");	
 	$Rq1->execute([$email,$email]);
     $Code=$Rq1->fetchcolumn();
-	if(($passHash)==($pass) && $Code==$role) return true;
+    if(     (is_admin($role) && !is_admin($Code))   ||      (!is_admin($role) && is_admin($Code))  ) return false ;
+	if(($passHash)==($pass)) return true;
     return false;   
 }
 
@@ -144,27 +145,39 @@ function getEquipes($choix){
 
 //Set equipes
 function SetEquipes (array $eq, $id){
-    $photo_name=$_FILES['photo']['name'];
+    $photo_name = time() . "_" . $_FILES['photo']['name'];
     $Liste=[$eq["nom"], $eq["prenom"],$eq["titre"], $eq["facebook"],$eq["twitter"],$eq["instagram"],$eq["linkedin"], $photo_name]; ;
     OuvrirConnextion()->prepare("update equipes set Nom=?,Prenom=?,Titre=?, Facebook=?, Twitter=?, Instagram=?, Linkedin=?, Profile=? where idEq=$id")->execute($Liste);
-    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/".$photo_name);    
+    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/equipe/".$photo_name);
 }
 
 //Create equipes
 function CreateEquipes(array $eq){
-    $photo_name=$_FILES['photo']['name'];
+    $photo_name = time() . "_" . $_FILES['photo']['name'];
     $Liste=[ $eq["nom"], $eq["prenom"],$eq["titre"], $eq["facebook"],$eq["twitter"],$eq["instagram"],$eq["linkedin"], $photo_name ];
     OuvrirConnextion()->prepare("INSERT INTO equipes (Nom,Prenom,Titre,Facebook,Twitter,Instagram,Linkedin,Profile) VALUES (?,?,?,?,?,?,?,?)")->execute($Liste);
-    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/".$photo_name);
+    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/equipe/".$photo_name);
 }
 
 function CreateGallery(array $eq){
-
-    $photo_name=$_FILES['photo']['name'];
+    $photo_name = time() . "_" . $_FILES['photo']['name'];
     $Liste=[$eq["titre"], $eq["description"], $photo_name]; ;
     move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/gallery/".$photo_name); 
     OuvrirConnextion()->prepare("insert into Galleries (titre,description,image) values(?,?,?) ")->execute($Liste);
 
+}
+
+function SetGallery (array $eq, $id){
+    $photo_name = time() . "_" . $_FILES['photo']['name'];
+    $Liste=[$eq["titre"], $eq["description"], $photo_name];
+    if(isset($eq["modifier"])){
+       return OuvrirConnextion()->prepare("update galleries set titre=?,description=? where id=$id")->execute([$eq["titre"], $eq["description"]]);
+    }
+    else{
+    
+    OuvrirConnextion()->prepare("update galleries set titre=?,description=?,image=? where id=$id")->execute($Liste);
+    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/gallery/".$photo_name); 
+    }
 }
 
 function delete($table,$column,$value){
@@ -231,18 +244,7 @@ function get_image_id($id,$table ="galleries",$column="image"){
     return $Rq1;
 }
 
-function SetGallery (array $eq, $id){
-    $photo_name=$_FILES['photo']['name'];
-    $Liste=[$eq["titre"], $eq["description"], $photo_name];
-    if(isset($eq["modifier"])){
-       return OuvrirConnextion()->prepare("update galleries set titre=?,description=? where id=$id")->execute([$eq["titre"], $eq["description"]]);
-    }
-    else{
-    
-    OuvrirConnextion()->prepare("update galleries set titre=?,description=?,image=? where id=$id")->execute($Liste);
-    move_uploaded_file($_FILES['photo']['tmp_name'], "public/images/gallery/".$photo_name);    
-    }
-}
+
 
 function get_nom($id,$table="galleries",$where="id",$col="image"){
     $Rq = OuvrirConnextion()->prepare("select $col from $table  where $where = ? ");

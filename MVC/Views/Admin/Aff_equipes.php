@@ -49,7 +49,7 @@
 
                     <tr>
                         <td><?= $cpt ?></td>
-                        <td> <img src="public/images/<?= $eq["Profile"] ?>" alt="Admin" class="rounded-circle" width="60" height="60"></td>
+                        <td> <img src="public/images/equipe/<?= $eq["Profile"] ?>" alt="Admin" class="rounded-circle" width="60" height="60"></td>
                         <td><?= $eq["Nom"] ?></td>
                         <td><?= $eq["Prenom"] ?></td>
                         <td><?= $eq["Titre"] ?></td>
@@ -74,6 +74,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
+                                <img src="public/images/equipe/<?= $eq["Profile"] ?>" alt="Admin" class="rounded-circle" width="60" height="60">
                                     <form method="post" action="index.php?action=modifier_equipe" enctype="multipart/form-data">
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">Nom:</label>
@@ -116,7 +117,7 @@
                                         </div>
 
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-sm btn-primary" value="Modifier">
+                                            <input type="submit" class="btn btn-sm btn-primary" value="valider">
                                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Fermer</button>
                                         </div>
                                     </form>

@@ -28,9 +28,12 @@
           <div class="col-md-12 blog-content">
           <div class="container text-center">
 
-<h1>Merci !! <?php echo $_SESSION["username"];?> votre fiche d'admission est maintenant prêt 
-<a href="./PDFs/completed/this_year/<?php echo $_SESSION["Link"];?>" download="Fiche_admission">Télécharger ici</a><br><br><br>
-<a href="index.php">Retourner vers la Page d'aceuille</a></h1>
+<h1><?= $variables["message1"] ?> <?php echo $_SESSION['username'];?> <?= $variables["message2"] ?> 
+<a href="./PDFs/completed/this_year/<?php echo $_SESSION["Link"];?>" download="Fiche_admission">Télécharger le ici</a><br><br>
+<a class="btn btn-success" href="index.php?action=Profil" >Aller vers votre Profil !</a><br>
+<br>
+<a href="index.php">Retourner vers la Page d'aceuille</a>
+</h1>
 
 <div class="clearfix mb-5"></div>
 

@@ -12,36 +12,7 @@ function index2(){
     }
 }
 
-
-function LoginAdmin(){
-    $Logger=["email"=>"","password"=>""];
-    $CodeP="admin";
-    //$CodeP=$_GET["CodeP"]??"etudiant";
-    if($_SERVER["REQUEST_METHOD"]=="POST"){
-        $Logger=$_POST;
-		if(empty($Logger["email"]))         $errors["email"] ="Insert a valid email or username !" ;
-		if(empty($Logger["password"]))      $errors["password"]="Empty password !";
-        if(!(Logger_Exists($Logger,$CodeP)))  $errors["connect"]="Error informations incorrect !";
-
-        if(!isset($errors)){
-            $var=GetUser($Logger["email"]);
-            $_SESSION["FirstName"]=$var["FirstName"];
-            $_SESSION["LastName"]=$var["LastName"];
-            $_SESSION["username"]=$var["Username"];
-            $_SESSION["email"]=$var["Email"];
-            $_SESSION["CodeP"]=$var["Role"];
-            header("location:index.php?action=index2");
-        }
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////
-    $view="Views/vLogin.php";
-    $variables=array("errors"=>$errors ?? [],"CodeP"=>$CodeP);
-    //require("Views/BaseViews/vLogin.php");
-    
-    //renderWithAjax($view,$variables);
-    render_other($view,$variables);
-}
-
+// DO NOT DELETE COMMENT BELLOW !
 /* function SignupAdmin(){
     //$CodeP=$_GET["CodeP"]??"etudiant";
     $CodeP="admin";
@@ -99,52 +70,6 @@ function AfficherAdminWithAjax($choix="null",$choix2="null"){
        renderWithAjax($view,$variables);
 }
 
-function is_admin($CodeP){
-    $data=[
-        "Admin","admin",
-    ];
-    foreach($data as $d){
-        if($d==$CodeP) return true;
-    }
-    return  false;
-}
-
-function supprimer_pdf($id="null",$success="Suppression avec succée !",$do=true){
-    if (isset($_GET["id"]) || $id!="null"){
-
-    if($id=='null')$id=$_GET["id"]  ;
-
-    if(pdf_owner($_SESSION["username"],$id)){
-        delete("demandes","Link",$id);
-        delete("pdf","Link",$id);
-        unlink('./PDFS/completed/this_year/'.$id);
-        $_SESSION["success"] = $success;
-        if($_SESSION["CodeP"] != "admin") $do = false;
-        if($do) AfficherAdminWithAjax($choix="Demande",$choix2="All"); 
-        else 
-        {
-            Profil();exit();
-            //header('location : index.php?action=profil');
-        }
-
-    }
-    }
-}
-
-
-
-function pdf_owner($username,$id){
-    if( strtoupper($_SESSION["CodeP"]) =="ADMIN" ) return true;
-    else{
-        $pdf=Get_pdf($id);
-        //$pdf_owner=get_single_demande_value_2_where($id,$pdf["Type"]);
-        if(!empty($pdf)){
-        if($pdf["Owner"] == $username)return true;
-        }
-        return false;
-    }
-}
-
 function supprimer_user(){
     if(isset($_GET["Username"])){
         $username=$_GET["Username"];
@@ -153,6 +78,122 @@ function supprimer_user(){
         header("Location: index.php?action=AfficherAdminWithAjax&choix=Clients");
       }
 }
+
+function ajouter_equipe(){
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $data=$_POST;
+        if(empty($data["nom"]))             $errors["nom"] = "Le nom ne doit pas etre vide !";
+        if(empty($data["prenom"]))          $errors["prenom"] = "Le prenom ne doit pas etre vide !"   ;
+		if(empty($data["titre"]))           $errors["titre"] = "Le titre ne doit pas etre vide !" ;
+        if(empty($data["facebook"]))        $errors["facebook"] = "Le facebook ne doit pas etre vide !" ;                               
+        if(empty($data["twitter"]))         $errors["twitter"] = "Le twitterne doit pas etre vide !"; 
+        if(empty($data["instagram"]))       $errors["instagram"] = "Le numero de instagram ne doit pas etre vide !";
+        if(empty($data["linkedin"]))        $errors["linkedin"] = "Le numero de linkedin ne doit pas etre vide !";
+        
+        if(!isset($errors)){
+            CreateEquipes($data);     
+            $_SESSION["success"] = "equipe bien ajouter" ;
+            header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+        }
+    }
+}
+
+function ajouter_gallery(){
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $Updatedata=$_POST;
+        //if(empty($Updatedata["titre"]))                 $errors["titre"] = "Le titre ne doit pas etre vide !" ;
+       // if(empty($Updatedata["description"]))           $Updatedata["description"] = "aucun description";
+        //if(empty($Updatedata["photo"]))                 $errors["photo"] = "L'image ne doit pas etre vide !" ;   ;
+
+        if(!isset($errors)){
+             CreateGallery($Updatedata);   
+             $_SESSION["success"] = "image bien ajouter" ;
+             header("Location: index.php?action=AfficherAdminWithAjax&choix=galleries");
+             
+        }
+    }
+}
+
+function modifier_equipe(){
+
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $Updatedata=$_POST;
+        if(empty($Updatedata["nom"]))         $errors["nom"] = "Le nom ne doit pas etre vide !";
+        if(empty($Updatedata["prenom"]))          $errors["prenom"]    ="Le prenom ne doit pas etre vide !"   ;
+		if(empty($Updatedata["titre"]))              $errors["titre"] ="Le titre ne doit pas etre vide !" ;
+        if(empty($Updatedata["facebook"]))                $errors["facebook"] ="Le facebook ne doit pas etre vide !" ;                               
+        if(empty($Updatedata["twitter"]))           $errors["twitter"] = "Le twitterne doit pas etre vide !"; 
+        if(empty($Updatedata["instagram"]))              $errors["instagram"] = "Le numero de instagram ne doit pas etre vide !";
+        if(empty($Updatedata["linkedin"]))              $errors["linkedin"] = "Le numero de linkedin ne doit pas etre vide !";
+   
+        if(!isset($errors)){
+            if(isset($Updatedata["idEq"])){
+            $id=$Updatedata["idEq"];
+            $nom_image = get_nom($id,"equipes",$where="idEq","Profile");
+            unlink('./public/images/equipe/'.$nom_image);
+            SetEquipes($Updatedata, $Updatedata["idEq"]);   
+            $_SESSION["success"] = "equipe bien modifier" ;
+            header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+            }
+        }
+    }
+}
+
+function modifier_gallery(){
+
+    if($_SERVER["REQUEST_METHOD"]=="POST"){
+        $Updatedata=$_POST;
+        if(empty($Updatedata["titre"]))                 $errors["titre"] = "Le titre ne doit pas etre vide !" ;
+        if(empty($Updatedata["description"]))           $Updatedata["description"] = "aucun description";
+        if(!isset($Updatedata["photo"]))                 $Updatedata["photo"] = get_image_id($_POST["id"],"galleries")   ;
+		
+ 
+   
+        if(!isset($errors)){
+            if(isset($Updatedata["id"])){
+            $idE=$Updatedata["id"];
+            $nom_image = get_nom($idE);
+            unlink('./public/images/gallery/'.$nom_image);
+            SetGallery($Updatedata, $Updatedata["id"]);   
+            $_SESSION["success"] = "image bien modifier" ;
+            header("Location: index.php?action=AfficherAdminWithAjax&choix=galleries");
+            }
+        }
+    }
+}
+
+function supprimer_equipe(){
+    if(isset($_GET["supEq"])){
+        $idE=$_GET["supEq"];
+        $nom_image = get_nom($idE,"equipes",$where="idEq","Profile");
+        unlink('./public/images/equipe/'.$nom_image);
+        DeleteEquipes($idE);
+        $_SESSION["success"] = "equipe bien supprimer" ;
+        header("Location: index.php?action=AfficherAdminWithAjax&choix=equipes");
+    }
+   
+}
+
+function supprimer_gallery(){
+    if(isset($_GET["supEq"])){
+      $idE=$_GET["supEq"];
+      $nom_image = get_nom($idE);
+      unlink('./public/images/gallery/'.$nom_image);
+      DeleteGallery($idE);
+      $_SESSION["success"] = "image bien supprimer" ;
+      header("Location: index.php?action=AfficherAdminWithAjax&choix=galleries");
+    }
+   
+}
+
+
+
+
+
+
+
+
+
 
 ?>
 

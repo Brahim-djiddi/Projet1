@@ -66,6 +66,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
+                                <img src="public//images//gallery//<?= $eq["image"] ?>" alt="Gallery" class="img-fluid" width="70" height="70">
                                     <form method="post" action="index.php?action=modifier_gallery" enctype="multipart/form-data">
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">Titre:</label>
@@ -87,7 +88,7 @@
                                       
 
                                         <div class="modal-footer">
-                                            <input type="submit" class="btn btn-sm btn-primary" value="Modifier">
+                                            <input type="submit" class="btn btn-sm btn-primary" value="valider">
                                             <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Fermer</button>
                                         </div>
                                         

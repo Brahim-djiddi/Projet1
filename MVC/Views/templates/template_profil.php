@@ -30,7 +30,12 @@
         
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-            <a class="btn text-white my-2" style="width:100%;background-color:#002A8B" href="javascript: history.go(-1)"><i class="fa-solid fa-angle-left mr-1"></i> Returner</a>
+              <?php if(is_admin($_SESSION["CodeP"])) :?>
+            <a class="btn text-white my-2" style="width:100%;background-color:#002A8B" href="javascript: history.go(-1)"><i class="fa-solid fa-angle-left mr-1"></i> Retourner</a>
+              <?php endif;?>
+              <?php if(!is_admin($_SESSION["CodeP"])) :?>
+            <a class="btn text-white my-2" style="width:100%;background-color:#002A8B" href="index.php"><i class="fa-solid fa-angle-left mr-1"></i> Acceuil</a>
+              <?php endif;?>
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">

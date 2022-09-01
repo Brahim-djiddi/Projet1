@@ -45,7 +45,7 @@
             </thead>
 
             <tbody>
-                <?php $cpt=0; foreach ($variables["AFF"] as $AD) { $cpt++; ?>
+                <?php $cpt=0; foreach ($variables["AFF"] as $AD) { if(!is_admin($AD["Role"])) : $cpt++; ?>
                     <tr>
                         <td><?= $cpt ?></td>
                         <td><?= $AD["FirstName"] ?></td>
@@ -57,7 +57,7 @@
                         <td><?= $AD["Gender"] ?></td>
                         <td><a class="btn btn-sm btn-danger" href="index.php?action=supprimer_user&Username=<?php echo $AD['Username']; ?>" >supprimer</a></td>
                     </tr>
-                <?php } ?>
+                <?php endif; } ?>
 
             </tbody>
 
