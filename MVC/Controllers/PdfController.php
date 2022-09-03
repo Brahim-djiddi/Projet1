@@ -113,12 +113,14 @@ function Fiche_admission(){
         if(empty($data["Téléphone_2"]))          $errors["Téléphone_2"] = "Le Telephone ne peut pas être vide !";
         //if(empty($data["GSM_2"]))          $errors["GSM_2"] = "Le Telephone ne peut pas être vide !";
         if(empty($data["Email_2"]))          $errors["Email_2"] = "Le Telephone ne peut pas être vide !"; */
+        if(!is_numeric($_POST["cpE"])) $errors["cpE"] = "Le Code Postal doint être numérique  !";
+        if(!is_numeric($_POST["cpP"])) $errors["cpP"] = "Le Code Postal doint être numérique  !";
     
-        /* foreach($data as $dd => $d){
+         foreach($_POST as $dd => $d){
             if(empty($d)){
                 $errors[$dd]="Ce champs est obligatoire!";
-            }
-         */
+            }}
+         
 
         if(!isset($errors)){
             if(Demande_Exists($_SESSION['username'],$demande)){

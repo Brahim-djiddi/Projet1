@@ -93,6 +93,7 @@
                                 <option value="4" <?php if($s["annee"]=="4") echo"selected" ?> >4ème année</option>
                                 <option value="5" <?php if($s["annee"]=="5") echo"selected" ?> >5ème année</option>
                             </select>
+                            <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["annee"] ?? ""?> </span>
                         </div>
                         <div class="col-lg-4 mt-3">
                             <label class="obligatoire" for="filiere">Filiére:</label>
@@ -173,6 +174,7 @@
                                
                             
                             </select>
+                            <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["filiere"] ?? ""?> </span>
 
                         </div>
 
@@ -189,10 +191,10 @@
                                 <option value="École privée"
                                 <?php if($s["etablissement"]=="École privée") echo"selected" ?>>École privée</option>
                                 <option value="Autre"
-                                <?php if($s["etablissement"]=="Autre") echo"selected" ?>>Autre</option>
-                               
-                              
+                                <?php if($s["etablissement"]=="Autre") echo"selected" ?>>Autre</option>    
+
                             </select>
+                            <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["etablissement"] ?? ""?> </span>
 
                         </div>
 
@@ -213,6 +215,7 @@
                                 <?php $s["bourse"] = $s["bourse"] ?? "" ; $_GET["demande"] = $_GET["demande"] ?? "" ;
                                  if($s["bourse"]=="stage" || $_GET["demande"]=="Demande_Stage") echo"selected" ?>>Demande de stage</option>
                             </select>
+                            <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["bourse"] ?? ""?> </span>
                         </div>
                     </div>
                 </div>
@@ -235,18 +238,21 @@
                             <div class="col-lg-4 mt-3">
                                 <label class="obligatoire" for="nomE" >Nom(s):</label>
                                 <input type="text" class="form-control" name="nomE" id="nomE" placeholder="Saisir votre nom" value = '<?= $s["nomE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["nomE"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-3">
                                 <label class="obligatoire" for="prenomE">Prénom(s):</label>
                                 <input type="text" class="form-control" name="prenomE" id="prenomE" placeholder="Saisir votre prénom"
                                 value = '<?= $s["prenomE"] ?? "" ?>'  required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["prenomE"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-3">
                                 <label class="obligatoire" for="dateN">Date de naissance:</label>
                                 <input type="date" class="form-control input-prefix" name="dateN" id="dateN" 
                                 value = '<?= $s["dateN"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["dateN"] ?? ""?> </span>
                                
                             </div>
                         </div>
@@ -256,17 +262,20 @@
                                 <label class="obligatoire" for="nationalite">Nationalité:</label>
                                 <input type="text" class="form-control" name="nationalite" id="nationalite" placeholder="Entrer votre nationalité "
                                 value = '<?= $s["nationalite"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["nationalite"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="CNI">N° CNI ou Passeport:</label>
                                 <input type="text" class="form-control" name="CNI" id="CNI" placeholder="N° sur votre carte Nationale(CNI) ou Passeport"
                                 value = '<?= $s["CNI"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["CNI"] ?? ""?> </span>
                             </div>
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="paysE">Pays:</label>
                                 <input type="text" class="form-control" name="paysE" id="paysE" placeholder="Entrer votre pays"
                                 value = '<?= $s["paysE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["paysE"] ?? ""?> </span>
                             </div>
 
                         </div>
@@ -279,12 +288,14 @@
                                 <label class="obligatoire" for="villeE">Ville:</label>
                                 <input type="text" class="form-control" name="villeE" id="villeE" placeholder="Et la ville que où vous êtes"
                                 value = '<?= $s["villeE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["villeE"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label for="cpE">Code postal:</label>
                                 <input type="number" class="form-control" name="cpE" id="cpE" placeholder="Exemple: 37000  "
                                 value = '<?= $s["cpE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["cpE"] ?? ""?> </span>
                             </div>
 
 
@@ -293,6 +304,7 @@
                                 <label class="obligatoire" for="apE">Adresse postale:</label>
                                 <input type="text" class="form-control" name="apE" id="apE" placeholder="Exemple: N° rue xxx code postal ville "
                                 value = '<?= $s["apE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["apE"] ?? ""?> </span>
                             </div>
 
                         </div>
@@ -303,18 +315,21 @@
                                 <label class="obligatoire" for="numeroE">Numéro téléphone:</label>
                                 <input type="text" class="form-control" name="numeroE" id="numeroE" placeholder="Saisir votre numéro de téléphone"
                                 value = '<?= $s["numeroE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["numeroE"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label for="gsmE">GSM:</label>
                                 <input type="text" class="form-control" name="gsmE" id="gsmE" placeholder="Entrer un GSM"
                                 value = '<?= $s["gsmE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["gsmE"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="emailE">Adresse E-mail:</label>
                                 <input type="email" class="form-control" name="emailE" id="emailE" placeholder="Saisir votre adresse E-mail"
                                 value = '<?= $s["emailE"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["emailE"] ?? ""?> </span>
                             </div>
 
 
@@ -326,6 +341,7 @@
                                 value = '<?= $s["serie"] ?? "" ?>' required>
                             </div>
                         </div>
+                        <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["serie"] ?? ""?> </span>
 
                     </div>
                     <!--  ESPACE RESERVE AU PARENT(S) OU TUTEUR(S) -->
@@ -340,12 +356,14 @@
                                 <label class="obligatoire" for="nomP">Nom(s):</label>
                                 <input type="text" class="form-control" name="nomP" id="nomP" placeholder="Nom(s) du parent ou tuteur(e)"
                                 value = '<?= $s["nomP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["nomP"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="prenomP">Prénom(s):</label>
                                 <input type="text" class="form-control" name="prenomP" id="prenomP" placeholder="Prénom(s) du parent ou tuteur(e)"
                                 value = '<?= $s["prenomP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["prenomP"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
@@ -367,6 +385,7 @@
                                     <option value="Autre"
                                     <?php if($s["profession"]=="Autre") echo"selected" ?>>Autre</option>
                                 </select>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["profession"] ?? ""?> </span>
                             </div>
                         </div>
                         <!-- row Nationalité,N° CNI ou Passeport,Adresse postale -->
@@ -376,17 +395,20 @@
                                 <label class="obligatoire" for="adP">Adresse postale:</label>
                                 <input type="text" class="form-control" name="adP" id="adP" placeholder="Exemple: N° rue xxx code postal ville "
                                 value = '<?= $s["adP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["adP"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label for="cpP">Code postal:</label>
-                                <input type="text" class="form-control" name="cpP" id="cpP" placeholder="Exemple: 37000" 
+                                <input type="number" class="form-control" name="cpP" id="cpP" placeholder="Exemple: 37000" 
                                 value = '<?= $s["cpP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["cpP"] ?? ""?> </span>
                             </div>
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="emailP">Adresse E-mail:</label>
                                 <input type="email" class="form-control" name="emailP" id="emailP" placeholder="S'il n'as pas saisir Adresse e-mail étudiant(e)"
                                 value = '<?= $s["emailP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["emailP"] ?? ""?> </span>
                             </div>
                         </div>
 
@@ -398,18 +420,21 @@
                                 <label class="obligatoire" for="paysP">Pays:</label>
                                 <input type="text" class="form-control" name="paysP" id="paysP" placeholder="Entrer un pays"
                                 value = '<?= $s["paysP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["paysP"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="villeP">Ville:</label>
                                 <input type="text" class="form-control" name="villeP" id="villeP" placeholder="Et la ville"
                                 value = '<?= $s["villeP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["villeP"] ?? ""?> </span>
                             </div>
 
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="numeroP">Numéro téléphone:</label>
                                 <input type="text" class="form-control" name="numeroP" id="numeroP" placeholder="Numéro de téléphone du parent ou tuteur(e)"
                                 value = '<?= $s["numeroP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["numeroP"] ?? ""?> </span>
                             </div>
                         </div>
                         <!-- row GSM,E-mail,Série du baccalauréat -->
@@ -419,6 +444,7 @@
                                 <label for="gsmP">GSM:</label>
                                 <input type="text" class="form-control" name="gsmP" id="gsmP" placeholder="Entrer un GSM du parent"
                                 value = '<?= $s["gsmP"] ?? "" ?>' required>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["gsmP"] ?? ""?> </span>
                             </div>
 
 
@@ -484,6 +510,7 @@
                                     <option vaalue="Autre"
                                     <?php if($s["destination"]=="Autre") echo"selected" ?>>Autre</option>
                                 </select>
+                                <span class="Err text-danger" id="ErrCode"> <?=$variables["errors"]["destination"] ?? ""?> </span>
                             </div>
 
                         </div>
@@ -533,6 +560,7 @@
             </div>
        
     </section>
+    <?php// var_dump($variables["errors"]) ?>
     </form>
     </div>
 
@@ -541,7 +569,7 @@
 
         </div>
     </footer>
-    <script>
+     <script>
     (() => {
   'use strict'
 
@@ -560,7 +588,7 @@
     }, false)
   })
 })()
-      </script>
+      </script> 
 
 </body>
 
