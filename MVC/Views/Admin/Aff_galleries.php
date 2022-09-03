@@ -78,8 +78,9 @@
                                         </div>
                                         
                                         <div class="mb-3">
-                                            <label for="recipient-name" class="col-form-label">Photo:</label>
-                                            <input type="file" class="form-control" id="recipient-name" name="photo" required >
+                                            <label for="recipient-name" class="col-form-label">Photo: </label>
+                                            <input type="file" class="form-control" id="recipient-name" name="photo" required ><br>
+                                            <small>Taille doit être au près 540x680</small>
                                         </div>
 
                                         <div class="mb-3">
@@ -125,8 +126,10 @@
                         <input type="text" class="form-control" id="recipient-name" name="description" placeholder="Entrer un prenom" required>
                     </div>
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Photo:</label>
-                        <input type="file" class="form-control" id="recipient-name" name="photo" required>
+                       
+                        <label for="recipient-name" class="col-form-label">Photo: </label>
+                        <input type="file" class="form-control" id="recipient-name" name="photo" required><br>
+                        <small>Taille doit être au près 540x680</small>
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="btn btn-primary" value="Rengistrer">
