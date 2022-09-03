@@ -99,7 +99,7 @@
                             <label class="obligatoire" for="filiere">Filiére:</label>
                             <select class="form-control form-select" name="filiere" id="filiere" required>
 
-                                <option selected value=" ">Choisir la filière</option>
+                                <option selected value="">Choisir la filière</option>
 
                                 <optgroup label="Filières scientifiques">
                                     <option value="Sciences pour l’ingénieur" 
@@ -181,7 +181,7 @@
                         <div class="col-lg-4 mt-3">
                             <label class="obligatoire" for="etablissement">Etablissement:</label>
                             <select class="form-control form-select" name="etablissement" id="etablissement"  required>
-                                <option selected value=" ">Choisir l'etablissement</option>
+                                <option selected value="">Choisir l'etablissement</option>
                                 <option value="Université public"
                                 <?php $s["etablissement"]=$s["etablissement"]??"" ;if($s["etablissement"]=="Université public") echo"selected" ?>>Université public</option>
                                 <option value="Université privée"
@@ -206,7 +206,7 @@
                         <div class="col-lg-4 mt-3 mb-3">
                             <label class="obligatoire" for="bourse">Bourse:</label>
                             <select class="form-control form-select" name="bourse" id="bourse" required>
-                                <option selected value=" ">Vous-êtes boursier ?</option>
+                                <option selected value="">Vous-êtes boursier ?</option>
                                 <option value="Oui"
                                 <?php $s["bourse"]=$s["bourse"]??"";if($s["bourse"]=="Oui") echo"selected" ?>>oui-boursier</option>
                                 <option value="Non"
@@ -369,7 +369,7 @@
                             <div class="col-lg-4 mt-2">
                                 <label class="obligatoire" for="profession">Profession:</label>
                                 <select class="form-control form-select" name="profession" id="profession" required>
-                                    <option selected value=" ">Entrer la professsion du parent</option>
+                                    <option selected value="">Entrer la professsion du parent</option>
                                     <option value="Fonctionnaire"
                                     <?php $s["profession"]=$s["profession"]??"";if($s["profession"]=="Fonctionnaire") echo"selected" ?>>Fonctionnaire</option>
                                     <option value="Commerçant(e)"
@@ -490,7 +490,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 p-4">
                                 <label class="obligatoire" for="destination">Destination:</label>
                                 <select class="form-control form-select"  name="destination" id="destination" required>
-                                    <option  value="choisir">Choisir la destination souhaitée</option>
+                                    <option  value="">Choisir la destination souhaitée</option>
                                     <option value="Maroc"
                                     <?php $s["destination"]=$s["destination"]??"";if($s["destination"]=="Maroc") echo"selected" ?>>Maroc</option>
                                     <option value="Tunisie" 
@@ -569,7 +569,7 @@
 
         </div>
     </footer>
-     <script>
+    <script>
     (() => {
   'use strict'
 
@@ -588,7 +588,7 @@
     }, false)
   })
 })()
-      </script> 
+      </script>  
 
 </body>
 
