@@ -186,27 +186,7 @@ function supprimer_gallery(){
    
 }
 
-function supprimer_pdf($id="null",$success="Suppression avec succée !",$do=true){
-    if (isset($_GET["id"]) || $id!="null"){
 
-    if($id=='null')$id=$_GET["id"]  ;
-
-    if(pdf_owner($_SESSION["username"],$id)){
-        delete("demandes","Link",$id);
-        delete("pdf","Link",$id);
-        unlink('./PDFS/completed/this_year/'.$id);
-        $_SESSION["success"] = $success;
-        if($_SESSION["CodeP"] != "admin") $do = false;
-        if($do) AfficherAdminWithAjax($choix="Demande",$choix2="All"); 
-        else 
-        {
-            Profil();exit();
-            //header('location : index.php?action=profil');
-        }
-
-    }
-    }
-}
 
 
 

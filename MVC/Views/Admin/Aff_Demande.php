@@ -29,7 +29,7 @@
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                    <th scope="col">Etudiants</th>
+                    <th scope="col">Identifiant</th>
                     <th scope="col">Type de demande</th>
                     <th scope="col">Date de demande</th>
                     <th scope="col" colspan=4>Demandes</th>

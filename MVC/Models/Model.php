@@ -68,14 +68,14 @@ function GetListe($choix){
 
 function GetListeDemande_Etude($type="Demande_Etude"){
     //return OuvrirConnextion()->query("SELECT * FROM  demandes where type='$type'")->fetchall();
-    $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where type = ? ");	
+    $Rq= OuvrirConnextion()->prepare("select * FROM  demandes where type = ? order by Owner ");	
     $Rq->execute([$type]);
     $Rq1=$Rq->fetchall();
     return $Rq1;
 }
 
 function GetListeDemandes(){
-    return OuvrirConnextion()->query("select * FROM  demandes")->fetchall();	
+    return OuvrirConnextion()->query("select * FROM  demandes order by Owner ")->fetchall();	
 }
 
 function GetListeDashboard(){
@@ -83,7 +83,7 @@ function GetListeDashboard(){
 }
 
 function GetListeClient(){
-    return OuvrirConnextion()->query("SELECT * FROM  user where role='etudiant'")->fetchall();
+    return OuvrirConnextion()->query("SELECT * FROM  user where role='etudiant' /* order by Username */")->fetchall();
 }
 
 function User_Exists($var,$varname="Username",$tablename="user"){

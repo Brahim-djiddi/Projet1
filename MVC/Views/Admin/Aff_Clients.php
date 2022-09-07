@@ -33,6 +33,7 @@
             <thead>
                 <tr>
                 <th scope="col">#</th>
+                <th scope="col">Identifiant</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Prenom</th>
                 <th scope="col">Age</th>
@@ -48,6 +49,7 @@
                 <?php $cpt=0; foreach ($variables["AFF"] as $AD) { if(!is_admin($AD["Role"])) : $cpt++; ?>
                     <tr>
                         <td><?= $cpt ?></td>
+                        <td><?= $AD["Username"] ?></td>
                         <td><?= $AD["FirstName"] ?></td>
                         <td><?= $AD["LastName"] ?></td>
                         <td><?= $AD["Age"] ?></td>
